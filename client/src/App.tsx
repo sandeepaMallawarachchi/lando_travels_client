@@ -10,11 +10,13 @@ import CorporateTravels from "./pages/CorporateTravels";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import OutboundTours from "./pages/OutboundTours";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <>
       <Toaster position="top-center" />
+      <ScrollToTop />
       <CustomCursor />
       <Header />
       <main className="flex-grow container mx-auto">
