@@ -11,6 +11,7 @@ import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import OutboundTours from "./pages/OutboundTours";
 import ScrollToTop from "./components/ScrollToTop";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
           <Route path="/corporate" element={<CorporateTravels />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<AboutUs />} />
+
+          {/* not NotFound */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
