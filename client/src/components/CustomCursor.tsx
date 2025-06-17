@@ -22,7 +22,7 @@ const CustomCursor: React.FC = () => {
       />
       {/* Inner dot */}
       <div
-        className="fixed top-0 left-0 w-2 h-2 bg-gray-300 rounded-full pointer-events-none z-[9999]"
+        className="hidden sm:block fixed top-0 left-0 w-2 h-2 bg-gray-300 rounded-full pointer-events-none z-[9999]"
         style={{
           transform: `translate(${position.x - 4}px, ${position.y - 4}px)`,
         }}
