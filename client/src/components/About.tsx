@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
 import { ArcImage } from './ArcImage'
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";

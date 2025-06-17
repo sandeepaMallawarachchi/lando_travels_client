@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const CompanyIntro = () => {
     const fullText = `At Lando Travels, we believe that travel is more than just movement—it's about meaningful connections, seamless experiences, and trusted partnerships. With over two decades of industry expertise, we've been the backbone of corporate journeys and leisure escapes, providing unmatched service in air ticketing, visa processing, and travel consultation. From first-time flyers to seasoned executives, our mission is to deliver excellence, every mile of the way.`;

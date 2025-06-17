@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React from 'react'
 interface ArcImageProps {
   src: string
   style: React.CSSProperties
