@@ -6,10 +6,10 @@ import Home from "./pages/Home";
 import CustomCursor from "./components/CustomCursor";
 import Footer from "./components/Footer";
 import InboundTours from "./pages/InboundTours";
-import OutboundTours from "./pages/OutBoundTours";
 import CorporateTravels from "./pages/CorporateTravels";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
+import OutboundTours from "./pages/OutboundTours";
 
 function App() {
   return (
