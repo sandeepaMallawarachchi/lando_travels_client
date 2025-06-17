@@ -49,7 +49,6 @@ const AboutUs: React.FC = () => {
         show: { opacity: 1 },
     };
 
-
     return (
         <div className='justify-center items-center pb-20'>
             {/* Cover Section */}
@@ -152,7 +151,7 @@ const AboutUs: React.FC = () => {
                     </motion.div>
                 </motion.div>
             </section>
-            <section className="py-20 bg-gray-50 px-6 md:px-12">
+            {/* <section className="py-20 bg-gray-50 px-6 md:px-12">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
                     <motion.div
                         initial={{ x: -100, opacity: 0 }}
@@ -184,7 +183,7 @@ const AboutUs: React.FC = () => {
                         <p className="mt-4 font-semibold text-blue-600">— Managing Director, Lando Travels</p>
                     </motion.div>
                 </div>
-            </section>
+            </section> */}
         </div>
     );
 };
