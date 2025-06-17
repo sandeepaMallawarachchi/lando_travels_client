@@ -12,16 +12,17 @@ const Blogs: React.FC = () => {
     const [blogs, setBlogs] = useState<BlogCard[]>([]);
     const [startIndex, setStartIndex] = useState(0);
     const [selectedCard, setSelectedCard] = useState<BlogCard | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchCards = async () => {
             try {
-                const response = await axios.get(
-                    "https://lando-travels-api.vercel.app/admin/getcards"
-                );
+                const response = await axios.get("https://lando-travels-api.vercel.app/admin/getcards");
                 setBlogs(response.data);
             } catch (error) {
                 console.error("Error fetching cards:", error);
+            } finally {
+                setLoading(false);
             }
         };
         fetchCards();
@@ -59,6 +60,21 @@ const Blogs: React.FC = () => {
     const truncate = (text: string, maxWords = 20) =>
         text.split(" ").slice(0, maxWords).join(" ") + "...";
 
+    if (loading) {
+        return (
+            <div className="relative overflow-hidden max-w-7xl mx-auto h-[400px]">
+                <div className="flex gap-10 justify-center">
+                    {Array(cardsPerView).fill(0).map((_, i) => (
+                        <div
+                            key={i}
+                            className="animate-pulse bg-gray-200 rounded-xl h-[300px] w-[300px]"
+                        />
+                    ))}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <motion.section
             id="blogs"
@@ -74,7 +90,7 @@ const Blogs: React.FC = () => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={startIndex}
-                        className="absolute top-0 left-0 w-full h-full flex gap-10 justify-center"
+                        className="absolute top-0 left-0 w-full h-full flex gap-10 justify-center py-1"
                         initial={{ opacity: 0, x: 100 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -100 }}
@@ -84,7 +100,7 @@ const Blogs: React.FC = () => {
                             <div
                                 key={`${card.title}-${i}`}
                                 onClick={() => setSelectedCard(card)}
-                                className="cursor-pointer bg-white shadow-xl rounded-xl overflow-hidden max-w-sm w-full transition-transform hover:scale-[1.015]"
+                                className="cursor-pointer bg-white shadow-lg rounded-xl overflow-hidden max-w-sm w-full transition-transform hover:scale-[1.015]"
                             >
                                 <img
                                     src={card.src}
