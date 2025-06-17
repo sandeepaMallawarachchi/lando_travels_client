@@ -73,7 +73,7 @@ const ContactUs: React.FC = () => {
                     {floatingIcons.map((item, index) => (
                         <div
                             key={index}
-                            className="absolute text-blue-500/40 text-md animate-float"
+                            className="absolute text-blue-500/30 text-md animate-float"
                             style={{
                                 top: item.top,
                                 bottom: item.bottom,
