@@ -51,9 +51,9 @@ const slides = [
 ];
 
 const imageFade = {
-    enter: { opacity: 0, y: 30 },
-    center: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -30 },
+    center: { opacity: 1, y: 0, scale: 1 },
+    enter: { opacity: 0, y: 30, scale: 1.05},
+    exit: { opacity: 0, y: -30, scale: 0.95 },
 };
 
 const textSlide = {
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
     // const APIKEY = 'AIzaSyCI9ArvdMHEaNk7mvBbX7ueWqUyIIfNJJE'
 
     return (
-        <section className="relative h-[60vh] md:h-screen w-full overflow-hidden bg-black">
+        <section className="relative h-[60vh] md:h-screen w-full overflow-hidden bg-blue-200">
             <AnimatePresence mode="wait">
                 <motion.img
                     key={currentSlide.image}
@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
                 />
             </AnimatePresence>
 
