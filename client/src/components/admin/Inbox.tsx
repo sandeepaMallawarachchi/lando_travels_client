@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
+import toast from "react-hot-toast";
 
 interface Email {
   _id: string;
@@ -29,9 +30,12 @@ const Inbox: React.FC = () => {
       .then((res) => {
         setEmails(emails.filter((email) => email._id !== id));
         setSelectedEmail(null);
-        alert(res.data.message);
+        toast.success(res.data.message);
       })
-      .catch((err) => console.error("Error deleting email:", err));
+      .catch((err) => {
+        console.error("Error deleting email:", err)
+        toast.error("Error deleting emai")
+      });
   };
 
   const handleEmailClick = (email: Email) => {
@@ -73,9 +77,8 @@ const Inbox: React.FC = () => {
             <div
               key={email._id}
               onClick={() => handleEmailClick(email)}
-              className={`cursor-pointer px-4 py-3 transition ${
-                email.read ? "bg-white" : "bg-green-100 hover:bg-green-200"
-              }`}
+              className={`cursor-pointer px-4 py-3 transition ${email.read ? "bg-white" : "bg-green-100 hover:bg-green-200"
+                }`}
             >
               <p className={`text-md ${email.read ? "font-normal" : "font-semibold"}`}>
                 {email.subject}
