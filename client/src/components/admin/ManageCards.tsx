@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import CardModalForm from "./CardModalForm";
+import { Edit, Trash } from "lucide-react";
 
 type CardType = {
     _id?: string;
@@ -67,7 +68,7 @@ const ManageCards: React.FC = () => {
                 toast.success("Card updated!");
             } else {
                 const res = await axios.post(
-                    "https://lando-travels-api.vercel.app/admin/cards",
+                    "https://lando-travels-api.vercel.app/admin/createCard",
                     formData
                 );
                 setCards((prev) => [...prev, res.data]);
@@ -78,6 +79,19 @@ const ManageCards: React.FC = () => {
             toast.error("Something went wrong!");
         } finally {
             setUploading(false);
+        }
+    };
+
+    const handleDelete = async (id: string) => {
+        if (!window.confirm("Are you sure you want to delete this card?")) return;
+
+        try {
+            await axios.delete(`https://lando-travels-api.vercel.app/admin/cards/${id}`);
+            setCards((prev) => prev.filter((c) => c._id !== id));
+            toast.success("Card deleted successfully!");
+        } catch (err: any) {
+            console.error("Delete error:", err);
+            toast.error("Failed to delete card.");
         }
     };
 
@@ -120,23 +134,43 @@ const ManageCards: React.FC = () => {
                         <motion.div
                             key={card._id}
                             layout
-                            className="bg-white shadow-lg rounded-xl p-4 flex flex-col items-center text-center"
+                            className="relative bg-white shadow-lg rounded-xl overflow-hidden group"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                         >
                             <img
                                 src={card.src}
                                 alt={card.title}
-                                className="w-full h-40 object-cover rounded-md mb-4"
+                                className="w-full h-52 object-cover rounded-t-xl"
                             />
-                            <h3 className="font-bold text-lg">{card.title}</h3>
-                            <p className="text-sm text-gray-600 mt-2">{card.description}</p>
-                            <button
-                                className="mt-4 text-blue-600 hover:underline"
-                                onClick={() => handleEditClick(card)}
+
+                            {/* Hover overlay */}
+                            <motion.div
+                                initial={{ y: -60, opacity: 0 }}
+                                whileHover={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="absolute inset-0 bg-black/80 bg-opacity-40 flex items-center justify-center gap-4 text-white opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
                             >
-                                Edit
-                            </button>
+                                <button
+                                    onClick={() => handleEditClick(card)}
+                                    className="bg-white/20 cursor-pointer text-blue-500 p-2 rounded-full hover:bg-white/30 transition"
+                                    title="Edit"
+                                >
+                                    <Edit />
+                                </button>
+                                <button
+                                    onClick={() => handleDelete(card._id!)}
+                                    className="bg-white/20 cursor-pointer text-red-500 p-2 rounded-full hover:bg-white/30 transition"
+                                    title="Delete"
+                                >
+                                    <Trash />
+                                </button>
+                            </motion.div>
+
+                            <div className="p-3 text-center">
+                                <h3 className="font-bold text-lg">{card.title}</h3>
+                                <p className="text-sm text-gray-600 mt-2">{card.description}</p>
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>

@@ -1,6 +1,7 @@
 export type CardFormProps = {
     show: boolean;
     card: {
+        _id?: string;
         src: string;
         title: string;
         description: string;
