@@ -40,6 +40,24 @@ const CardModalForm: React.FC<CardFormProps> = ({
         }
     };
 
+    const handleToggleVisibility = async () => {
+        try {
+            const updated = { ...card, show: !card.show };
+            const res = await fetch(`https://lando-travels-api.vercel.app/admin/cards/${card._id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updated),
+            });
+
+            if (!res.ok) throw new Error("Failed to update visibility");
+
+            onChange("show", updated.show.toString()); // Optional
+            toast.success(updated.show ? "Card is now visible!" : "Card is hidden.");
+        } catch (err) {
+            toast.error("Failed to update visibility");
+        }
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -130,13 +148,23 @@ const CardModalForm: React.FC<CardFormProps> = ({
                     </div>
 
                     {/* Submit Button */}
-                    <div className="flex justify-end">
+                    <div className="flex justify-end gap-4">
                         <button
                             type="submit"
                             disabled={uploading}
                             className="px-5 py-2 cursor-pointer bg-blue-500 text-white rounded hover:bg-blue-600 transition disabled:opacity-60"
                         >
                             {uploading ? "Saving..." : "Save"}
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleToggleVisibility}
+                            className={`px-5 py-2 rounded transition cursor-pointer ${card.show
+                                    ? "bg-red-100 text-red-600 hover:bg-red-200"
+                                    : "bg-green-100 text-green-600 hover:bg-green-200"
+                                }`}
+                        >
+                            {card.show ? "Hide Card" : "Show Card"}
                         </button>
                     </div>
                 </form>

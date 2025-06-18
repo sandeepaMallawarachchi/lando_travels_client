@@ -10,6 +10,7 @@ type CardType = {
     src: string;
     title: string;
     description: string;
+    show: boolean
 };
 
 const ManageCards: React.FC = () => {
@@ -17,7 +18,7 @@ const ManageCards: React.FC = () => {
     const [editingCard, setEditingCard] = useState<CardType | null>(null);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
-    const [formData, setFormData] = useState<CardType>({ src: "", title: "", description: "" });
+    const [formData, setFormData] = useState<CardType>({ src: "", title: "", description: "", show: true });
     const [uploading, setUploading] = useState(false);
     const [showActionsId, setShowActionsId] = useState<string | null>(null);
 
@@ -45,7 +46,7 @@ const ManageCards: React.FC = () => {
     };
 
     const handleAddNewClick = () => {
-        setEditingCard({ src: "", title: "", description: "" });
+        setEditingCard({ src: "", title: "", description: "", show: true });
         setShowModal(true);
     };
 

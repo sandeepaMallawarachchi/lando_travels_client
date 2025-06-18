@@ -5,6 +5,7 @@ export type CardFormProps = {
         src: string;
         title: string;
         description: string;
+        show: boolean;
     };
     onClose: () => void;
     onChange: (field: string, value: string) => void;
