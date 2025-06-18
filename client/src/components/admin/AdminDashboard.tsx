@@ -13,6 +13,7 @@ import {
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import type { AdminDetails } from "../../types/AdminDetails";
+import OnlineUsers from "./OnlineUsers";
 
 const AdminDashboard: React.FC = () => {
   const [adminDetails, setAdminDetails] = useState<AdminDetails>({
@@ -31,7 +32,8 @@ const AdminDashboard: React.FC = () => {
   const adminID = localStorage.getItem("adminID");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [onlineUsers, setOnlineUsers] = useState(0)
+  const [onlineUsers, setOnlineUsers] = useState(0);
+  const [onlineUserGraph, setOnlineUserGraph] = useState<{ time: string; value: number }[]>([]);
 
   useEffect(() => {
     const fetchAdminDetails = async () => {
@@ -76,19 +78,26 @@ const AdminDashboard: React.FC = () => {
     fetchTotalPosts();
   }, [adminID]);
 
-  const fetchOnlineUsers = async () => {
-    setLoading(true)
-    try {
-      const res = await fetch("https://lando-travels-api.vercel.app/admin/online-users");
-      const data = await res.json();
-      setOnlineUsers(data.count);
-    } catch (err: any) {
-      console.error("Error fetching total posts:", err.message);
-    } finally {
-      setLoading(false)
-    }
-    fetchOnlineUsers()
-  };
+  useEffect(() => {
+    const fetchOnlineUsers = async () => {
+      try {
+        const res = await fetch("https://lando-travels-api.vercel.app/admin/online-users");
+        const data = await res.json();
+        setOnlineUsers(data.count);
+
+        setOnlineUserGraph((prev) => {
+          const newPoint = { time: new Date().toLocaleTimeString(), value: data.count };
+          return [...prev.slice(-4), newPoint];
+        });
+      } catch (err) {
+        console.error("Error fetching online users:", err);
+      }
+    };
+
+    fetchOnlineUsers();
+    const interval = setInterval(fetchOnlineUsers, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleEditProfileClick = () => setIsEditProfileOpen(true);
   const handlePasswordResetClick = () => setIsPasswordResetOpen(true);
@@ -151,7 +160,7 @@ const AdminDashboard: React.FC = () => {
           <div className="grid grid-cols-2 gap-4">
             <SummaryCard title="Total Users" value={totalUsers} />
             <SummaryCard title="News Blogs" value={totalPosts} />
-            <SummaryCard title="Online Users" value={onlineUsers} />
+            <OnlineUsers title="Online Users" value={onlineUsers} showGraph graphData={onlineUserGraph} />
           </div>
         </div>
       </div>
@@ -214,7 +223,7 @@ const AdminDashboard: React.FC = () => {
 
 const IconButton: React.FC<{ icon: React.ReactNode; onClick?: () => void; href?: string }> = ({ icon, onClick, href }) => {
   const content = (
-    <div className="flex justify-center items-center bg-gray-100 hover:bg-gray-200 p-4 rounded-full transition">
+    <div className="flex justify-center items-center bg-gradient-to-br from-white to-gray-100 shadow-lg p-4 rounded-full transition">
       {icon}
     </div>
   );
@@ -228,7 +237,7 @@ const IconButton: React.FC<{ icon: React.ReactNode; onClick?: () => void; href?:
 };
 
 const SummaryCard: React.FC<{ title: string; value: number }> = ({ title, value }) => (
-  <div className="p-4 bg-gray-200 text-black rounded-lg hover:bg-gray-300 transition">
+  <div className="bg-gradient-to-br from-white to-gray-100 shadow-lg rounded-xl p-4 hover:shadow-xl transition-all duration-300">
     <h3 className="text-sm font-medium">{title}</h3>
     <p className="text-2xl font-bold">{value}</p>
   </div>
