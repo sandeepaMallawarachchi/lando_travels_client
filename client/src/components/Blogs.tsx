@@ -16,6 +16,7 @@ const Blogs: React.FC = () => {
 
     useEffect(() => {
         const fetchCards = async () => {
+            setLoading(true)
             try {
                 const response = await axios.get("https://lando-travels-api.vercel.app/admin/getcards");
                 setBlogs(response.data);
