@@ -66,6 +66,14 @@ const AllAdmins: React.FC = () => {
         }
     };
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 8;
+
+    const paginatedAdmins = admins.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
     if (loading) {
         return (
             <div className="p-10 grid gap-4 animate-pulse">
@@ -101,7 +109,7 @@ const AllAdmins: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {admins.map((admin) => (
+                        {paginatedAdmins.map((admin) => (
                             <tr key={admin._id} className="border-b border-b-gray-200 hover:bg-gray-50">
                                 <td className="p-3">{admin.firstname}</td>
                                 <td className="p-3">{admin.lastname}</td>
@@ -145,6 +153,22 @@ const AllAdmins: React.FC = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div className="flex justify-center mt-6 space-x-2">
+                {Array.from({ length: Math.ceil(admins.length / itemsPerPage) }).map(
+                    (_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setCurrentPage(i + 1)}
+                            className={`px-3 py-1 rounded ${currentPage === i + 1
+                                    ? "bg-blue-600 text-white"
+                                    : "bg-gray-200 hover:bg-gray-300"
+                                }`}
+                        >
+                            {i + 1}
+                        </button>
+                    )
+                )}
             </div>
         </motion.div>
     );

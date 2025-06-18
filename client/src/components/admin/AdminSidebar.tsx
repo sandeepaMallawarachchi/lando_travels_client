@@ -89,7 +89,7 @@ const AdminSidebar: React.FC = () => {
                             )}
 
                             <div className="text-xs uppercase mt-4 mb-1 text-gray-500">Blogs</div>
-                            <SidebarLink to="/admin/adminCards" icon={<HiNewspaper />} label="Cards For News" active={isActive} />
+                            <SidebarLink to="/admin/adminCards" icon={<HiNewspaper />} label="Cards For Blogs" active={isActive} />
 
                             <div className="text-xs uppercase mt-4 mb-1 text-gray-500">Resources</div>
                             <SidebarLink to="/admin/documentation" icon={<HiViewBoards />} label="Documentation" active={isActive} />
