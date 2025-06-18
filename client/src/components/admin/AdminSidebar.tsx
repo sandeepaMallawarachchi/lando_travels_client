@@ -63,7 +63,7 @@ const AdminSidebar: React.FC = () => {
                         animate={{ x: 0 }}
                         exit={{ x: "-100%" }}
                         transition={{ duration: 0.3 }}
-                        className="fixed md:relative sm:pt-28 pt-0 min-h-screen sm:z-0 z-50 h-full w-64 bg-white shadow-lg border-r border-gray-200 overflow-y-auto"
+                        className="fixed md:relative sm:pt-28 pt-0 h-screen sm:z-0 z-50 w-64 bg-white shadow-lg border-r border-gray-200 overflow-y-auto"
                     >
                         {/* Hamburger inside sidebar */}
                         <div className="md:hidden flex justify-end p-3">

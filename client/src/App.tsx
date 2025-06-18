@@ -18,6 +18,7 @@ import AdminHeader from "./components/admin/AdminHeader";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminSidebar from "./components/admin/AdminSidebar";
 import Inbox from "./components/admin/Inbox";
+import AdminRegister from "./components/admin/AdminRegister";
 
 type LayoutProps = {
   children: ReactNode;
@@ -33,9 +34,9 @@ function Layout({ children }: LayoutProps) {
       {isAdminRoute ? (
         <>
           <AdminHeader />
-          <div className="flex">
+          <div className="flex h-screen overflow-hidden">
             <AdminSidebar />
-            <div className="flex-grow mt-28">{children}</div>
+            <div className="flex-grow mt-24 overflow-y-auto">{children}</div>
           </div>
         </>
       ) : (
@@ -82,6 +83,15 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/admin/adminregister"
+              element={
+                <ProtectedRoute>
+                  <AdminRegister />
+                </ProtectedRoute>
+              }
+            />
+
             {/* not NotFound */}
             <Route path="*" element={<NotFound />} />
           </Routes>
