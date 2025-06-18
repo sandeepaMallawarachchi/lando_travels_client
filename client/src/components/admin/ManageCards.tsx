@@ -152,7 +152,7 @@ const ManageCards: React.FC = () => {
                         <motion.div
                             key={card._id}
                             layout
-                            className="relative bg-white shadow-lg rounded-xl overflow-hidden group"
+                            className="relative shadow-lg rounded-xl overflow-hidden group transition"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             onClick={(e) => {
@@ -162,13 +162,20 @@ const ManageCards: React.FC = () => {
                                 }
                             }}
                         >
+                            {/* Hidden badge */}
+                            {!card.show && (
+                                <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded shadow">
+                                    Hidden
+                                </span>
+                            )}
+
                             <img
                                 src={card.src}
                                 alt={card.title}
-                                className="w-full h-52 object-cover rounded-t-xl"
+                                className={`w-full h-52 object-cover rounded-t-xl" ${card.show ? "" : "opacity-50 grayscale"}`}
                             />
 
-                            {/* Hover overlay */}
+                            {/* Hover overlay (same as before) */}
                             <motion.div
                                 initial={{ y: -60, opacity: 0 }}
                                 animate={

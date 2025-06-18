@@ -6,6 +6,7 @@ interface BlogCard {
     src: string;
     title: string;
     description: string;
+    show: boolean;
 }
 
 const Blogs: React.FC = () => {
@@ -97,27 +98,29 @@ const Blogs: React.FC = () => {
                         exit={{ opacity: 0, x: -100 }}
                         transition={{ duration: 0.6, ease: "easeInOut" }}
                     >
-                        {visibleCards.map((card, i) => (
-                            <div
-                                key={`${card.title}-${i}`}
-                                onClick={() => setSelectedCard(card)}
-                                className="cursor-pointer bg-white shadow-lg rounded-xl overflow-hidden max-w-sm w-full transition-transform hover:scale-[1.015]"
-                            >
-                                <img
-                                    src={card.src}
-                                    alt={card.title}
-                                    className="w-full h-48 object-cover"
-                                />
-                                <div className="p-4">
-                                    <h3 className="text-xl font-semibold mb-2">
-                                        {card.title}
-                                    </h3>
-                                    <p className="text-gray-600">
-                                        {truncate(card.description)}
-                                    </p>
+                        {visibleCards
+                            .filter((card) => card.show)
+                            .map((card, i) => (
+                                <div
+                                    key={`${card.title}-${i}`}
+                                    onClick={() => setSelectedCard(card)}
+                                    className="cursor-pointer bg-white shadow-lg rounded-xl overflow-hidden max-w-sm w-full transition-transform hover:scale-[1.015]"
+                                >
+                                    <img
+                                        src={card.src}
+                                        alt={card.title}
+                                        className="w-full h-48 object-cover"
+                                    />
+                                    <div className="p-4">
+                                        <h3 className="text-xl font-semibold mb-2">
+                                            {card.title}
+                                        </h3>
+                                        <p className="text-gray-600">
+                                            {truncate(card.description)}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                     </motion.div>
                 </AnimatePresence>
             </div>
