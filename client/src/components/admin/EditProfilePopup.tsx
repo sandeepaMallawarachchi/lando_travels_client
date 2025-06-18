@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { HiX } from "react-icons/hi";
 import type { AdminDetails } from "../../types/AdminDetails";
+import toast from "react-hot-toast";
 
 interface EditProfilePopupProps {
   isOpen: boolean;
@@ -33,26 +34,26 @@ const EditProfilePopup: React.FC<EditProfilePopupProps> = ({ isOpen, onClose, ad
       );
 
       if (response.status === 200) {
-        alert("Admin updated successfully");
+        toast.success("Admin updated successfully");
         onSave(response.data.admin);
         onClose();
       } else {
-        alert("Failed to update admin");
+        toast.error("Failed to update admin");
       }
     } catch (error: any) {
       console.error("Error updating admin:", error.message);
-      alert("Error updating admin");
+      toast.error("Error updating admin");
     }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/40 bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md relative">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+          className="absolute cursor-pointer top-2 right-2 text-gray-400 hover:text-gray-600"
           aria-label="Close"
         >
           <HiX className="w-6 h-6" />
@@ -70,7 +71,7 @@ const EditProfilePopup: React.FC<EditProfilePopupProps> = ({ isOpen, onClose, ad
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 outline-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -84,7 +85,7 @@ const EditProfilePopup: React.FC<EditProfilePopupProps> = ({ isOpen, onClose, ad
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 outline-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
@@ -97,13 +98,13 @@ const EditProfilePopup: React.FC<EditProfilePopupProps> = ({ isOpen, onClose, ad
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 outline-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md text-sm"
+              className="px-6 py-2 w-full cursor-pointer text-white bg-blue-500 hover:bg-blue-600 rounded-md text-sm"
             >
               Save
             </button>

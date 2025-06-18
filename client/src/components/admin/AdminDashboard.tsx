@@ -31,6 +31,7 @@ const AdminDashboard: React.FC = () => {
   const adminID = localStorage.getItem("adminID");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [onlineUsers, setOnlineUsers] = useState(0)
 
   useEffect(() => {
     const fetchAdminDetails = async () => {
@@ -74,6 +75,20 @@ const AdminDashboard: React.FC = () => {
     };
     fetchTotalPosts();
   }, [adminID]);
+
+  const fetchOnlineUsers = async () => {
+    setLoading(true)
+    try {
+      const res = await fetch("https://lando-travels-api.vercel.app/admin/online-users");
+      const data = await res.json();
+      setOnlineUsers(data.count);
+    } catch (err: any) {
+      console.error("Error fetching total posts:", err.message);
+    } finally {
+      setLoading(false)
+    }
+    fetchOnlineUsers()
+  };
 
   const handleEditProfileClick = () => setIsEditProfileOpen(true);
   const handlePasswordResetClick = () => setIsPasswordResetOpen(true);
@@ -124,23 +139,24 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <motion.div
-      className="p-6 flex flex-row gap-6"
+      className="p-6 flex sm:flex-row flex-col gap-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="w-2/3">
+      <div className="sm:w-2/3 w-full">
         {/* Summary */}
         <div className="bg-white shadow-xl rounded-2xl p-6 text-center">
           <h2 className="text-xl font-semibold mb-4">Summary</h2>
           <div className="grid grid-cols-2 gap-4">
             <SummaryCard title="Total Users" value={totalUsers} />
             <SummaryCard title="News Blogs" value={totalPosts} />
+            <SummaryCard title="Online Users" value={onlineUsers} />
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col w-1/3 justify-around gap-5">
+      <div className="flex flex-col sm:w-1/3 w-full justify-around gap-5">
         {/* Profile Card */}
         <div className="bg-white shadow-xl rounded-2xl p-6 flex flex-col items-center text-center">
           <img
@@ -156,13 +172,13 @@ const AdminDashboard: React.FC = () => {
           <p className="text-sm text-gray-500 mb-4">{adminDetails.address}</p>
           <div className="w-full flex flex-col gap-3">
             <button
-              className="w-full py-2 rounded bg-blue-500 text-white hover:bg-blue-600"
+              className="w-full py-2 rounded cursor-pointer bg-blue-500 text-white hover:bg-blue-600"
               onClick={handleEditProfileClick}
             >
               Edit Profile
             </button>
             <button
-              className="w-full py-2 rounded bg-red-400 text-white hover:bg-red-500"
+              className="w-full py-2 rounded cursor-pointer bg-red-400 text-white hover:bg-red-500"
               onClick={handlePasswordResetClick}
             >
               Reset Password
@@ -212,7 +228,7 @@ const IconButton: React.FC<{ icon: React.ReactNode; onClick?: () => void; href?:
 };
 
 const SummaryCard: React.FC<{ title: string; value: number }> = ({ title, value }) => (
-  <div className="p-4 bg-green-500 text-white rounded-xl shadow hover:bg-green-600 transition">
+  <div className="p-4 bg-gray-200 text-black rounded-lg hover:bg-gray-300 transition">
     <h3 className="text-sm font-medium">{title}</h3>
     <p className="text-2xl font-bold">{value}</p>
   </div>
