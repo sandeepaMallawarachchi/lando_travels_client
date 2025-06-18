@@ -19,6 +19,7 @@ const ManageCards: React.FC = () => {
     const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState<CardType>({ src: "", title: "", description: "" });
     const [uploading, setUploading] = useState(false);
+    const [showActionsId, setShowActionsId] = useState<string | null>(null);
 
     useEffect(() => {
         if (editingCard) setFormData(editingCard);
@@ -103,6 +104,12 @@ const ManageCards: React.FC = () => {
         currentPage * itemsPerPage
     );
 
+    useEffect(() => {
+        const handleOutsideClick = () => setShowActionsId(null);
+        window.addEventListener("click", handleOutsideClick);
+        return () => window.removeEventListener("click", handleOutsideClick);
+    }, []);
+
     return (
         <div className="p-10">
             <motion.div
@@ -147,6 +154,12 @@ const ManageCards: React.FC = () => {
                             className="relative bg-white shadow-lg rounded-xl overflow-hidden group"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (window.innerWidth < 768) {
+                                    setShowActionsId((prev) => (prev === card._id ? null : card._id ?? null));
+                                }
+                            }}
                         >
                             <img
                                 src={card.src}
@@ -157,7 +170,14 @@ const ManageCards: React.FC = () => {
                             {/* Hover overlay */}
                             <motion.div
                                 initial={{ y: -60, opacity: 0 }}
-                                whileHover={{ y: 0, opacity: 1 }}
+                                animate={
+                                    window.innerWidth < 768
+                                        ? showActionsId === card._id
+                                            ? { y: 0, opacity: 1 }
+                                            : { y: -60, opacity: 0 }
+                                        : {}
+                                }
+                                whileHover={window.innerWidth >= 768 ? { y: 0, opacity: 1 } : {}}
                                 transition={{ duration: 0.3 }}
                                 className="absolute inset-0 bg-black/80 bg-opacity-40 flex items-center justify-center gap-4 text-white opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
                             >
