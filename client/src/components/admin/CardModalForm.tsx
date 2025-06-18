@@ -51,8 +51,9 @@ const CardModalForm: React.FC<CardFormProps> = ({
 
             if (!res.ok) throw new Error("Failed to update visibility");
 
-            onChange("show", updated.show.toString()); // Optional
+            onChange("show", updated.show.toString());
             toast.success(updated.show ? "Card is now visible!" : "Card is hidden.");
+            window.location.reload();
         } catch (err) {
             toast.error("Failed to update visibility");
         }
@@ -160,8 +161,8 @@ const CardModalForm: React.FC<CardFormProps> = ({
                             type="button"
                             onClick={handleToggleVisibility}
                             className={`px-5 py-2 rounded transition cursor-pointer ${card.show
-                                    ? "bg-red-100 text-red-600 hover:bg-red-200"
-                                    : "bg-green-100 text-green-600 hover:bg-green-200"
+                                ? "bg-red-100 text-red-600 hover:bg-red-200"
+                                : "bg-green-100 text-green-600 hover:bg-green-200"
                                 }`}
                         >
                             {card.show ? "Hide Card" : "Show Card"}
