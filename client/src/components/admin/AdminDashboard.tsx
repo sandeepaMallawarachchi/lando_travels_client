@@ -160,8 +160,8 @@ const AdminDashboard: React.FC = () => {
           <div className="grid grid-cols-2 gap-4">
             <SummaryCard title="Total Users" value={totalUsers} />
             <SummaryCard title="News Blogs" value={totalPosts} />
-            <OnlineUsers title="Online Users" value={onlineUsers} showGraph graphData={onlineUserGraph} />
           </div>
+          <OnlineUsers title="Online Users" value={onlineUsers} showGraph graphData={onlineUserGraph} />
         </div>
       </div>
 
@@ -238,7 +238,7 @@ const IconButton: React.FC<{ icon: React.ReactNode; onClick?: () => void; href?:
 
 const SummaryCard: React.FC<{ title: string; value: number }> = ({ title, value }) => (
   <div className="bg-gradient-to-br from-white to-gray-100 shadow-lg rounded-xl p-4 hover:shadow-xl transition-all duration-300">
-    <h3 className="text-sm font-medium">{title}</h3>
+    <h3 className="text-sm font-medium text-gray-600">{title}</h3>
     <p className="text-2xl font-bold">{value}</p>
   </div>
 );
