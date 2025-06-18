@@ -19,6 +19,7 @@ import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminSidebar from "./components/admin/AdminSidebar";
 import Inbox from "./components/admin/Inbox";
 import AdminRegister from "./components/admin/AdminRegister";
+import AllAdmins from "./components/admin/AllAdmins";
 
 type LayoutProps = {
   children: ReactNode;
@@ -88,6 +89,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AdminRegister />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/allUsers"
+              element={
+                <ProtectedRoute>
+                  <AllAdmins />
                 </ProtectedRoute>
               }
             />
