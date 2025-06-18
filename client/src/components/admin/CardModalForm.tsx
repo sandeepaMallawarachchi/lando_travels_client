@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
+import { Edit, X } from "lucide-react";
 import type { CardFormProps } from "../../types/CardFormProps";
 import toast from "react-hot-toast";
 
@@ -65,29 +65,43 @@ const CardModalForm: React.FC<CardFormProps> = ({
                 </h2>
 
                 <form onSubmit={onSubmit} className="space-y-6">
-                    {/* Image Preview */}
+                    {/* Image Preview with Edit Icon */}
                     {card.src && (
-                        <img
-                            src={card.src}
-                            alt="Preview"
-                            className="w-full h-48 object-cover rounded-xl"
-                        />
+                        <div className="relative group w-full h-48 mb-4">
+                            <div className="flex justify-end">
+                                <div className="absolute bg-blue-500 text-white p-2 rounded-full shadow">
+                                    <Edit size={20} />
+                                </div>
+                            </div>
+                            <img
+                                src={card.src}
+                                alt="Preview"
+                                className="w-full h-full object-cover rounded-xl"
+                            />
+                            <label
+                                htmlFor="imageUpload"
+                                className="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 flex items-center justify-center transition cursor-pointer"
+                            >
+                                <div className="bg-white text-blue-500 p-2 rounded-full shadow hover:scale-110 transition">
+                                    <Edit />
+                                </div>
+                            </label>
+                        </div>
                     )}
 
-                    {/* Upload Image */}
-                    <div>
-                        <label className="block text-sm font-medium mb-1">Upload Image</label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) handleCloudinaryUpload(file);
-                            }}
-                            className="w-full file:py-2 file:px-4 file:rounded file:border-0 file:bg-blue-500 file:text-white file:cursor-pointer"
-                        />
-                        {uploadingImage && <p className="text-sm text-gray-500 mt-1">Uploading image...</p>}
-                    </div>
+                    {/* Hidden File Input (used for edit icon) */}
+                    <input
+                        type="file"
+                        accept="image/*"
+                        id="imageUpload"
+                        className="hidden"
+                        onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) handleCloudinaryUpload(file);
+                        }}
+                    />
+
+                    {uploadingImage && <p className="text-sm text-gray-500 mt-1">Uploading image...</p>}
 
                     {/* Title */}
                     <div>
@@ -98,6 +112,7 @@ const CardModalForm: React.FC<CardFormProps> = ({
                             onChange={(e) => onChange("title", e.target.value)}
                             className="w-full px-3 py-2 border border-gray-300 outline-none rounded focus:ring-2 focus:ring-blue-500"
                             required
+                            placeholder="Enter your title"
                         />
                     </div>
 
@@ -110,6 +125,7 @@ const CardModalForm: React.FC<CardFormProps> = ({
                             rows={4}
                             className="w-full px-3 py-2 border border-gray-300 outline-none rounded focus:ring-2 focus:ring-blue-500"
                             required
+                            placeholder="Your description here..."
                         />
                     </div>
 
