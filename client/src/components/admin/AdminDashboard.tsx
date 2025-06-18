@@ -223,7 +223,7 @@ const AdminDashboard: React.FC = () => {
 
 const IconButton: React.FC<{ icon: React.ReactNode; onClick?: () => void; href?: string }> = ({ icon, onClick, href }) => {
   const content = (
-    <div className="flex justify-center items-center bg-gradient-to-br from-white to-gray-100 shadow-lg p-4 rounded-full transition">
+    <div className="flex justify-center items-center bg-gradient-to-br from-white to-gray-100 shadow-lg p-4 hover:scale-105 cursor-pointer rounded-full transition">
       {icon}
     </div>
   );

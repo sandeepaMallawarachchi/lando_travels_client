@@ -97,7 +97,7 @@ const AdminSidebar: React.FC = () => {
 
                             <button
                                 onClick={handleLogout}
-                                className="flex items-center gap-3 px-3 py-2 mt-6 text-sm rounded hover:bg-red-100 text-red-600"
+                                className="flex cursor-pointer items-center gap-3 px-3 py-2 mt-6 text-sm rounded hover:bg-red-100 text-red-600"
                             >
                                 <HiLogout />
                                 Logout
