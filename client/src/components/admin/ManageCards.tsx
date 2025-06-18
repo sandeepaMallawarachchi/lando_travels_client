@@ -157,14 +157,16 @@ const ManageCards: React.FC = () => {
                 ))}
             </div>
 
-            <CardModalForm
-                show={showModal}
-                onClose={handleModalClose}
-                card={formData}
-                onChange={handleFormChange}
-                onSubmit={handleSubmitCard}
-                uploading={uploading}
-            />
+            {showModal && editingCard && (
+                <CardModalForm
+                    show={showModal}
+                    onClose={handleModalClose}
+                    card={formData}
+                    onChange={handleFormChange}
+                    onSubmit={handleSubmitCard}
+                    uploading={uploading}
+                />
+            )}
         </div>
     );
 };
