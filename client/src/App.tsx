@@ -17,6 +17,7 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminHeader from "./components/admin/AdminHeader";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminSidebar from "./components/admin/AdminSidebar";
+import Inbox from "./components/admin/Inbox";
 
 type LayoutProps = {
   children: ReactNode;
@@ -70,6 +71,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/inbox"
+              element={
+                <ProtectedRoute>
+                  <Inbox />
                 </ProtectedRoute>
               }
             />
