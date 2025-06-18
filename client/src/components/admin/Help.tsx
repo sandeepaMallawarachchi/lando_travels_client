@@ -33,7 +33,7 @@ const Help: React.FC = () => {
             className="p-10 max-w-3xl mx-auto"
         >
             <h1 className="text-3xl font-bold mb-4 text-black">Need Help?</h1>
-            <p className="text-gray-700 text-lg mb-6">
+            <p className="text-gray-700 text-md mb-6">
                 If you're facing issues while using the admin dashboard—such as trouble updating blogs,
                 managing users, or uploading content—don't worry. We’re here to assist you.
             </p>
