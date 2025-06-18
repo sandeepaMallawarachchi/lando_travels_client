@@ -122,7 +122,17 @@ const ManageCards: React.FC = () => {
             {loading ? (
                 <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {Array.from({ length: 6 }).map((_, i) => (
-                        <div key={i} className="h-64 bg-gray-200 rounded animate-pulse" />
+                        <div
+                            key={i}
+                            className="h-64 rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 shadow-md animate-pulse flex flex-col"
+                        >
+                            <div className="h-40 bg-gray-200 rounded-t-xl" />
+                            <div className="flex-1 p-4 space-y-2">
+                                <div className="h-4 w-3/4 bg-gray-200 rounded" />
+                                <div className="h-3 w-2/3 bg-gray-200 rounded" />
+                                <div className="h-3 w-1/2 bg-gray-200 rounded" />
+                            </div>
+                        </div>
                     ))}
                 </div>
             ) : (
