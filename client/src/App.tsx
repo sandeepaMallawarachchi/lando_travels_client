@@ -22,6 +22,7 @@ import AdminRegister from "./components/admin/AdminRegister";
 import AllAdmins from "./components/admin/AllAdmins";
 import ManageCards from "./components/admin/ManageCards";
 import Documentation from "./components/admin/Documentation";
+import Help from "./components/admin/Help";
 
 type LayoutProps = {
   children: ReactNode;
@@ -115,6 +116,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Documentation />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/helps"
+              element={
+                <ProtectedRoute>
+                  <Help />
                 </ProtectedRoute>
               }
             />
