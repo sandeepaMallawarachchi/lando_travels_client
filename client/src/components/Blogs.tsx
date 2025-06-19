@@ -64,15 +64,21 @@ const Blogs: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="relative overflow-hidden max-w-7xl mx-auto h-[400px]">
-                <div className="flex gap-10 justify-center">
-                    {Array(cardsPerView).fill(0).map((_, i) => (
-                        <div
-                            key={i}
-                            className="animate-pulse bg-gray-200 rounded-xl h-[300px] w-[300px]"
-                        />
-                    ))}
-                </div>
+            <div className="mt-40 px-40 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+
+                {Array(cardsPerView).fill(0).map((_, i) => (
+                    <div
+                        key={i}
+                        className="h-64 rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 shadow-md animate-pulse flex flex-col"
+                    >
+                        <div className="h-40 bg-gray-200 rounded-t-xl" />
+                        <div className="flex-1 p-4 space-y-2">
+                            <div className="h-4 w-3/4 bg-gray-200 rounded" />
+                            <div className="h-3 w-2/3 bg-gray-200 rounded" />
+                            <div className="h-3 w-1/2 bg-gray-200 rounded" />
+                        </div>
+                    </div>
+                ))}
             </div>
         )
     }
