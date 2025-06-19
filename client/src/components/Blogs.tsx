@@ -86,13 +86,13 @@ const Blogs: React.FC = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
         >
-            <h2 className="text-3xl font-bold text-center mb-10">Latest Blogs</h2>
+            <h2 className="text-3xl font-bold text-center mb-10 mt-20">Latest Blogs</h2>
 
-            <div className="relative overflow-hidden max-w-7xl mx-auto h-[400px]">
+            <div className="relative flex flex-row overflow-hidden max-w-7xl mx-auto h-[450px]">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={startIndex}
-                        className="absolute top-0 left-0 w-full h-full flex gap-10 justify-center py-1"
+                        className="absolute top-0 left-0 w-full h-[400px] flex gap-10 justify-center py-1"
                         initial={{ opacity: 0, x: 100 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -100 }}
@@ -123,6 +123,20 @@ const Blogs: React.FC = () => {
                             ))}
                     </motion.div>
                 </AnimatePresence>
+
+                {/* Dot Pagination */}
+                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex justify-center gap-2">
+                    {Array.from({ length: Math.ceil(blogs.length / cardsPerView) }).map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setStartIndex(i * cardsPerView)}
+                            className={`w-3 h-1 cursor-pointer rounded-full transition-all duration-300 ${startIndex === i * cardsPerView
+                                ? "bg-blue-500 scale-110 shadow-md"
+                                : "bg-gray-300 hover:bg-gray-400"
+                                }`}
+                        />
+                    ))}
+                </div>
             </div>
 
             {/* Modal Popup */}

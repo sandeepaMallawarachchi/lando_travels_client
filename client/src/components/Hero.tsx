@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
                     <button
                         key={i}
                         onClick={() => handleSelect(i)}
-                        className={`w-2 h-5 rounded-full transition-all duration-300 ${i === index ? "bg-white" : "bg-gray-400 hover:bg-white/70"
+                        className={`w-1 h-5 rounded-full transition-all duration-300 ${i === index ? "bg-white" : "bg-gray-400 hover:bg-white/70"
                             }`}
                     />
                 ))}
