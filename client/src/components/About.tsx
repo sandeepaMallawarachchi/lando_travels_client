@@ -47,7 +47,7 @@ const About = () => {
                     </div>
                 </div>
                 <motion.div
-                    className='relative z-10 mt-14 sm:mt-5 text-center max-w-2xl mx-auto px-4 my-5'
+                    className='relative z-10 mt-12 sm:mt-5 text-center max-w-2xl mx-auto px-4 my-5'
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
@@ -63,8 +63,8 @@ const About = () => {
                         Learn More
                     </Link>
                 </motion.div>
-                <div className="absolute left-0 top-0 h-full w-18 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-                <div className="absolute right-0 top-0 h-full w-18 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+                <div className="absolute left-0 top-0 h-60 w-16 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+                <div className="absolute right-0 top-0 h-60 w-16 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
                 <div className="absolute bottom-48 left-0 w-full h-24 z-10 bg-gradient-to-t from-white to-transparent pointer-events-none" />
 
             </section>
