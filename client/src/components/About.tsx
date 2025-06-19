@@ -21,7 +21,7 @@ const About = () => {
     return (
         <div id='about' className="sm:h-[70vh] h-[50vh] overflow-hidden mb-10 sm:mb-0">
             <section className="relative min-h-screen bg-white text-black flex flex-col items-center justify-start pt-24 md:pt-36 lg:pt-48 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center sm:mt-[500px]">
+                <div className="absolute inset-0 flex items-center justify-center sm:mt-[500px] mt-10">
                     <div className="sm:w-[1080px] sm:h-[1080px] w-[700px] h-[700px] aspect-square relative">
                         <div className="absolute inset-0 [animation:spin_50s_linear_infinite]">
                             {images.map((src, index) => {
@@ -47,7 +47,7 @@ const About = () => {
                     </div>
                 </div>
                 <motion.div
-                    className='relative z-10 mt-10 sm:mt-5 text-center max-w-2xl mx-auto px-4 my-5'
+                    className='relative z-10 mt-14 sm:mt-5 text-center max-w-2xl mx-auto px-4 my-5'
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
