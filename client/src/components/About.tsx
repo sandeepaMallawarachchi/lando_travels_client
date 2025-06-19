@@ -19,7 +19,7 @@ const About = () => {
     const images = [...baseImages, ...baseImages];
 
     return (
-        <div id='about' className="sm:h-[70vh] h-[50vh] overflow-hidden">
+        <div id='about' className="sm:h-[70vh] h-[50vh] overflow-hidden mb-10 sm:mb-0">
             <section className="relative min-h-screen bg-white text-black flex flex-col items-center justify-start pt-24 md:pt-36 lg:pt-48 overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center sm:mt-[500px]">
                     <div className="sm:w-[1080px] sm:h-[1080px] w-[700px] h-[700px] aspect-square relative">
