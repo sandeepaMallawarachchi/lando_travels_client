@@ -115,6 +115,7 @@ const Blogs: React.FC = () => {
                                     <img
                                         src={card.src}
                                         alt={card.title}
+                                        loading="lazy"
                                         className="w-full h-48 object-cover"
                                     />
                                     <div className="p-4">

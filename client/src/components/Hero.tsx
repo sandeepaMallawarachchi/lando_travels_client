@@ -52,7 +52,7 @@ const slides = [
 
 const imageFade = {
     center: { opacity: 1, y: 0, scale: 1 },
-    enter: { opacity: 0, y: 30, scale: 1.05},
+    enter: { opacity: 0, y: 30, scale: 1.05 },
     exit: { opacity: 0, y: -30, scale: 0.95 },
 };
 
@@ -86,6 +86,7 @@ const Hero: React.FC = () => {
                     key={currentSlide.image}
                     src={currentSlide.image}
                     alt={currentSlide.title}
+                    loading="lazy"
                     className="absolute w-full h-full object-cover"
                     variants={imageFade}
                     initial="enter"

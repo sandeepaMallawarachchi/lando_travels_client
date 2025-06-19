@@ -45,6 +45,7 @@ const ContactUs: React.FC = () => {
                 <img
                     src="/contactCover.jpg"
                     alt="Contact Us"
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"
                 />
                 <div className="absolute inset-0 bg-black/40 z-0" />

@@ -55,6 +55,7 @@ const OutboundTours: React.FC = () => {
                 <img
                     src="/outboundCover2.jpg"
                     alt="Outbound Tours"
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"
                 />
                 <div className="absolute inset-0 bg-black/40 z-0" />
@@ -99,6 +100,7 @@ const OutboundTours: React.FC = () => {
                             <img
                                 src={card.imgSrc}
                                 alt={card.title}
+                                loading="lazy"
                                 className="w-full h-96 object-cover transform group-hover:scale-105 transition duration-500"
                             />
                             <div className="absolute bottom-0 bg-white p-4 backdrop-blur-sm w-full">
@@ -134,6 +136,7 @@ const OutboundTours: React.FC = () => {
                                         <img
                                             src={img}
                                             alt={`thumb-${i}`}
+                                            loading="lazy"
                                             className="w-full h-full object-cover clip-diagonal hover:scale-105 transition duration-500"
                                         />
                                     </div>

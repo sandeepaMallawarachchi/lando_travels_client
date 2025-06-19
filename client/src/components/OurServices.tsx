@@ -56,11 +56,13 @@ const OurServices: React.FC = () => {
                 <img
                   src={image}
                   alt={title}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:-translate-y-full"
                 />
                 <img
                   src={hoverImage}
                   alt={`${title} Hover`}
+                  loading="lazy"
                   className="absolute top-0 left-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
                 <div className="absolute inset-0 bg-black/40" />

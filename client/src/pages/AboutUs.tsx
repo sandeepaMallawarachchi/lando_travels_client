@@ -56,6 +56,7 @@ const AboutUs: React.FC = () => {
                 <img
                     src="/aboutCover.jpg"
                     alt="About Lando Travels"
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"
                 />
                 <div className="absolute inset-0 bg-black/40 z-0" />
@@ -108,6 +109,7 @@ const AboutUs: React.FC = () => {
                                 key={missionIndex}
                                 src={missionImages[missionIndex]}
                                 alt="Our Mission"
+                                loading="lazy"
                                 className="w-full h-full object-cover"
                                 initial={{ x: -20, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
@@ -126,6 +128,7 @@ const AboutUs: React.FC = () => {
                                 key={visionIndex}
                                 src={visionImages[visionIndex]}
                                 alt="Our Vision"
+                                loading="lazy"
                                 className="absolute inset-0 w-full h-full object-cover"
                                 initial={{ y: 0, opacity: 0 }}
                                 animate={{ y: -20, opacity: 1 }}
@@ -163,6 +166,7 @@ const AboutUs: React.FC = () => {
                         <img
                             src="/user.svg"
                             alt="Director"
+                            loading="lazy"
                             className="w-64 h-64 object-cover rounded-full shadow-lg border-4 border-white"
                         />
                     </motion.div>
