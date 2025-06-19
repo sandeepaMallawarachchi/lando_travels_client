@@ -63,9 +63,10 @@ const About = () => {
                         Learn More
                     </Link>
                 </motion.div>
-                <div className="absolute top-[410px] left-0 w-full h-[50px] z-20 pointer-events-none">
-                    <div className="w-full h-full bg-gray-300 blur-3xl rounded-full opacity-50" />
-                </div>
+                <div className="absolute left-0 top-0 h-full w-18 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+                <div className="absolute right-0 top-0 h-full w-18 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+                <div className="absolute bottom-48 left-0 w-full h-24 z-10 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+
             </section>
         </div>
     )
