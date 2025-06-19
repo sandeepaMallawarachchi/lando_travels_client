@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
                         const blogsSection = document.getElementById("blogs");
                         blogsSection?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="animate-bounce text-white hover:opacity-80"
+                    className="cursor-pointer animate-bounce text-white hover:opacity-80"
                 >
                     <ArrowDownCircle size={40} />
                 </button>

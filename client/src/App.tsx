@@ -12,6 +12,7 @@ import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import OutboundTours from "./pages/OutboundTours";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollButton from "./components/ScrollButton";
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminHeader from "./components/admin/AdminHeader";
@@ -60,6 +61,7 @@ function App() {
       <Layout>
         <Toaster position="top-center" />
         <ScrollToTop />
+        <ScrollButton />
         <CustomCursor />
         <main className="flex-grow container mx-auto">
           <Routes>
