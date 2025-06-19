@@ -64,12 +64,12 @@ const Blogs: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="mt-40 px-40 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-40 px-4 max-w-7xl mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 
                 {Array(cardsPerView).fill(0).map((_, i) => (
                     <div
                         key={i}
-                        className="h-64 rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 shadow-md animate-pulse flex flex-col"
+                        className="h-[400px] w-full max-w-sm mx-auto rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 shadow-md animate-pulse flex flex-col"
                     >
                         <div className="h-40 bg-gray-200 rounded-t-xl" />
                         <div className="flex-1 p-4 space-y-2">
