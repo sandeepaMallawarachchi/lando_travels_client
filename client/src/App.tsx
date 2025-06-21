@@ -63,7 +63,7 @@ function App() {
         <ScrollToTop />
         <ScrollButton />
         <CustomCursor />
-        <main className="flex-grow container mx-auto">
+        <main className="flex-grow mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/inbound" element={<InboundTours />} />
