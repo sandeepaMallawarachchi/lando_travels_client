@@ -14,7 +14,6 @@ const About = () => {
         "/about/about8.jpg",
         "/about/about9.jpg",
         "/about/about10.jpg",
-        "/about/about11.jpg",
     ]
 
     const images = [...baseImages, ...baseImages];
