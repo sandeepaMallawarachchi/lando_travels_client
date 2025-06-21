@@ -166,7 +166,7 @@ const OutboundTours: React.FC = () => {
                 transition={{ duration: 0.5 }}
             >
                 <Link
-                    to="/contact"
+                    to="/contact?subject=Outbound%20Tour%20Request&message=I%20would%20like%20to%20customize%20a%20Outbound%20Tour%20package.%20Please%20assist..."
                     className="bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-blue-600 transition"
                 >
                     Plan Your Journey

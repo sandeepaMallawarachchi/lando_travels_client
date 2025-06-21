@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { floatingIcons } from "../components/floatingIconsData";
+import { useSearchParams } from "react-router-dom";
 
 const ContactUs: React.FC = () => {
 
+    const [searchParams] = useSearchParams();
     const companyEmail = "lawrence@landotravel.com";
     const phone = "+94722267400";
 
@@ -37,6 +39,14 @@ const ContactUs: React.FC = () => {
             }
         }
     };
+
+    useEffect(() => {
+        const defaultSubject = searchParams.get("subject") || "";
+        const defaultMessage = searchParams.get("message") || "";
+
+        setSubject(decodeURIComponent(defaultSubject));
+        setMessage(decodeURIComponent(defaultMessage));
+    }, []);
 
     return (
         <div className='justify-center items-center pb-20'>
