@@ -24,6 +24,7 @@ import AllAdmins from "./components/admin/AllAdmins";
 import ManageCards from "./components/admin/ManageCards";
 import Documentation from "./components/admin/Documentation";
 import Help from "./components/admin/Help";
+import { Analytics } from "@vercel/analytics/react"
 
 type LayoutProps = {
   children: ReactNode;
@@ -132,6 +133,7 @@ function App() {
 
             {/* not NotFound */}
             <Route path="*" element={<NotFound />} />
+            <Route path="/analytics" element={<Analytics />} />
           </Routes>
         </main>
       </Layout>
