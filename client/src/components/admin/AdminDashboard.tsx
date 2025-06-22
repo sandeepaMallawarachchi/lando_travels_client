@@ -113,33 +113,37 @@ const AdminDashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 animate-pulse">
-        {/* Profile Skeleton */}
-        <div className="bg-white shadow-xl rounded-2xl p-6 flex flex-col items-center text-center gap-3">
-          <div className="w-24 h-24 bg-gray-200 rounded-full" />
-          <div className="w-32 h-4 bg-gray-200 rounded" />
-          <div className="w-48 h-4 bg-gray-200 rounded" />
-          <div className="w-36 h-4 bg-gray-200 rounded" />
-          <div className="w-full h-10 bg-gray-200 rounded" />
-          <div className="w-full h-10 bg-gray-200 rounded" />
-        </div>
-
-        {/* Quick Access Skeleton */}
-        <div className="bg-white shadow-xl rounded-2xl p-6">
-          <div className="w-32 h-6 bg-gray-200 rounded mb-4" />
-          <div className="grid grid-cols-3 gap-4">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="w-14 h-14 bg-gray-200 rounded-full" />
-            ))}
-          </div>
-        </div>
-
+      <div className="p-6 flex sm:flex-row flex-col gap-6 animate-pulse">
         {/* Summary Skeleton */}
-        <div className="bg-white shadow-xl rounded-2xl p-6">
-          <div className="w-32 h-6 bg-gray-200 rounded mb-4" />
-          <div className="grid grid-cols-2 gap-4">
-            <div className="w-full h-20 bg-gray-200 rounded-xl" />
-            <div className="w-full h-20 bg-gray-200 rounded-xl" />
+        <div className="sm:w-2/3 w-full bg-white shadow-xl rounded-2xl p-6">
+          <div className="h-6 w-32 bg-gray-200 rounded mb-4" />
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="h-20 bg-gray-200 rounded-xl" />
+            <div className="h-20 bg-gray-200 rounded-xl" />
+          </div>
+          <div className="h-32 bg-gray-200 rounded-xl" />
+        </div>
+
+        {/* Right Column Skeleton */}
+        <div className="flex flex-col sm:w-1/3 w-full gap-5">
+          {/* Profile Card Skeleton */}
+          <div className="bg-white shadow-xl rounded-2xl p-6 flex flex-col items-center text-center gap-3">
+            <div className="w-24 h-24 bg-gray-200 rounded-full" />
+            <div className="w-32 h-4 bg-gray-200 rounded" />
+            <div className="w-48 h-4 bg-gray-200 rounded" />
+            <div className="w-36 h-4 bg-gray-200 rounded" />
+            <div className="w-full h-10 bg-gray-200 rounded" />
+            <div className="w-full h-10 bg-gray-200 rounded" />
+          </div>
+
+          {/* Quick Access Skeleton */}
+          <div className="bg-white shadow-xl rounded-2xl p-6">
+            <div className="w-32 h-6 bg-gray-200 rounded mb-4" />
+            <div className="grid grid-cols-3 gap-4">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="w-14 h-14 bg-gray-200 rounded-full" />
+              ))}
+            </div>
           </div>
         </div>
       </div>
