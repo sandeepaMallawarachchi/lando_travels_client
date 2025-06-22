@@ -64,7 +64,7 @@ const Blogs: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="mt-40 px-4 max-w-7xl mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="my-40 px-4 max-w-7xl mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 
                 {Array(cardsPerView).fill(0).map((_, i) => (
                     <div
