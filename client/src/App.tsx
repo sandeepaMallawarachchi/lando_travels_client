@@ -133,10 +133,10 @@ function App() {
 
             {/* not NotFound */}
             <Route path="*" element={<NotFound />} />
-            <Route path="/analytics" element={<Analytics />} />
           </Routes>
         </main>
       </Layout>
+      <Analytics />
     </>
   );
 }
