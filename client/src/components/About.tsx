@@ -47,7 +47,7 @@ const About = () => {
                     </div>
                 </div>
                 <motion.div
-                    className='relative z-10 mt-12 md:mt-5 text-center max-w-2xl mx-auto px-4 my-5'
+                    className='relative z-10 mt-12 md:mt-5 text-center max-w-2xl mx-auto px-4 my-5 hero-large-mt'
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
