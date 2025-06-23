@@ -35,6 +35,11 @@ function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   const isAdminRoute = location.pathname.startsWith("/admin");
+  const isSoftwareHub = location.pathname === "/admin/softwarehub";
+
+  if (isSoftwareHub) {
+    return <>{children}</>;
+  }
 
   return (
     <>

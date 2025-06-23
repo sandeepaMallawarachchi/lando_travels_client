@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import axios from "axios";
+
+type Admin = {
+    firstname: string;
+    lastname: string;
+};
 
 const softwares = [
     {
@@ -31,6 +37,31 @@ const softwares = [
 
 const SoftwareHub: React.FC = () => {
 
+    const [admin, setAdmin] = useState<Admin | null>(null);
+
+    useEffect(() => {
+        const fetchAdmin = async () => {
+            // Retrieve adminID from localStorage
+            const adminID = localStorage.getItem("adminID");
+
+            if (!adminID) {
+                console.error("Admin ID is not found in localStorage");
+                return;
+            }
+
+            try {
+                const response = await axios.get(
+                    `https://lando-travels-api.vercel.app/admin/getAdmin/${adminID}`
+                );
+                setAdmin(response.data);
+            } catch (err) {
+                console.log("Error fetching admin:", err);
+            }
+        };
+
+        fetchAdmin();
+    }, []);
+
     return (
         <div className='min-h-screen flex items-center justify-center bg-gray-50 text-gray-800'>
             <motion.div
@@ -39,7 +70,17 @@ const SoftwareHub: React.FC = () => {
                 transition={{ duration: 0.6 }}
                 className="max-w-5xl w-full p-6"
             >
-                <h1 className="text-3xl font-bold text-center mb-8">Welcome, Admin 👋</h1>
+                <div className="justify-center items-center mb-20">
+                    {admin ? (
+                        <>
+                            <div className="flex flex- justify-center text-2xl font-bold text-gray-500 dark:text-gray-400">
+                                <h1 className="text-blue-600 mr-2">Welcome,</h1>{admin.firstname} {admin.lastname} 👋
+                            </div>
+                        </>
+                    ) : (
+                        <div className="text-red-600">Failed to fetch data</div>
+                    )}
+                </div>
 
                 <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                     {softwares.map((software, idx) => (
@@ -58,7 +99,7 @@ const SoftwareHub: React.FC = () => {
                             <img
                                 src={software.logo}
                                 alt={`${software.name} logo`}
-                                className="w-16 h-16 mb-4 transition-transform group-hover:scale-110"
+                                className="w-20 h-auto mb-4 transition-transform group-hover:scale-110"
                             />
                             <h3 className="text-lg font-semibold">{software.name}</h3>
                             {software.external && <ExternalLink className="mt-1 text-blue-500" size={18} />}
