@@ -11,7 +11,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' https://embed.tawk.to https://www.googletagmanager.com https://*.cloudinary.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://lando-travels-api.vercel.app https://embed.tawk.to https://va.tawk.to wss://*.tawk.to; img-src 'self' data: https: https://embed.tawk.to; frame-src https://embed.tawk.to https://va.tawk.to https://www.google.com; frame-ancestors 'self';"
+          "value": "default-src 'self'; script-src 'self' https://embed.tawk.to https://va.tawk.to https://www.googletagmanager.com https://*.cloudinary.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://lando-travels-api.vercel.app https://embed.tawk.to https://va.tawk.to wss://*.tawk.to; img-src 'self' data: https: https://embed.tawk.to https://va.tawk.to; frame-src https://embed.tawk.to https://va.tawk.to https://www.google.com; frame-ancestors 'self';"
         },
         {
           "key": "Strict-Transport-Security",
