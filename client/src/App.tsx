@@ -26,6 +26,7 @@ import Documentation from "./components/admin/Documentation";
 import Help from "./components/admin/Help";
 import SoftwareHub from "./pages/SoftwareHub";
 import { Analytics } from "@vercel/analytics/react"
+import TawkToWidget from "./components/TawkToWidget";
 
 type LayoutProps = {
   children: ReactNode;
@@ -70,6 +71,7 @@ function App() {
         <ScrollToTop />
         <ScrollButton />
         <CustomCursor />
+        <TawkToWidget />
         <main className="flex-grow mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />

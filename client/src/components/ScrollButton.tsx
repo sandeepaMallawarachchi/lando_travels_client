@@ -32,7 +32,7 @@ const ScrollButton = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0 }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    className="fixed cursor-pointer bottom-6 right-6 z-50 w-10 h-10 rounded-full overflow-hidden shadow-xl bg-white/10 backdrop-blur border border-blue-700"
+                    className="fixed cursor-pointer bottom-24 right-8 z-50 w-10 h-10 rounded-full overflow-hidden shadow-xl bg-white/10 backdrop-blur border border-blue-700"
                 >
                     {/* Water fill background */}
                     <div className="absolute bottom-0 left-0 w-full h-full">
