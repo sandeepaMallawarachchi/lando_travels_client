@@ -232,7 +232,7 @@ const IconButton: React.FC<{ icon: React.ReactNode; onClick?: () => void; href?:
     </div>
   );
   return href ? (
-    <a aria-label="anchor tag" aria-label="Button" href={href} target="_blank" rel="noopener noreferrer">
+    <a aria-label="anchor tag" href={href} target="_blank" rel="noopener noreferrer">
       {content}
     </a>
   ) : (

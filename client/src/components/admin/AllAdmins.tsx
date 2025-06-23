@@ -114,7 +114,7 @@ const AllAdmins: React.FC = () => {
                                 <td className="p-3">{admin.firstname}</td>
                                 <td className="p-3">{admin.lastname}</td>
                                 <td className="p-3">
-                                    <a aria-label="anchor tag" aria-label="Button"
+                                    <a aria-label="anchor tag"
                                         href={`mailto:${admin.email}`}
                                         className="text-blue-600 hover:underline"
                                     >
@@ -122,7 +122,7 @@ const AllAdmins: React.FC = () => {
                                     </a>
                                 </td>
                                 <td className="p-3">
-                                    <a aria-label="anchor tag" aria-label="Button"
+                                    <a aria-label="anchor tag"
                                         href={`tel:${admin.phone}`}
                                         className="text-blue-600 hover:underline"
                                     >

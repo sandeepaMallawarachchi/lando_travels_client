@@ -46,7 +46,7 @@ const Help: React.FC = () => {
                     </p>
                 </div>
 
-                <a aria-label="anchor tag" aria-label="Button"
+                <a aria-label="anchor tag"
                     href={mailtoLink}
                     className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg flex items-center gap-2 transition"
                 >

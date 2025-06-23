@@ -121,7 +121,7 @@ const ContactUs: React.FC = () => {
                             back to you.
                         </p>
                         <p className="mt-6">
-                            <a aria-label="anchor tag" aria-label="Button"
+                            <a aria-label="anchor tag"
                                 href={`mailto:${companyEmail}`}
                                 className="text-blue-500 text-sm hover:underline"
                             >
@@ -129,7 +129,7 @@ const ContactUs: React.FC = () => {
                             </a>
                         </p>
                         <p>
-                            <a aria-label="anchor tag" aria-label="Button"
+                            <a aria-label="anchor tag"
                                 href={`tel:${phone}`}
                                 className="text-blue-500 text-sm hover:underline"
                             >
