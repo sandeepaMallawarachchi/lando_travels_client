@@ -59,7 +59,7 @@ const About = () => {
                         With over two decades of industry experience, our dedicated and highly trained team is committed to providing top-tier service,
                         handling all your travel needs with efficiency and care.
                     </p>
-                    <Link to={'/about'} className="bg-blue-500 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition">
+                    <Link to={'/about'} aria-label="Learn more about Lando's travel services" className="bg-blue-500 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition">
                         Learn More
                     </Link>
                 </motion.div>
