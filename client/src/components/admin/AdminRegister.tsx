@@ -112,10 +112,10 @@ const AdminRegister: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label className="block mb-1 text-sm font-medium text-gray-700">Gender</label>
+                        <label htmlFor="label" className="block mb-1 text-sm font-medium text-gray-700">Gender</label>
                         <div className="flex gap-4">
                             {['male', 'female'].map((g) => (
-                                <label key={g} className="flex items-center gap-2">
+                                <label htmlFor="label" key={g} className="flex items-center gap-2">
                                     <input type="radio" name="gender" value={g} checked={gender === g} onChange={handleChange} /> {g}
                                 </label>
                             ))}
@@ -123,10 +123,10 @@ const AdminRegister: React.FC = () => {
                     </div>
 
                     <div>
-                        <label className="block mb-1 text-sm font-medium text-gray-700">Role</label>
+                        <label htmlFor="label" className="block mb-1 text-sm font-medium text-gray-700">Role</label>
                         <div className="flex gap-4">
                             {['owner', 'editor'].map((r) => (
-                                <label key={r} className="flex items-center gap-2">
+                                <label htmlFor="label" key={r} className="flex items-center gap-2">
                                     <input type="radio" name="role" value={r} checked={role === r} onChange={handleChange} /> {r}
                                 </label>
                             ))}
@@ -135,7 +135,7 @@ const AdminRegister: React.FC = () => {
                 </div>
 
                 <div>
-                    <label className="block mb-1 text-sm font-medium text-gray-700">Address</label>
+                    <label htmlFor="label" className="block mb-1 text-sm font-medium text-gray-700">Address</label>
                     <textarea
                         name="address"
                         placeholder="Colombo, Sri Lanka"

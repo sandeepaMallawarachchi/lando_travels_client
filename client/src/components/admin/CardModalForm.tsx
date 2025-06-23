@@ -124,7 +124,7 @@ const CardModalForm: React.FC<CardFormProps> = ({
 
                     {/* Title */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Title</label>
+                        <label htmlFor="label" className="block text-sm font-medium mb-1">Title</label>
                         <input
                             type="text"
                             value={card.title}
@@ -137,7 +137,7 @@ const CardModalForm: React.FC<CardFormProps> = ({
 
                     {/* Description */}
                     <div>
-                        <label className="block text-sm font-medium mb-1">Description</label>
+                        <label htmlFor="label" className="block text-sm font-medium mb-1">Description</label>
                         <textarea
                             value={card.description}
                             onChange={(e) => onChange("description", e.target.value)}

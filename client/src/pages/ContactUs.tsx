@@ -148,7 +148,7 @@ const ContactUs: React.FC = () => {
                     viewport={{ once: false, amount: 0.3 }}
                 >
                     <div className="col-span-1">
-                        <label className="text-sm text-gray-500 block mb-1">
+                        <label htmlFor="label" className="text-sm text-gray-500 block mb-1">
                             Email Address
                         </label>
                         <input
@@ -161,7 +161,7 @@ const ContactUs: React.FC = () => {
                         />
                     </div>
                     <div className="col-span-1">
-                        <label className="text-sm text-gray-500 block mb-1">Subject</label>
+                        <label htmlFor="label" className="text-sm text-gray-500 block mb-1">Subject</label>
                         <input
                             type="text"
                             value={subject}
@@ -172,7 +172,7 @@ const ContactUs: React.FC = () => {
                         />
                     </div>
                     <div className="col-span-2">
-                        <label className="text-sm text-gray-500 block mb-1">Message</label>
+                        <label htmlFor="label" className="text-sm text-gray-500 block mb-1">Message</label>
                         <textarea
                             rows={4}
                             value={message}

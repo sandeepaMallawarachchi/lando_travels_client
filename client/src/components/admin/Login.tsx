@@ -62,7 +62,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
           className="relative bg-white w-full max-w-md rounded-xl shadow-xl p-8"
         >
           {/* Close Button */}
-          <button aria-label="Button"
+          <button
             onClick={onClose}
             className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
             aria-label="Close"

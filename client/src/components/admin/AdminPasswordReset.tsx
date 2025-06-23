@@ -97,7 +97,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
           transition={{ duration: 0.3 }}
           className="relative bg-white rounded-xl p-6 w-full max-w-md shadow-xl"
         >
-          <button aria-label="Button"
+          <button
             onClick={onClose}
             className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
             aria-label="Close"
@@ -112,7 +112,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
           <form onSubmit={step === 1 ? handleRequestResetCode : handleResetPassword} className="space-y-4">
             {step === 1 ? (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label htmlFor="label" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                 <input
                   name="email"
                   type="email"
@@ -127,7 +127,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
             ) : (
               <>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Reset Code</label>
+                  <label htmlFor="label" className="block text-sm font-medium text-gray-700 mb-1">Reset Code</label>
                   <input
                     name="resetCode"
                     type="text"
@@ -139,7 +139,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                  <label htmlFor="label" className="block text-sm font-medium text-gray-700 mb-1">New Password</label>
                   <input
                     name="password"
                     type="password"
@@ -152,7 +152,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
                   {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                  <label htmlFor="label" className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
                   <input
                     name="confirmPassword"
                     type="password"

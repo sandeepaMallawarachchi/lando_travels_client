@@ -64,7 +64,7 @@ const Contact = () => {
                         back to you.
                     </p>
                     <p className="mt-6">
-                        <a aria-label="anchor tag" aria-label="Button"
+                        <a aria-label="anchor tag"
                             href={`mailto:${companyEmail}`}
                             className="text-blue-500 text-sm hover:underline"
                         >
@@ -72,7 +72,7 @@ const Contact = () => {
                         </a>
                     </p>
                     <p>
-                        <a aria-label="anchor tag" aria-label="Button"
+                        <a aria-label="anchor tag"
                             href={`tel:${phone}`}
                             className="text-blue-500 text-sm hover:underline"
                         >
@@ -91,7 +91,7 @@ const Contact = () => {
                 viewport={{ once: false, amount: 0.3 }}
             >
                 <div className="col-span-1">
-                    <label className="text-sm text-gray-400 block mb-1">
+                    <label htmlFor="label" className="text-sm text-gray-400 block mb-1">
                         Email Address
                     </label>
                     <input
@@ -104,7 +104,7 @@ const Contact = () => {
                     />
                 </div>
                 <div className="col-span-1">
-                    <label className="text-sm text-gray-400 block mb-1">Subject</label>
+                    <label htmlFor="label" className="text-sm text-gray-400 block mb-1">Subject</label>
                     <input
                         type="text"
                         value={subject}
@@ -115,7 +115,7 @@ const Contact = () => {
                     />
                 </div>
                 <div className="col-span-2">
-                    <label className="text-sm text-gray-400 block mb-1">Message</label>
+                    <label htmlFor="label" className="text-sm text-gray-400 block mb-1">Message</label>
                     <textarea
                         rows={4}
                         value={message}
