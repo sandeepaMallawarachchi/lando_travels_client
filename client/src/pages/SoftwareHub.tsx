@@ -74,7 +74,16 @@ const SoftwareHub: React.FC = () => {
                     {admin ? (
                         <>
                             <div className="flex flex- justify-center text-2xl font-bold text-gray-500 dark:text-gray-400">
-                                <h1 className="text-blue-600 mr-2">Welcome,</h1>{admin.firstname} {admin.lastname} 👋
+                                <h1 className="text-blue-600 mr-2">Welcome,</h1>
+                                <motion.span
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 1 }}
+                                    className="inline-block text-gray-700 dark:text-gray-200"
+                                >
+                                    {admin.firstname} {admin.lastname}
+                                </motion.span>
+                                <span className="ml-2 animate-wave inline-block origin-bottom-right">👋</span>
                             </div>
                         </>
                     ) : (
