@@ -39,7 +39,7 @@ const AdminHeader: React.FC = () => {
             <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
                 {/* Left: logos */}
                 <div className="flex items-center space-x-4">
-                    <Link to={'/admin/admindashboard'}><img src="/logo-white.webp" alt="Lando Travels" className="h-10" /></Link>
+                    <Link to={'/admin/softwarehub'}><img src="/logo-white.webp" alt="Lando Travels" className="h-10" /></Link>
                 </div>
 
                 <div className="flex items-center gap-4">

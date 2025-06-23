@@ -24,6 +24,7 @@ import AllAdmins from "./components/admin/AllAdmins";
 import ManageCards from "./components/admin/ManageCards";
 import Documentation from "./components/admin/Documentation";
 import Help from "./components/admin/Help";
+import SoftwareHub from "./pages/SoftwareHub";
 import { Analytics } from "@vercel/analytics/react"
 
 type LayoutProps = {
@@ -74,6 +75,14 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
 
             {/* admin routes */}
+            <Route
+              path="/admin/softwarehub"
+              element={
+                <ProtectedRoute>
+                  <SoftwareHub />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/admin/admindashboard"
               element={

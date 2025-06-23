@@ -32,7 +32,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("adminID", adminID);
       onClose()
-      navigate("/admin/admindashboard");
+      navigate("/admin/softwarehub");
     } catch (error: any) {
       console.error("Error:", error.response?.data?.message || error.message);
       toast.error("Login failed! Invalid email or password.");
