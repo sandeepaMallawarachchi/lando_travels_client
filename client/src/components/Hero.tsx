@@ -4,47 +4,47 @@ import { ArrowDownCircle } from "lucide-react";
 
 const slides = [
     {
-        image: "/flight1.jpg",
+        image: "/flight1.webp",
         title: "Explore the World",
         subtitle: "Book your next adventure with Lando Travels",
     },
     {
-        image: "/flight2.jpg",
+        image: "/flight2.webp",
         title: "Discover New Destinations",
         subtitle: "From Sri Lanka to the skies — we take you further",
     },
     {
-        image: "/flight3.jpg",
+        image: "/flight3.webp",
         title: "Fly in Comfort",
         subtitle: "Your journey begins with luxury and care",
     },
     {
-        image: "/flight4.jpg",
+        image: "/flight4.webp",
         title: "Adventure Awaits",
         subtitle: "Let your heart follow the horizon",
     },
     {
-        image: "/flight5.jpg",
+        image: "/flight5.webp",
         title: "Sky High Luxury",
         subtitle: "Premium experiences above the clouds",
     },
     {
-        image: "/flight6.jpg",
+        image: "/flight6.webp",
         title: "Uncover Hidden Gems",
         subtitle: "Travel beyond the usual, explore the extraordinary",
     },
     {
-        image: "/flight7.jpg",
+        image: "/flight7.webp",
         title: "Seamless Journeys",
         subtitle: "Your path to paradise starts with us",
     },
     {
-        image: "/flight8.jpg",
+        image: "/flight8.webp",
         title: "Boundless Horizons",
         subtitle: "Every flight is a new opportunity to explore",
     },
     {
-        image: "/flight9.jpg",
+        image: "/flight9.webp",
         title: "Wings of Freedom",
         subtitle: "Escape the ordinary — fly with Lando",
     },

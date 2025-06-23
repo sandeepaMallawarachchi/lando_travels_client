@@ -51,7 +51,7 @@ const Contact = () => {
                 <div className="max-w-md">
                     <div className="mb-10">
                         <img
-                            src="/logo-white.png"
+                            src="/logo-white.webp"
                             alt="landotravels Logo"
                             width={200}
                             height={100}

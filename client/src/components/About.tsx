@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 
 const About = () => {
     const baseImages = [
-        "/about/about1.jpg",
-        "/about/about2.jpg",
-        "/about/about3.jpg",
-        "/about/about4.jpg",
-        "/about/about5.jpg",
-        "/about/about6.jpg",
-        "/about/about7.jpg",
-        "/about/about8.jpg",
-        "/about/about9.jpg",
-        "/about/about10.jpg",
+        "/about/about1.webp",
+        "/about/about2.webp",
+        "/about/about3.webp",
+        "/about/about4.webp",
+        "/about/about5.webp",
+        "/about/about6.webp",
+        "/about/about7.webp",
+        "/about/about8.webp",
+        "/about/about9.webp",
+        "/about/about10.webp",
     ]
 
     const images = [...baseImages, ...baseImages];

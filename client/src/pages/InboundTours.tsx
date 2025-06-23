@@ -5,43 +5,43 @@ import { Link } from 'react-router-dom';
 const cardsData = [
     {
         id: 1,
-        imgSrc: '/inboundbeach.jpg',
+        imgSrc: '/inboundbeach.webp',
         title: 'Historic & Archaeological Sites',
         description:
             'Explore Sri Lanka’s most iconic historic and archaeological landmarks that tell the story of ancient civilizations.',
         fullText:
             'Sigiriya is a breathtaking rock fortress with royal gardens and ancient frescoes. Galle Fort stands along the southern coast, showcasing colonial history through its well-preserved ramparts and buildings. Yapahuwa, once a royal capital, features grand stairways and rock-cut architecture. Independence Memorial Hall in Colombo symbolizes Sri Lanka’s freedom and blends traditional design with national pride.',
-        gallery: ['/inboundbeach.jpg', '/gallefort.jpg', '/yapahuwa.jpg', '/freedomsqr.jpg'],
+        gallery: ['/inboundbeach.webp', '/gallefort.webp', '/yapahuwa.webp', '/freedomsqr.webp'],
     },
     {
         id: 2,
-        imgSrc: '/inbound.jpg',
+        imgSrc: '/inbound.webp',
         title: 'Cultural & Religious Centers',
         description:
             'Discover the spiritual and historical richness of Sri Lanka through its ancient cities and sacred landmarks.',
         fullText:
             'The Temple of the Sacred Tooth Relic in Kandy is a major Buddhist site, housing a revered relic of the Buddha. Anuradhapura, Sri Lanka’s first capital, is home to centuries-old stupas and sacred Bodhi trees. Polonnaruwa showcases the architectural brilliance of medieval Sri Lanka through temples, statues, and royal ruins. The Nallur Kandaswamy Kovil in Jaffna is a significant Hindu temple known for its colorful festivals and devotional heritage.',
-        gallery: ['/inbound.jpg', '/anuradhapura.avif', '/polonnaruwa.jpg', '/nallur.jpg'],
+        gallery: ['/inbound.webp', '/anuradhapura.avif', '/polonnaruwa.webp', '/nallur.webp'],
     },
     {
         id: 3,
-        imgSrc: '/inboundtiger.jpg',
+        imgSrc: '/inboundtiger.webp',
         title: 'Nature & Wildlife',
         description:
             'Sri Lanka’s rich biodiversity invites you to explore lush rainforests, majestic wildlife, and breathtaking natural wonders.',
         fullText:
             'Yala National Park is renowned for its leopard population and immersive safari experiences. The central highlands are dotted with cascading waterfalls like Diyaluma and Bambarakanda that highlight the island’s scenic beauty. Elephant sanctuaries such as Pinnawala provide close encounters with these gentle giants in protected environments. Sinharaja Rainforest is a UNESCO World Heritage Site teeming with endemic flora and fauna, perfect for nature trekking and bird watching.',
-        gallery: ['/inboundtiger.jpg', '/waterfalls.jpg', '/elephants.jpg', '/knuckles.jpg'],
+        gallery: ['/inboundtiger.webp', '/waterfalls.webp', '/elephants.webp', '/knuckles.webp'],
     },
     {
         id: 4,
-        imgSrc: '/inboundleisure.jpg',
+        imgSrc: '/inboundleisure.webp',
         title: 'Adventure & Leisure',
         description:
             'Experience the thrill and tranquility of Sri Lanka through water sports, beaches, and nature escapades.',
         fullText:
             'Unawatuna is a serene beach town perfect for sunbathing, snorkeling, and coral reef exploration. Kitulgala invites adventurers with its white-water rafting, lush rainforest trails, and river expeditions. Mirissa is famous for its whale watching tours, golden beaches, and relaxed coastal vibe. Sri Lanka also offers scenic hiking experiences through misty hills, tea plantations, and waterfall trails, perfect for nature lovers.',
-        gallery: ['/inboundleisure.jpg', '/kithulgala.jpg', '/mirissa.jpg', '/hicking.jpg'],
+        gallery: ['/inboundleisure.webp', '/kithulgala.webp', '/mirissa.webp', '/hicking.webp'],
     }
 ];
 
@@ -53,7 +53,7 @@ const InboundTours: React.FC = () => {
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
-                    src="/inboundcover2.jpg"
+                    src="/inboundcover2.webp"
                     alt="Inbound Tours"
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"

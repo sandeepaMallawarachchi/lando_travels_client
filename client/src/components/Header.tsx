@@ -48,8 +48,8 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
         {/* Left: logos */}
         <div className="flex items-center space-x-4">
-          <Link to={'/'}><img src="/logo-white.png" alt="Lando Travels" className="h-10" /></Link>
-          <img src="/iata.png" alt="IATA" className="h-10" />
+          <Link to={'/'}><img src="/logo-white.webp" alt="Lando Travels" className="h-10" /></Link>
+          <img src="/iata.webp" alt="IATA" className="h-10" />
         </div>
 
         {/* Center nav: desktop only */}

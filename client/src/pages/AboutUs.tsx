@@ -6,20 +6,20 @@ import CompanyIntro from "../components/CompanyIntro ";
 const AboutUs: React.FC = () => {
 
     const baseImages = [
-        "/about/about1.jpg",
-        "/about/about2.jpg",
-        "/about/about3.jpg",
-        "/about/about4.jpg",
-        "/about/about5.jpg",
-        "/about/about6.jpg",
-        "/about/about7.jpg",
-        "/about/about8.jpg",
-        "/about/about9.jpg",
-        "/about/about10.jpg",
-        "/about/about11.jpg",
+        "/about/about1.webp",
+        "/about/about2.webp",
+        "/about/about3.webp",
+        "/about/about4.webp",
+        "/about/about5.webp",
+        "/about/about6.webp",
+        "/about/about7.webp",
+        "/about/about8.webp",
+        "/about/about9.webp",
+        "/about/about10.webp",
+        "/about/about11.webp",
     ]
 
-    const missionImages = ["/aboutCover.jpg", ...baseImages];
+    const missionImages = ["/aboutCover.webp", ...baseImages];
     const visionImages = [...missionImages.slice(1), missionImages[0]];
 
     const [missionIndex, setMissionIndex] = useState(0);
@@ -55,7 +55,7 @@ const AboutUs: React.FC = () => {
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
-                    src="/aboutCover.jpg"
+                    src="/aboutCover.webp"
                     alt="About Lando Travels"
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"

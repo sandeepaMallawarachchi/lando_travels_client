@@ -6,22 +6,22 @@ const services = [
   {
     title: "Inbound Tours",
     subtitle: "LOCAL EXPERIENCES",
-    image: "/inbound.jpg",
-    hoverImage: "/inboundleisure.jpg",
+    image: "/inbound.webp",
+    hoverImage: "/inboundleisure.webp",
     link: "/inbound",
   },
   {
     title: "Outbound Tours",
     subtitle: "INTERNATIONAL TRIPS",
-    image: "/outbounddubai.jpg",
-    hoverImage: "/outboundmaldives.jpg",
+    image: "/outbounddubai.webp",
+    hoverImage: "/outboundmaldives.webp",
     link: "/outbound",
   },
   {
     title: "Corporate Travel",
     subtitle: "BUSINESS SOLUTIONS",
-    image: "/corparate.jpeg",
-    hoverImage: "/corparate-hover.jpg",
+    image: "/corparate.webp",
+    hoverImage: "/corparate-hover.webp",
     link: "/corporate",
   },
 ];

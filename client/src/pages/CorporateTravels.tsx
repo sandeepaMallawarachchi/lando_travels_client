@@ -5,43 +5,43 @@ import { Link } from 'react-router-dom';
 const cardsData = [
     {
         id: 1,
-        imgSrc: '/airTicketing.jpg',
+        imgSrc: '/airTicketing.webp',
         title: 'Air Ticketing',
         description:
             'Book flights worldwide with ease. Our IATA-certified team secures the best corporate fares and ensures a smooth travel process.',
         fullText:
             'As an IATA-accredited travel agency, Lando Travels offers seamless ticketing and reservations with all major airlines, both online and offline. We provide competitive fares and ensure that your corporate travel is hassle-free, efficient, and cost-effective.',
-        gallery: ['/airTicketing.jpg', '/airTicketing2.jpg', '/airTicketing3.jpg', '/airTicketing4.avif'],
+        gallery: ['/airTicketing.webp', '/airTicketing2.webp', '/airTicketing3.webp', '/airTicketing4.avif'],
     },
     {
         id: 2,
-        imgSrc: '/visaProcessing.jpg',
+        imgSrc: '/visaProcessing.webp',
         title: 'Visa Processing',
         description:
             'We simplify visa processing for any destination—fast, reliable, and stress-free support from our expert team.',
         fullText:
             'Navigating visa requirements can be challenging, but Lando Travels simplifies the process for you. Our expert team handles visa applications for all countries, ensuring that your documents are processed quickly and efficiently, allowing you to focus on your business.',
-        gallery: ['/visaProcessing.jpg', '/visaProcessing2.jpg', '/visaProcessing3.jpg', '/visaProcessing4.jpg'],
+        gallery: ['/visaProcessing.webp', '/visaProcessing2.webp', '/visaProcessing3.webp', '/visaProcessing4.webp'],
     },
     {
         id: 4,
-        imgSrc: '/travelInsurance.png',
+        imgSrc: '/travelInsurance.webp',
         title: 'Travel Insurance',
         description:
             'Ensure peace of mind with tailored travel insurance plans that safeguard your business trips from start to finish.',
         fullText:
             'Protect your corporate travelers with comprehensive travel insurance. We offer tailored insurance packages that cover all aspects of your journey, giving you peace of mind as you travel the world for business.',
-        gallery: ['/travelInsurance.png', '/travelInsurance2.jpg', '/travelInsurance3.jpg', '/travelInsurance4.jpg'],
+        gallery: ['/travelInsurance.webp', '/travelInsurance2.webp', '/travelInsurance3.webp', '/travelInsurance4.webp'],
     },
     {
         id: 4,
-        imgSrc: '/travelConsultation.jpg',
+        imgSrc: '/travelConsultation.webp',
         title: 'Travel Consultation',
         description:
             'Get expert travel advice for smooth business trips. From simple bookings to complex itineraries, we’re here to help — at no extra cost.',
         fullText:
             'Planning your business trips with us is easy. We offer free travel consultations to help you plan and execute your corporate travel with minimal hassle. Whether it is a simple ticket booking or a complex itinerary, we are here to assist.',
-        gallery: ['/travelConsultation.jpg', '/travelConsultation2.jpg', '/travelConsultation3.jpg', '/travelConsultation4.jpg'],
+        gallery: ['/travelConsultation.webp', '/travelConsultation2.webp', '/travelConsultation3.webp', '/travelConsultation4.webp'],
     }
 ];
 
@@ -53,7 +53,7 @@ const CorporateTravels: React.FC = () => {
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
-                    src="/corporatecover.jpg"
+                    src="/corporatecover.webp"
                     alt="Corporate Travel Services"
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"

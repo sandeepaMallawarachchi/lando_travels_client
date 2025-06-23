@@ -53,7 +53,7 @@ const ContactUs: React.FC = () => {
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
-                    src="/contactCover.jpg"
+                    src="/contactCover.webp"
                     alt="Contact Us"
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"
@@ -108,7 +108,7 @@ const ContactUs: React.FC = () => {
                     <div className="max-w-md">
                         <div className="mb-10">
                             <img
-                                src="/logo-white.png"
+                                src="/logo-white.webp"
                                 alt="landotravels Logo"
                                 width={200}
                                 height={100}

@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
                 {/* Logo & Social */}
                 <div className="flex flex-col items-center sm:items-start">
                     <Link to={'/'}>
-                        <img src="/logo-white.png" alt="Lando Travels" className="h-12 mb-4" />
+                        <img src="/logo-white.webp" alt="Lando Travels" className="h-12 mb-4" />
                     </Link>
                     <p className="text-sm text-gray-400 max-w-xs">
                         Your trusted travel partner for unforgettable journeys.

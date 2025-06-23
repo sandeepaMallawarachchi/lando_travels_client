@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 const cardsData = [
     {
         id: 1,
-        imgSrc: '/outboundmaldives.jpg',
+        imgSrc: '/outboundmaldives.webp',
         title: 'Asian Wonders Tour',
         description:
             'From the tranquil waters of the Maldives to the vibrant cities of Asia, this tour unveils the rich diversity and beauty of the continent.',
         fullText:
             'Begin your journey in the Maldives, relaxing in overwater villas and exploring turquoise lagoons. Head to India to witness the majestic Taj Mahal and immerse in the culture of Jaipur. Experience the serenity of Japan with its ancient temples, cherry blossoms, and futuristic cities like Tokyo. Conclude in Thailand, where golden beaches, bustling night markets, and sacred temples create an unforgettable finale.',
-        gallery: ['/outboundmaldives.jpg', '/india.png', '/japan.jpg', '/thailand.jpg'],
+        gallery: ['/outboundmaldives.webp', '/india.webp', '/japan.webp', '/thailand.webp'],
     },
     {
         id: 2,
-        imgSrc: '/paris.jpg',
+        imgSrc: '/paris.webp',
         title: 'Grand Europe Tour',
         description:
             'Explore the timeless elegance of Europe — from romantic cities to majestic landscapes and iconic landmarks.',
         fullText:
             'Start in Paris, the city of love, strolling beneath the Eiffel Tower and along the Seine. Head to Rome to uncover the rich history of the Colosseum and the Vatican. Journey through Switzerland’s Alps for breathtaking mountain views and serene lakes. End your tour in Amsterdam, exploring charming canals, tulip gardens, and vibrant local culture.',
-        gallery: ['/paris.jpg', '/rome.jpg', '/switzerland.avif', '/amsterdam.jpg'],
+        gallery: ['/paris.webp', '/rome.webp', '/switzerland.avif', '/amsterdam.webp'],
     },
     {
         id: 4,
@@ -31,17 +31,17 @@ const cardsData = [
             'Experience the raw beauty, cultural richness, and ancient wonders of Africa’s most iconic destinations.',
         fullText:
             'Embark on a thrilling safari in Kenya’s Maasai Mara to witness the Big Five in their natural habitat. Explore the ancient pyramids and temples of Egypt that stand as testaments to a glorious past. Relax on the pristine beaches of Zanzibar, soaking in turquoise waters and Swahili culture. Conclude your journey in Cape Town, South Africa, where Table Mountain and Robben Island tell stories of resilience and natural splendor.',
-        gallery: ['/egypt.avif', '/capetown.jpg', '/kenya.jpg', '/zanzibar.jpg'],
+        gallery: ['/egypt.avif', '/capetown.webp', '/kenya.webp', '/zanzibar.webp'],
     },
     {
         id: 4,
-        imgSrc: '/sydney.jpg',
+        imgSrc: '/sydney.webp',
         title: 'Australia & New Zealand Escape',
         description:
             'Discover the stunning coasts, thrilling adventures, and iconic landscapes of Oceania’s finest destinations.',
         fullText:
             'Begin your journey in Sydney, Australia, where the Opera House and Harbour Bridge welcome you to a cosmopolitan coast. Dive into the Great Barrier Reef for unforgettable marine exploration. Then head to Queenstown, New Zealand — the adventure capital — for bungee jumping, jet boating, and scenic lake views. End with a visit to Rotorua, where Māori culture and geothermal wonders offer a unique, immersive experience.',
-        gallery: ['/sydney.jpg', '/greatbarrierreef.jpg', '/queenstown.jpeg', '/rotorua.jpg'],
+        gallery: ['/sydney.webp', '/greatbarrierreef.webp', '/queenstown.webp', '/rotorua.webp'],
     }
 ];
 
@@ -53,7 +53,7 @@ const OutboundTours: React.FC = () => {
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
-                    src="/outboundCover2.jpg"
+                    src="/outboundCover2.webp"
                     alt="Outbound Tours"
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover z-0"
