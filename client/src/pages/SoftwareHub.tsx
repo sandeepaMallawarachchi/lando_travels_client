@@ -11,7 +11,7 @@ type Admin = {
 const softwares = [
     {
         name: "Admin Panel",
-        logo: "/logo-white.webp",
+        logo: "/logo-icon.webp",
         link: "/admin/admindashboard",
         external: false,
     },
@@ -70,20 +70,24 @@ const SoftwareHub: React.FC = () => {
                 transition={{ duration: 0.6 }}
                 className="max-w-5xl w-full p-6"
             >
-                <div className="justify-center items-center mb-20">
+                <div className="justify-center items-center mb-10">
                     {admin ? (
                         <>
-                            <div className="flex flex- justify-center text-2xl font-bold text-gray-500 dark:text-gray-400">
-                                <h1 className="text-blue-600 mr-2">Welcome,</h1>
-                                <motion.span
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 1 }}
-                                    className="inline-block text-gray-700 dark:text-gray-200"
-                                >
-                                    {admin.firstname} {admin.lastname}
-                                </motion.span>
-                                <span className="ml-2 animate-wave inline-block origin-bottom-right">👋</span>
+                            <div className="flex flex-col items-center text-2xl font-bold text-gray-500 dark:text-gray-400">
+                                <div className="flex flex-col md:flex-row items-center justify-center">
+                                    <h1 className="text-blue-600 mr-2">Welcome,</h1>
+                                    <motion.span
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 1 }}
+                                        className="inline-block text-gray-700 dark:text-gray-200"
+                                    >
+                                        {admin.firstname} {admin.lastname}
+                                    </motion.span>
+                                </div>
+                                <span className="mt-2 md:mt-0 md:ml-2 animate-wave inline-block origin-bottom-right">
+                                    👋
+                                </span>
                             </div>
                         </>
                     ) : (
