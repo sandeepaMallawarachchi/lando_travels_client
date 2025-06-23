@@ -73,14 +73,14 @@ const SoftwareHub: React.FC = () => {
                 <div className="justify-center items-center mb-10">
                     {admin ? (
                         <>
-                            <div className="flex flex-col items-center text-2xl font-bold text-gray-500 dark:text-gray-400">
+                            <div className="flex flex-col items-center text-2xl font-bold text-gray-500">
                                 <div className="flex flex-col md:flex-row items-center justify-center">
                                     <h1 className="text-blue-600 mr-2">Welcome,</h1>
                                     <motion.span
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         transition={{ duration: 1 }}
-                                        className="inline-block text-gray-700 dark:text-gray-200"
+                                        className="inline-block text-gray-700"
                                     >
                                         {admin.firstname} {admin.lastname}
                                     </motion.span>
