@@ -1,6 +1,9 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ],
   "headers": [
     {
@@ -8,7 +11,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://*.cloudinary.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://lando-travels-api.vercel.app; img-src 'self' https: data:; frame-src https://www.google.com; frame-ancestors 'none';"
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://*.cloudinary.com https://embed.tawk.to; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://lando-travels-api.vercel.app https://embed.tawk.to wss://*.tawk.to; img-src 'self' https: data: https://embed.tawk.to; frame-src https://www.google.com https://embed.tawk.to; frame-ancestors 'none';"
         },
         {
           "key": "Strict-Transport-Security",
