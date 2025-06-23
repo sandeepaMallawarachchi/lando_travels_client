@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
             {/* Dot Controls */}
             <div className="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-20">
                 {slides.map((_, i) => (
-                    <button
+                    <button aria-label="Button"
                         key={i}
                         onClick={() => handleSelect(i)}
                         className={`w-1 h-5 rounded-full transition-all duration-300 cursor-pointer ${i === index ? "bg-white" : "bg-gray-400 hover:bg-white/70"
@@ -130,7 +130,7 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-                <button
+                <button aria-label="Button"
                     onClick={() => {
                         const blogsSection = document.getElementById("blogs");
                         blogsSection?.scrollIntoView({ behavior: "smooth" });

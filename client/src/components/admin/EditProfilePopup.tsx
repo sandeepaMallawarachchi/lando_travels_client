@@ -51,7 +51,7 @@ const EditProfilePopup: React.FC<EditProfilePopupProps> = ({ isOpen, onClose, ad
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/40 bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-xl shadow-xl w-full max-w-md relative">
-        <button
+        <button aria-label="Button"
           onClick={onClose}
           className="absolute cursor-pointer top-2 right-2 text-gray-400 hover:text-gray-600"
           aria-label="Close"
@@ -102,7 +102,7 @@ const EditProfilePopup: React.FC<EditProfilePopupProps> = ({ isOpen, onClose, ad
             />
           </div>
           <div className="flex justify-center">
-            <button
+            <button aria-label="Button"
               type="submit"
               className="px-6 py-2 w-full cursor-pointer text-white bg-blue-500 hover:bg-blue-600 rounded-md text-sm"
             >

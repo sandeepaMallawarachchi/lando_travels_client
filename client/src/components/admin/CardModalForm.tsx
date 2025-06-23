@@ -72,7 +72,7 @@ const CardModalForm: React.FC<CardFormProps> = ({
                 exit={{ scale: 0.9 }}
                 className="bg-white rounded-2xl p-6 w-full max-w-2xl shadow-xl relative"
             >
-                <button
+                <button aria-label="Button"
                     onClick={onClose}
                     className="absolute cursor-pointer top-4 right-4 text-gray-400 hover:text-gray-600"
                 >
@@ -150,14 +150,14 @@ const CardModalForm: React.FC<CardFormProps> = ({
 
                     {/* Submit Button */}
                     <div className="flex justify-end gap-4">
-                        <button
+                        <button aria-label="Button"
                             type="submit"
                             disabled={uploading}
                             className="px-5 py-2 cursor-pointer bg-blue-500 text-white rounded hover:bg-blue-600 transition disabled:opacity-60"
                         >
                             {uploading ? "Saving..." : "Save"}
                         </button>
-                        <button
+                        <button aria-label="Button"
                             type="button"
                             onClick={handleToggleVisibility}
                             className={`px-5 py-2 rounded transition cursor-pointer ${card.show

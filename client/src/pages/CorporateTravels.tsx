@@ -148,7 +148,7 @@ const CorporateTravels: React.FC = () => {
                                 </h2>
                                 <p className="text-gray-600">{selectedCard.fullText}</p>
                             </div>
-                            <button
+                            <button aria-label="Button"
                                 onClick={() => setSelectedCard(null)}
                                 className="absolute cursor-pointer top-3 right-4 text-3xl text-gray-500 hover:text-black"
                             >

@@ -67,7 +67,7 @@ const AdminSidebar: React.FC = () => {
                     >
                         {/* Hamburger inside sidebar */}
                         <div className="md:hidden flex justify-end p-3">
-                            <button
+                            <button aria-label="Button"
                                 onClick={toggleSidebar}
                                 className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full shadow"
                             >
@@ -95,7 +95,7 @@ const AdminSidebar: React.FC = () => {
                             <SidebarLink to="/admin/documentation" icon={<HiViewBoards />} label="Documentation" active={isActive} />
                             <SidebarLink to="/admin/helps" icon={<BiBuoy />} label="Help" active={isActive} />
 
-                            <button
+                            <button aria-label="Button"
                                 onClick={handleLogout}
                                 className="flex cursor-pointer items-center gap-3 px-3 py-2 mt-6 text-sm rounded hover:bg-red-100 text-red-600"
                             >
@@ -122,7 +122,7 @@ const AdminSidebar: React.FC = () => {
 
             {/* Hamburger trigger (for mobile only, when sidebar is closed) */}
             {!isSidebarOpen && (
-                <button
+                <button aria-label="Button"
                     onClick={toggleSidebar}
                     className="md:hidden fixed top-20 left-5 z-50 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full shadow"
                 >

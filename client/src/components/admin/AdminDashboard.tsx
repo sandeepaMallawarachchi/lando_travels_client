@@ -184,13 +184,13 @@ const AdminDashboard: React.FC = () => {
           <p className="text-sm text-gray-500">{adminDetails.phone}</p>
           <p className="text-sm text-gray-500 mb-4">{adminDetails.address}</p>
           <div className="w-full flex flex-col gap-3">
-            <button
+            <button aria-label="Button"
               className="w-full py-2 rounded cursor-pointer bg-blue-500 text-white hover:bg-blue-600"
               onClick={handleEditProfileClick}
             >
               Edit Profile
             </button>
-            <button
+            <button aria-label="Button"
               className="w-full py-2 rounded cursor-pointer bg-red-400 text-white hover:bg-red-500"
               onClick={handlePasswordResetClick}
             >
@@ -232,11 +232,11 @@ const IconButton: React.FC<{ icon: React.ReactNode; onClick?: () => void; href?:
     </div>
   );
   return href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer">
+    <a aria-label="anchor tag" aria-label="Button" href={href} target="_blank" rel="noopener noreferrer">
       {content}
     </a>
   ) : (
-    <button onClick={onClick}>{content}</button>
+    <button aria-label="Button" onClick={onClick}>{content}</button>
   );
 };
 

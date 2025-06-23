@@ -42,7 +42,7 @@ const FAQAccordion = () => {
       <div className="space-y-2">
         {faqs.map((faq, i) => (
           <div key={i} className="rounded-md overflow-hidden bg-white shadow-sm">
-            <button
+            <button aria-label="Button"
               onClick={() => toggle(i)}
               className="w-full text-left cursor-pointer px-4 py-3 flex items-center justify-between hover:bg-gray-100"
             >

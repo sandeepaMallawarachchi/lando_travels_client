@@ -62,7 +62,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
           className="relative bg-white w-full max-w-md rounded-xl shadow-xl p-8"
         >
           {/* Close Button */}
-          <button
+          <button aria-label="Button"
             onClick={onClose}
             className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
             aria-label="Close"
@@ -106,7 +106,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
+                <button aria-label="Button"
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="ml-2 text-gray-500 hover:text-gray-700"
@@ -117,7 +117,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
             </div>
 
             <div className="flex justify-between items-center text-sm">
-              <button
+              <button aria-label="Button"
                 type="button"
                 className="text-blue-600 hover:underline"
                 onClick={handleForgotPassword}
@@ -126,7 +126,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
 
-            <button
+            <button aria-label="Button"
               type="submit"
               className="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md transition duration-200 text-sm"
             >

@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
                         Your trusted travel partner for unforgettable journeys.
                     </p>
                     <div className="flex gap-4 mt-4">
-                        <a
+                        <a aria-label="anchor tag"
                             href="https://www.facebook.com/Landotravel?mibextid=ZbWKwL"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
                         >
                             <FaFacebookF />
                         </a>
-                        <a
+                        <a aria-label="anchor tag"
                             href="https://www.instagram.com/lando_travels_?igsh=MTBxMTNvemhtcDA1"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -37,15 +37,15 @@ const Footer: React.FC = () => {
                 {/* Useful Links */}
                 <div className="flex flex-col gap-2 items-center md:items-start">
                     <h3 className="font-semibold text-lg mb-2">Useful Links</h3>
-                    <a href="/inbound" className="text-sm text-gray-300 hover:text-white transition">Inbound Tours</a>
-                    <a href="/outbound" className="text-sm text-gray-300 hover:text-white transition">Outbound Tours</a>
-                    <a href="/corporate" className="text-sm text-gray-300 hover:text-white transition">Corporate Travel</a>
-                    <a href="/contact" className="text-sm text-gray-300 hover:text-white transition">Contact Us</a>
+                    <a aria-label="anchor tag" href="/inbound" className="text-sm text-gray-300 hover:text-white transition">Inbound Tours</a>
+                    <a aria-label="anchor tag" href="/outbound" className="text-sm text-gray-300 hover:text-white transition">Outbound Tours</a>
+                    <a aria-label="anchor tag" href="/corporate" className="text-sm text-gray-300 hover:text-white transition">Corporate Travel</a>
+                    <a aria-label="anchor tag" href="/contact" className="text-sm text-gray-300 hover:text-white transition">Contact Us</a>
                 </div>
 
                 {/* Map Embed */}
                 <div>
-                    <iframe
+                    <iframe aria-label="iframe"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8948296164317!2d79.84946127475688!3d6.903178993096117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259d2995af26d%3A0x813a465bff45778a!2sLando%20Travels%20%5BPvt%5D%20Ltd!5e0!3m2!1sen!2slk!4v1750086126164!5m2!1sen!2slk"
                         width="250"
                         height="auto"
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
             <div className="text-sm text-gray-500 text-center mt-10">
                 <p>
                     &copy; 2025 All rights reserved. Powered by{" "}
-                    <a
+                    <a aria-label="anchor tag"
                         href="https://abmsz.com"
                         target="_blank"
                         rel="noopener noreferrer"

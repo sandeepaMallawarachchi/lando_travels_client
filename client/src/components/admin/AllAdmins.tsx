@@ -114,7 +114,7 @@ const AllAdmins: React.FC = () => {
                                 <td className="p-3">{admin.firstname}</td>
                                 <td className="p-3">{admin.lastname}</td>
                                 <td className="p-3">
-                                    <a
+                                    <a aria-label="anchor tag" aria-label="Button"
                                         href={`mailto:${admin.email}`}
                                         className="text-blue-600 hover:underline"
                                     >
@@ -122,7 +122,7 @@ const AllAdmins: React.FC = () => {
                                     </a>
                                 </td>
                                 <td className="p-3">
-                                    <a
+                                    <a aria-label="anchor tag" aria-label="Button"
                                         href={`tel:${admin.phone}`}
                                         className="text-blue-600 hover:underline"
                                     >
@@ -142,7 +142,7 @@ const AllAdmins: React.FC = () => {
                                     </select>
                                 </td>
                                 <td className="p-3">
-                                    <button
+                                    <button aria-label="Button"
                                         onClick={() => handleDeleteAdmin(admin.adminID)}
                                         className="text-red-600 hover:underline"
                                     >
@@ -157,7 +157,7 @@ const AllAdmins: React.FC = () => {
             <div className="flex justify-center mt-6 space-x-2">
                 {Array.from({ length: Math.ceil(admins.length / itemsPerPage) }).map(
                     (_, i) => (
-                        <button
+                        <button aria-label="Button"
                             key={i}
                             onClick={() => setCurrentPage(i + 1)}
                             className={`px-3 py-1 rounded ${currentPage === i + 1

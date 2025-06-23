@@ -119,7 +119,7 @@ const ManageCards: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
             >
                 <h1 className="text-2xl font-bold">Manage Blogs</h1>
-                <button
+                <button aria-label="Button"
                     onClick={handleAddNewClick}
                     className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white px-4 py-2 rounded"
                 >
@@ -189,14 +189,14 @@ const ManageCards: React.FC = () => {
                                 transition={{ duration: 0.3 }}
                                 className="absolute inset-0 bg-black/80 bg-opacity-40 flex items-center justify-center gap-4 text-white opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
                             >
-                                <button
+                                <button aria-label="Button"
                                     onClick={() => handleEditClick(card)}
                                     className="bg-white/20 cursor-pointer text-blue-500 p-2 rounded-full hover:bg-white/30 transition"
                                     title="Edit"
                                 >
                                     <Edit />
                                 </button>
-                                <button
+                                <button aria-label="Button"
                                     onClick={() => handleDelete(card._id!)}
                                     className="bg-white/20 cursor-pointer text-red-500 p-2 rounded-full hover:bg-white/30 transition"
                                     title="Delete"
@@ -216,7 +216,7 @@ const ManageCards: React.FC = () => {
 
             <div className="flex justify-center mt-6 space-x-2">
                 {Array.from({ length: Math.ceil(cards.length / itemsPerPage) }).map((_, i) => (
-                    <button
+                    <button aria-label="Button"
                         key={i}
                         onClick={() => setCurrentPage(i + 1)}
                         className={`px-3 py-1 rounded ${currentPage === i + 1

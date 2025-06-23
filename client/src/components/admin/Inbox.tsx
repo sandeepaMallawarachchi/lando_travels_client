@@ -104,7 +104,7 @@ const Inbox: React.FC = () => {
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <button
+              <button aria-label="Button"
                 className="absolute cursor-pointer top-3 right-4 text-gray-500 hover:text-black"
                 onClick={() => setSelectedEmail(null)}
               >
@@ -114,13 +114,13 @@ const Inbox: React.FC = () => {
               <p className="text-sm text-gray-500 mb-4">{selectedEmail.email}</p>
               <p className="mb-6">{selectedEmail.message}</p>
               <div className="flex gap-3">
-                <button
+                <button aria-label="Button"
                   onClick={handleReply}
                   className="flex-1 py-2 rounded cursor-pointer bg-blue-500 hover:bg-blue-600 text-white text-sm"
                 >
                   Reply
                 </button>
-                <button
+                <button aria-label="Button"
                   onClick={() => handleDelete(selectedEmail._id)}
                   className="flex-1 py-2 rounded cursor-pointer bg-red-400 hover:bg-red-500 text-white text-sm"
                 >

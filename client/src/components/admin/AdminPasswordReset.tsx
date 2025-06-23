@@ -97,7 +97,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
           transition={{ duration: 0.3 }}
           className="relative bg-white rounded-xl p-6 w-full max-w-md shadow-xl"
         >
-          <button
+          <button aria-label="Button"
             onClick={onClose}
             className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
             aria-label="Close"
@@ -167,7 +167,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
               </>
             )}
 
-            <button
+            <button aria-label="Button"
               type="submit"
               disabled={loading}
               className="w-full cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"

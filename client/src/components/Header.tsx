@@ -68,7 +68,7 @@ const Header: React.FC = () => {
 
         {/* Right: login + menu */}
         <div className="flex items-center gap-4">
-          <button
+          <button aria-label="Button"
             onClick={handleOpenModal}
             className="bg-blue-500 cursor-pointer text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition"
           >
@@ -76,7 +76,7 @@ const Header: React.FC = () => {
           </button>
 
           {/* Hamburger icon: mobile only */}
-          <button
+          <button aria-label="Button"
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden text-gray-700 focus:outline-none"
           >

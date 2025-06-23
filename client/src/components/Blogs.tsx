@@ -134,7 +134,7 @@ const Blogs: React.FC = () => {
                 {/* Dot Pagination */}
                 <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-10 flex justify-center gap-2">
                     {Array.from({ length: Math.ceil(blogs.length / cardsPerView) }).map((_, i) => (
-                        <button
+                        <button aria-label="Button"
                             key={i}
                             onClick={() => setStartIndex(i * cardsPerView)}
                             className={`w-3 h-1 cursor-pointer rounded-full transition-all duration-300 ${startIndex === i * cardsPerView
@@ -171,7 +171,7 @@ const Blogs: React.FC = () => {
                             />
                             <h2 className="text-2xl font-bold mb-2">{selectedCard.title}</h2>
                             <p className="text-gray-700">{selectedCard.description}</p>
-                            <button
+                            <button aria-label="Button"
                                 onClick={() => setSelectedCard(null)}
                                 className="absolute top-2 right-2 text-gray-500 hover:text-black text-xl"
                             >

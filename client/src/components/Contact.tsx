@@ -64,7 +64,7 @@ const Contact = () => {
                         back to you.
                     </p>
                     <p className="mt-6">
-                        <a
+                        <a aria-label="anchor tag" aria-label="Button"
                             href={`mailto:${companyEmail}`}
                             className="text-blue-500 text-sm hover:underline"
                         >
@@ -72,7 +72,7 @@ const Contact = () => {
                         </a>
                     </p>
                     <p>
-                        <a
+                        <a aria-label="anchor tag" aria-label="Button"
                             href={`tel:${phone}`}
                             className="text-blue-500 text-sm hover:underline"
                         >
@@ -126,7 +126,7 @@ const Contact = () => {
                     />
                 </div>
                 <div className="col-span-2 text-right">
-                    <button
+                    <button aria-label="Button"
                         type="submit"
                         className="bg-blue-500 text-white text-sm cursor-pointer font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition"
                     >
