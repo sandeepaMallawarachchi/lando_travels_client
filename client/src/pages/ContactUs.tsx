@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 const ContactUs: React.FC = () => {
 
     const [searchParams] = useSearchParams();
-    const companyEmail = "lawrence@landotravel.com";
+    const companyEmail = "hello@landotravels.com";
     const phone = "+94722267400";
 
     const [email, setEmail] = useState("");

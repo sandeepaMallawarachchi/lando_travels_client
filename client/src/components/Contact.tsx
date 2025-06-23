@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const Contact = () => {
-    const companyEmail = "lawrence@landotravel.com";
+    const companyEmail = "hello@landotravels.com";
     const phone = "+94722267400";
 
     const [email, setEmail] = useState("");
