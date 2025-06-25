@@ -43,7 +43,7 @@ const OurServices: React.FC = () => {
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {services.map(({ title, subtitle, image, hoverImage, link }, i) => (
+        {services.map(({ title, image, hoverImage, link }, i) => (
           <Link to={link} key={i}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -67,7 +67,7 @@ const OurServices: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-                  <p className="text-sm tracking-widest mb-2">{subtitle}</p>
+                  {/* <p className="text-sm tracking-widest mb-2">{subtitle}</p> */}
                   <h3 className="text-2xl font-bold">{title}</h3>
                   <button aria-label="Button" className="mt-5 cursor-pointer text-sm bg-white text-black px-4 py-2 rounded font-medium hover:bg-gray-200 transition">
                     MORE INFO
