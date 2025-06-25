@@ -92,7 +92,7 @@ const Blogs: React.FC = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
         >
-            <h2 className="text-3xl font-bold text-center mb-10 mt-20">Latest Blogs</h2>
+            <h2 className="text-3xl font-bold text-center mb-10 mt-20">Latest News</h2>
 
             <div className="relative flex flex-row overflow-hidden max-w-7xl mx-auto h-[450px]">
                 <AnimatePresence mode="wait">
