@@ -80,7 +80,7 @@ const InboundTours: React.FC = () => {
                     Explore Sri Lanka with Lando Travels
                 </h2>
                 <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-                    If you are promoting tourism in Sri Lanka, our inbound packages bring you ancient heritage, wildlife adventures, and vibrant culture.
+                    Our inbound packages bring you ancient heritage, wildlife adventures, and vibrant culture.
                 </p>
 
                 <motion.div

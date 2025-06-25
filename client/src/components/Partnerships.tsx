@@ -9,9 +9,7 @@ const airlines = [
   { name: "Partner 20", image: "/partners/logo23.webp" },
   { name: "Partner 1", image: "/partners/logo1.svg" },
   { name: "Partner 2", image: "/partners/logo2.svg" },
-  { name: "Partner 3", image: "/partners/logo5.webp" },
   { name: "Partner 4", image: "/partners/logo11.webp" },
-  { name: "Partner 5", image: "/partners/logo7.webp" },
   { name: "Partner 6", image: "/partners/logo8.svg" },
   { name: "Partner 7", image: "/partners/logo9.webp" },
   { name: "Partner 8", image: "/partners/logo6.webp" },
@@ -21,8 +19,6 @@ const airlines = [
   { name: "Partner 12", image: "/partners/logo15.webp" },
   { name: "Partner 13", image: "/partners/logo16.svg" },
   { name: "Partner 14", image: "/partners/logo17.webp" },
-  { name: "Partner 15", image: "/partners/logo18.webp" },
-  { name: "Partner 16", image: "/partners/logo19.webp" },
   { name: "Partner 17", image: "/partners/logo20.webp" },
   { name: "Partner 18", image: "/partners/logo21.webp" },
   { name: "Partner 19", image: "/partners/logo22.webp" }
