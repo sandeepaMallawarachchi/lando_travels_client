@@ -11,8 +11,6 @@ const airlines = [
   { name: "Partner 2", image: "/partners/logo2.svg" },
   { name: "Partner 4", image: "/partners/logo11.webp" },
   { name: "Partner 6", image: "/partners/logo8.svg" },
-  { name: "Partner 7", image: "/partners/logo9.webp" },
-  { name: "Partner 8", image: "/partners/logo6.webp" },
   { name: "Partner 9", image: "/partners/logo12.webp" },
   { name: "Partner 10", image: "/partners/logo13.webp" },
   { name: "Partner 11", image: "/partners/logo14.webp" },
