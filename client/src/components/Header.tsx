@@ -22,6 +22,7 @@ const Header: React.FC = () => {
     { to: "/corporate", label: "Corporate Travel Services" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
+    { to: "/support", label: "Support" },
   ];
 
   const dropdownVariants = {
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md py-4 rounded-b-3xl text-gray-800" : "bg-transparent py-5 text-white"
         }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
+      <div className="max-w-8xl mx-auto flex items-center justify-between px-6 sm:px-20">
         {/* Left: logos */}
         <div className="flex items-center space-x-4">
           <Link to={'/'}><img src="/logo-white.webp" alt="Lando Travels" className="h-10" /></Link>
@@ -53,7 +54,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Center nav: desktop only */}
-        <nav className="hidden md:flex space-x-6 text-md font-medium">
+        <nav className="hidden md:flex space-x-10 text-md font-medium">
           {navLinks.map(({ to, label }) => (
             <Link
               key={to}
