@@ -108,7 +108,7 @@ const FlightRequestForm: React.FC = () => {
                 multiCityFlights,
             });
 
-            toast.success("Flight request submitted and email sent!");
+            toast.success("Flight request submitted");
 
             // Reset form
             setForm({
