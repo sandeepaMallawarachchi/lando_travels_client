@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
 import toast from "react-hot-toast";
+import debounce from "lodash.debounce";
 
 type AirportOption = {
     label: string;
@@ -30,7 +31,7 @@ const FlightRequestForm: React.FC = () => {
         children: 0,
         infants: 0,
     });
-
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [multiCityFlights, setMultiCityFlights] = useState([
         { origin: "", destination: "", depart: "" },
     ]);
@@ -47,26 +48,31 @@ const FlightRequestForm: React.FC = () => {
     };
 
     const fetchAirports = async (query: string) => {
-        const response = await fetch(`https://aerodatabox.p.rapidapi.com/airports/search/term?q=${query}`, {
-            method: "GET",
-            headers: {
-                "X-RapidAPI-Key": "eca49f3ae7msh452f41372188b87p1cfe42jsn1067a2612c86",
-                "X-RapidAPI-Host": "aerodatabox.p.rapidapi.com",
-            },
-        });
-        const data = await response.json();
-        return data.items.map((airport: any) => ({
-            label: `${airport.name}, ${airport.municipalityName} (${airport.iata})`,
-            value: airport.iata,
-        }));
+        const res = await fetch("/airports.json");
+        const data = await res.json();
+        const airports = Object.values(data);
+
+        return airports
+            .filter((airport: any) =>
+                `${airport.name} ${airport.city} ${airport.country} ${airport.iata}`.toLowerCase().includes(query.toLowerCase())
+            )
+            .map((airport: any) => ({
+                label: `${airport.name}, ${airport.city} (${airport.iata})`,
+                value: airport.iata,
+            }));
     };
 
-    const loadAirportOptions = async (inputValue: string): Promise<AirportOption[]> => {
-        const airports: AirportOption[] = await fetchAirports(inputValue);
-        return airports.map((a: AirportOption) => ({
+    const debouncedFetchAirports = debounce(async (input: string, callback: (options: AirportOption[]) => void) => {
+        const results = await fetchAirports(input);
+        const mapped = results.map((a: AirportOption) => ({
             label: a.label,
             value: a.value,
         }));
+        callback(mapped);
+    }, 400); // 400ms delay
+
+    const loadAirportOptions = (inputValue: string, callback: (options: AirportOption[]) => void) => {
+        debouncedFetchAirports(inputValue, callback);
     };
 
     const handleChange = (
@@ -77,6 +83,7 @@ const FlightRequestForm: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
         try {
             const logoBase64 = await new Promise<string>((resolve) => {
@@ -102,9 +109,31 @@ const FlightRequestForm: React.FC = () => {
             });
 
             toast.success("Flight request submitted and email sent!");
+
+            // Reset form
+            setForm({
+                origin: "",
+                destination: "",
+                depart: "",
+                return: "",
+                travellers: "",
+                travelClass: "Economy",
+                name: "",
+                email: "",
+                phone: "",
+                address: "",
+                decription: "",
+                adults: 1,
+                children: 0,
+                infants: 0,
+            });
+
+            setMultiCityFlights([{ origin: "", destination: "", depart: "" }]);
         } catch (error) {
             console.error(error);
             toast.error("Failed to send request. Please try again.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -440,9 +469,13 @@ const FlightRequestForm: React.FC = () => {
                     <div className="flex justify-center">
                         <button
                             type="submit"
-                            className="cursor-pointer bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+                            disabled={isSubmitting}
+                            className={`cursor-pointer px-6 py-3 rounded-lg text-sm font-medium transition ${isSubmitting
+                                ? "bg-blue-300 text-white cursor-not-allowed"
+                                : "bg-blue-500 text-white hover:bg-blue-600"
+                                }`}
                         >
-                            Submit
+                            {isSubmitting ? "Sending..." : "Submit"}
                         </button>
                     </div>
                 </form>
