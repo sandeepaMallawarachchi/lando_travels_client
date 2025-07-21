@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import FlightRequestForm from '../components/FlightRequestForm';
 
 const Support: React.FC = () => {
 
     return (
-        <div className='justify-center items-center pb-20'>
+        <div className='justify-center items-center'>
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
@@ -28,6 +29,8 @@ const Support: React.FC = () => {
                     </p>
                 </motion.div>
             </section>
+
+            <FlightRequestForm />
         </div>
     );
 };
