@@ -34,6 +34,7 @@ const FlightRequestForm: React.FC = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [multiCityFlights, setMultiCityFlights] = useState([
         { origin: "", destination: "", depart: "" },
+        { origin: "", destination: "", depart: "" },
     ]);
 
     const addFlightLeg = () => {
@@ -229,7 +230,7 @@ const FlightRequestForm: React.FC = () => {
                                         </div>
 
                                         {/* Remove flight button */}
-                                        {multiCityFlights.length > 1 && (
+                                        {multiCityFlights.length > 2 && index > 1 && (
                                             <button
                                                 type="button"
                                                 onClick={() =>
