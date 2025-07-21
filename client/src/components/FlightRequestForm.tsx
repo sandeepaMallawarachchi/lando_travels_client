@@ -31,6 +31,21 @@ const FlightRequestForm: React.FC = () => {
         infants: 0,
     });
 
+    const [multiCityFlights, setMultiCityFlights] = useState([
+        { origin: "", destination: "", depart: "" },
+    ]);
+
+    const addFlightLeg = () => {
+        if (multiCityFlights.length < 6) {
+            setMultiCityFlights([
+                ...multiCityFlights,
+                { origin: "", destination: "", depart: "" },
+            ]);
+        } else {
+            toast.error("You can only add up to 6 flights.");
+        }
+    };
+
     const fetchAirports = async (query: string) => {
         const response = await fetch(`https://aerodatabox.p.rapidapi.com/airports/search/term?q=${query}`, {
             method: "GET",
@@ -83,6 +98,7 @@ const FlightRequestForm: React.FC = () => {
                 returnDate: form.return,
                 tripType,
                 logoBase64,
+                multiCityFlights,
             });
 
             toast.success("Flight request submitted and email sent!");
@@ -126,64 +142,159 @@ const FlightRequestForm: React.FC = () => {
                             Flight Request Details
                         </h2>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div className="flex flex-col relative">
-                                <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
-                                    Origin
-                                </label>
-                                <AsyncSelect
-                                    cacheOptions
-                                    defaultOptions
-                                    loadOptions={loadAirportOptions}
-                                    onChange={(selected: AirportOption | null) =>
-                                        setForm({ ...form, origin: selected?.label || "" })
-                                    }
-                                />
-                            </div>
-                            <div className="flex flex-col relative">
-                                <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
-                                    Destination
-                                </label>
-                                <AsyncSelect
-                                    cacheOptions
-                                    defaultOptions
-                                    loadOptions={loadAirportOptions}
-                                    onChange={(selected: AirportOption | null) =>
-                                        setForm({ ...form, destination: selected?.label || "" })
-                                    }
-                                />
-                            </div>
-                            <div className="flex flex-col relative">
-                                <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
-                                    Departure Date
-                                </label>
-                                <input
-                                    name="depart"
-                                    type="date"
-                                    value={form.depart}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
-                                />
-                            </div>
-                            {tripType === "Round Trip" && (
-                                <div className="flex flex-col relative">
-                                    <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
-                                        Return Date
-                                    </label>
-                                    <input
-                                        name="return"
-                                        type="date"
-                                        value={form.return}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
-                                    />
+                        {tripType === "Multi City" && (
+                            <div className="space-y-4">
+                                {multiCityFlights.map((flight, index) => (
+                                    <div
+                                        key={index}
+                                        className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end relative"
+                                    >
+                                        <div>
+                                            <label className="text-sm font-medium text-gray-700 mb-1">Origin</label>
+                                            <AsyncSelect
+                                                cacheOptions
+                                                defaultOptions
+                                                loadOptions={loadAirportOptions}
+                                                required
+                                                onChange={(selected) =>
+                                                    setMultiCityFlights((prev) =>
+                                                        prev.map((f, i) =>
+                                                            i === index ? { ...f, origin: selected?.label || "" } : f
+                                                        )
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="text-sm font-medium text-gray-700 mb-1">Destination</label>
+                                            <AsyncSelect
+                                                cacheOptions
+                                                defaultOptions
+                                                required
+                                                loadOptions={loadAirportOptions}
+                                                onChange={(selected) =>
+                                                    setMultiCityFlights((prev) =>
+                                                        prev.map((f, i) =>
+                                                            i === index ? { ...f, destination: selected?.label || "" } : f
+                                                        )
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="text-sm font-medium text-gray-700 mb-1">Departure Date</label>
+                                            <input
+                                                required
+                                                type="date"
+                                                value={flight.depart}
+                                                min={new Date().toISOString().split("T")[0]}
+                                                onChange={(e) =>
+                                                    setMultiCityFlights((prev) =>
+                                                        prev.map((f, i) =>
+                                                            i === index ? { ...f, depart: e.target.value } : f
+                                                        )
+                                                    )
+                                                }
+                                                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none text-gray-800"
+                                            />
+                                        </div>
+
+                                        {/* Remove flight button */}
+                                        {multiCityFlights.length > 1 && (
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    setMultiCityFlights((prev) => prev.filter((_, i) => i !== index))
+                                                }
+                                                className="absolute -top-2 -right-2 cursor-pointer bg-red-100 hover:bg-red-200 text-red-600 text-xs px-2 py-1 rounded-full"
+                                            >
+                                                ✕
+                                            </button>
+                                        )}
+                                    </div>
+                                ))}
+
+                                {/* Add More Flights */}
+                                <div className="flex justify-end pt-2">
+                                    <button
+                                        type="button"
+                                        onClick={addFlightLeg}
+                                        className="text-blue-500 text-sm font-medium cursor-pointer flex items-center"
+                                    >
+                                        <span className="text-lg mr-1">＋</span>{" "}
+                                        <span className="hover:underline">Add another flight</span>
+                                    </button>
                                 </div>
+                            </div>
+                        )}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {tripType !== "Multi City" && (
+                                <>
+                                    <div className="flex flex-col relative">
+                                        <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                            Origin
+                                        </label>
+                                        <AsyncSelect
+                                            cacheOptions
+                                            defaultOptions
+                                            loadOptions={loadAirportOptions}
+                                            onChange={(selected: AirportOption | null) =>
+                                                setForm({ ...form, origin: selected?.label || "" })
+                                            }
+                                        />
+                                    </div>
+                                    <div className="flex flex-col relative">
+                                        <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                            Destination
+                                        </label>
+                                        <AsyncSelect
+                                            cacheOptions
+                                            defaultOptions
+                                            loadOptions={loadAirportOptions}
+                                            onChange={(selected: AirportOption | null) =>
+                                                setForm({ ...form, destination: selected?.label || "" })
+                                            }
+                                        />
+                                    </div>
+                                    <div className="flex flex-col relative">
+                                        <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                            Departure Date
+                                        </label>
+                                        <input
+                                            required
+                                            name="depart"
+                                            type="date"
+                                            value={form.depart}
+                                            min={new Date().toISOString().split("T")[0]}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
+                                        />
+                                    </div>
+
+                                    {tripType === "Round Trip" && (
+                                        <div className="flex flex-col relative">
+                                            <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                                Return Date
+                                            </label>
+                                            <input
+                                                required
+                                                name="return"
+                                                type="date"
+                                                value={form.return}
+                                                min={form.depart || new Date().toISOString().split("T")[0]}
+                                                onChange={handleChange}
+                                                className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
+                                            />
+                                        </div>
+                                    )}
+                                </>
                             )}
                             <div className="flex flex-col relative">
                                 <label className="text-sm font-medium text-gray-700 mb-1">Travellers</label>
 
                                 <div className="relative">
                                     <input
+                                        required
                                         readOnly
                                         onClick={() => setShowTravellerDropdown(!showTravellerDropdown)}
                                         value={`${form.adults} Adult(s), ${form.children} Child, ${form.infants} Infant`}
@@ -254,7 +365,7 @@ const FlightRequestForm: React.FC = () => {
                             </label>
                             <textarea
                                 name="decription"
-                                placeholder="Additional Details..."
+                                placeholder="Layover, Direct flights, Baggage..."
                                 value={form.decription}
                                 onChange={handleChange}
                                 className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
@@ -274,6 +385,7 @@ const FlightRequestForm: React.FC = () => {
                                         Full Name
                                     </label>
                                     <input
+                                        required
                                         name="name"
                                         placeholder="Example Name"
                                         value={form.name}
@@ -286,6 +398,7 @@ const FlightRequestForm: React.FC = () => {
                                         Email Address
                                     </label>
                                     <input
+                                        required
                                         name="email"
                                         type="email"
                                         placeholder="example@gmail.com"
@@ -299,6 +412,7 @@ const FlightRequestForm: React.FC = () => {
                                         Phone  Number
                                     </label>
                                     <input
+                                        required
                                         name="phone"
                                         placeholder="+94xxxxxxx"
                                         value={form.phone}
@@ -311,6 +425,7 @@ const FlightRequestForm: React.FC = () => {
                                         Address
                                     </label>
                                     <input
+                                        required
                                         name="address"
                                         placeholder="No123 Colombo..."
                                         value={form.address}
