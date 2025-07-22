@@ -1,5 +1,7 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import { CheckCircle, AlertCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 type SubscriptionStatus = "success" | "error" | null;
 
@@ -71,38 +73,73 @@ const Subscribe: React.FC = () => {
   };
 
   return (
-    <div>
-      <h4 className="text-lg font-semibold mb-4">Stay Updated</h4>
-      <p className="text-amber-100 mb-4">
-        Subscribe to our newsletter for book recommendations and exclusive
-        offers!
-      </p>
+    <section
+      id="contact"
+      className="relative my-40 bg-white text-black flex flex-col md:flex-row items-center justify-center px-6 md:px-24 overflow-hidden"
+    >
+      <motion.div
+        className="w-full md:w-1/2 mb-12 md:mb-0"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        <div className="max-w-md">
+          <div className="mb-10">
+            <img
+              src="/newsletter.jpg"
+              alt="landotravels Logo"
+              width={300}
+              height={150}
+              className="object-contain"
+            />
+          </div>
+          <h2 className="text-4xl mb-4 font-bold">Stay Updated</h2>
+          <p className="text-gray-400">
+            Subscribe to our newsletter for book recommendations and exclusive
+            offers!
+          </p>
+        </div>
+      </motion.div>
 
-      <form onSubmit={handleSubscribe} className="space-y-3">
+      <motion.form
+        onSubmit={handleSubscribe}
+        className="space-y-10 my-10 max-w-xl "
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        <label htmlFor="label" className="text-sm text-gray-400  mb-1">
+          Your Name
+        </label>
         <input
           type="text"
           name="fullName"
-          placeholder="Your Name"
+          placeholder="Someone"
           value={subscriptionData.fullName}
           onChange={handleInputChange}
-          className="w-full px-3 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="rounded w-full bg-transparent border-b border-blue-500 focus:outline-none focus:border-b-2 focus:border-blue-500 transition"
           disabled={isLoading}
         />
 
+        <label htmlFor="label" className="text-sm text-gray-400  mb-1">
+          Email Address
+        </label>
         <input
           type="email"
           name="email"
-          placeholder="Your Email"
+          placeholder="example@gmail.com"
           value={subscriptionData.email}
           onChange={handleInputChange}
-          className="w-full px-3 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="rounded w-full bg-transparent border-b border-blue-500 focus:outline-none focus:border-b-2 focus:border-blue-500 transition"
           disabled={isLoading}
         />
 
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-amber-700 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+          className="bg-blue-500 text-white text-sm cursor-pointer font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition"
         >
           {isLoading ? (
             <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
@@ -110,7 +147,7 @@ const Subscribe: React.FC = () => {
             "Subscribe"
           )}
         </button>
-      </form>
+      </motion.form>
 
       {subscriptionStatus === "success" && (
         <div className="mt-3 flex items-center text-green-300">
@@ -127,7 +164,7 @@ const Subscribe: React.FC = () => {
           </span>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
