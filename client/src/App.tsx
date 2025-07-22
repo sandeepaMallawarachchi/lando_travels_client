@@ -28,6 +28,7 @@ import SoftwareHub from "./pages/SoftwareHub";
 import { Analytics } from "@vercel/analytics/react";
 import TawkToWidget from "./components/TawkToWidget";
 import Subscribe from "./components/Subscribe";
+import Support from "./pages/Support";
 
 type LayoutProps = {
   children: ReactNode;
@@ -81,6 +82,7 @@ function App() {
             <Route path="/corporate" element={<CorporateTravels />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/support" element={<Support />} />
 
             {/* admin routes */}
             <Route

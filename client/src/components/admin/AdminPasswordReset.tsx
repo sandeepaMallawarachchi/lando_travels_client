@@ -74,7 +74,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
       toast.success('Password updated.');
       navigate('/');
     } catch {
-      toast.success('Reset failed.');
+      toast.error('Reset failed.');
     } finally {
       setLoading(false);
     }

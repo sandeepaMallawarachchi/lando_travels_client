@@ -41,6 +41,7 @@ const Footer: React.FC = () => {
                     <a aria-label="anchor tag" href="/outbound" className="text-sm text-gray-300 hover:text-white transition">Outbound Tours</a>
                     <a aria-label="anchor tag" href="/corporate" className="text-sm text-gray-300 hover:text-white transition">Corporate Travel</a>
                     <a aria-label="anchor tag" href="/contact" className="text-sm text-gray-300 hover:text-white transition">Contact Us</a>
+                    <a aria-label="anchor tag" href="/support" className="text-sm text-gray-300 hover:text-white transition">Support</a>
                 </div>
 
                 {/* Map Embed */}

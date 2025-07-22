@@ -24,7 +24,7 @@ const softwares = [
     {
         name: "Global HRM",
         logo: "/hrm.webp",
-        link: "https://hrm-software-nine.vercel.app",
+        link: "https://globalhrm.vercel.app",
         external: true,
     },
     {
