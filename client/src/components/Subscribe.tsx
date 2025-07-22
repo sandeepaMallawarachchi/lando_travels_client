@@ -137,7 +137,7 @@ const Subscribe: React.FC = () => {
           className="bg-blue-500 text-white text-sm cursor-pointer font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition"
         >
           {isLoading ? (
-            <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+            "Subscribeing..."
           ) : (
             "Subscribe"
           )}
