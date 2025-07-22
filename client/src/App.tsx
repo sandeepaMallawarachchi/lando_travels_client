@@ -27,7 +27,6 @@ import Help from "./components/admin/Help";
 import SoftwareHub from "./pages/SoftwareHub";
 import { Analytics } from "@vercel/analytics/react";
 import TawkToWidget from "./components/TawkToWidget";
-import Subscribe from "./components/Subscribe";
 import Support from "./pages/Support";
 
 type LayoutProps = {
