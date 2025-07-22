@@ -80,7 +80,7 @@ const Subscribe: React.FC = () => {
         viewport={{ once: false, amount: 0.3 }}
       >
         <div className="max-w-md">
-          <div className="mb-10">
+          <div className="mb-10 flex justify-center md:justify-start">
             <img
               src="/newsletter.jpg"
               alt="landotravels Logo"
@@ -89,8 +89,8 @@ const Subscribe: React.FC = () => {
               className="object-contain"
             />
           </div>
-          <h2 className="text-4xl mb-4 font-bold">Stay Updated</h2>
-          <p className="text-gray-400">
+          <h2 className="text-4xl mb-4 font-bold text-center md:text-left">Stay Updated</h2>
+          <p className="text-gray-400 text-center md:text-left">
             Subscribe to our newsletter for book recommendations and exclusive
             offers!
           </p>
@@ -99,7 +99,7 @@ const Subscribe: React.FC = () => {
 
       <motion.form
         onSubmit={handleSubscribe}
-        className="space-y-10 my-10 max-w-xl"
+        className="w-full md:w-1/2 space-y-10 my-10 flex flex-col justify-center"
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
@@ -134,7 +134,7 @@ const Subscribe: React.FC = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-blue-500 text-white text-sm cursor-pointer font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition"
+          className="md:self-start bg-blue-500 text-white text-sm cursor-pointer font-medium px-5 py-2 rounded-lg hover:bg-blue-600 transition"
         >
           {isLoading ? (
             "Subscribeing..."
