@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
-import { CheckCircle, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
-
-type SubscriptionStatus = "success" | "error" | null;
+import toast from "react-hot-toast";
 
 const Subscribe: React.FC = () => {
   const [subscriptionData, setSubscriptionData] = useState<{
@@ -14,8 +12,6 @@ const Subscribe: React.FC = () => {
     email: "",
   });
 
-  const [subscriptionStatus, setSubscriptionStatus] =
-    useState<SubscriptionStatus>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,13 +26,13 @@ const Subscribe: React.FC = () => {
     e.preventDefault();
 
     if (!subscriptionData.fullName.trim() || !subscriptionData.email.trim()) {
-      setSubscriptionStatus("error");
+      toast.error("Please fill out all fields.");
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(subscriptionData.email)) {
-      setSubscriptionStatus("error");
+      toast.error("Invalid email address.");
       return;
     }
 
@@ -61,14 +57,13 @@ const Subscribe: React.FC = () => {
 
       if (!response.ok) throw new Error(data.error || "Subscription failed");
 
-      setSubscriptionStatus("success");
+      toast.success("You are subscribed 🎉");
       setSubscriptionData({ fullName: "", email: "" });
     } catch (error) {
       console.error("Subscription error:", error);
-      setSubscriptionStatus("error");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
-      setTimeout(() => setSubscriptionStatus(null), 3000);
     }
   };
 
@@ -104,13 +99,13 @@ const Subscribe: React.FC = () => {
 
       <motion.form
         onSubmit={handleSubscribe}
-        className="space-y-10 my-10 max-w-xl "
+        className="space-y-10 my-10 max-w-xl"
         initial={{ x: 100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
         viewport={{ once: false, amount: 0.3 }}
       >
-        <label htmlFor="label" className="text-sm text-gray-400  mb-1">
+        <label htmlFor="fullName" className="text-sm text-gray-400 mb-1">
           Your Name
         </label>
         <input
@@ -123,7 +118,7 @@ const Subscribe: React.FC = () => {
           disabled={isLoading}
         />
 
-        <label htmlFor="label" className="text-sm text-gray-400  mb-1">
+        <label htmlFor="email" className="text-sm text-gray-400 mb-1">
           Email Address
         </label>
         <input
@@ -148,22 +143,6 @@ const Subscribe: React.FC = () => {
           )}
         </button>
       </motion.form>
-
-      {subscriptionStatus === "success" && (
-        <div className="mt-3 flex items-center text-green-300">
-          <CheckCircle size={16} className="mr-2" />
-          <span className="text-sm">You are subscribed 🎉</span>
-        </div>
-      )}
-
-      {subscriptionStatus === "error" && (
-        <div className="mt-3 flex items-center text-red-300">
-          <AlertCircle size={16} className="mr-2" />
-          <span className="text-sm">
-            Please check your information and try again.
-          </span>
-        </div>
-      )}
     </section>
   );
 };
