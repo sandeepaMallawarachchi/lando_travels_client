@@ -1,7 +1,7 @@
 import "./App.css";
-import { Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom";
 import type { ReactNode } from "react";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import CustomCursor from "./components/CustomCursor";
@@ -25,8 +25,9 @@ import ManageCards from "./components/admin/ManageCards";
 import Documentation from "./components/admin/Documentation";
 import Help from "./components/admin/Help";
 import SoftwareHub from "./pages/SoftwareHub";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import TawkToWidget from "./components/TawkToWidget";
+import Subscribe from "./components/Subscribe";
 
 type LayoutProps = {
   children: ReactNode;
@@ -157,4 +158,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
