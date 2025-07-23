@@ -11,7 +11,7 @@ const cardsData = [
             'Book flights worldwide with ease. Our IATA-certified team secures the best corporate fares and ensures a smooth travel process.',
         fullText:
             'As an IATA-accredited travel agency, Lando Travels offers seamless ticketing and reservations with all major airlines, both online and offline. We provide competitive fares and ensure that your corporate travel is hassle-free, efficient, and cost-effective.',
-        gallery: ['/airTicketing.webp', '/airTicketing2.webp', '/airTicketing3.webp', '/airTicketing4.avif'],
+        gallery: ['/airTicketing.webp', '/airTicketing2.webp', '/airTicketing3.webp', '/airTicketing4.webp'],
     },
     {
         id: 2,

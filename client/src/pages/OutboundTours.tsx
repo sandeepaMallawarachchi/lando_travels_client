@@ -21,17 +21,17 @@ const cardsData = [
             'Explore the timeless elegance of Europe — from romantic cities to majestic landscapes and iconic landmarks.',
         fullText:
             'Start in Paris, the city of love, strolling beneath the Eiffel Tower and along the Seine. Head to Rome to uncover the rich history of the Colosseum and the Vatican. Journey through Switzerland’s Alps for breathtaking mountain views and serene lakes. End your tour in Amsterdam, exploring charming canals, tulip gardens, and vibrant local culture.',
-        gallery: ['/paris.webp', '/rome.webp', '/switzerland.avif', '/amsterdam.webp'],
+        gallery: ['/paris.webp', '/rome.webp', '/switzerland.webp', '/amsterdam.webp'],
     },
     {
         id: 4,
-        imgSrc: '/egypt.avif',
+        imgSrc: '/egypt.webp',
         title: 'Majestic Africa Tour',
         description:
             'Experience the raw beauty, cultural richness, and ancient wonders of Africa’s most iconic destinations.',
         fullText:
             'Embark on a thrilling safari in Kenya’s Maasai Mara to witness the Big Five in their natural habitat. Explore the ancient pyramids and temples of Egypt that stand as testaments to a glorious past. Relax on the pristine beaches of Zanzibar, soaking in turquoise waters and Swahili culture. Conclude your journey in Cape Town, South Africa, where Table Mountain and Robben Island tell stories of resilience and natural splendor.',
-        gallery: ['/egypt.avif', '/capetown.webp', '/kenya.webp', '/zanzibar.webp'],
+        gallery: ['/egypt.webp', '/capetown.webp', '/kenya.webp', '/zanzibar.webp'],
     },
     {
         id: 4,

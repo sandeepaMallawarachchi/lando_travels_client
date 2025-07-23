@@ -82,7 +82,7 @@ const Subscribe: React.FC = () => {
         <div className="max-w-md">
           <div className="mb-10 flex justify-center md:justify-start">
             <img
-              src="/newsletter.jpg"
+              src="/newsletter.webp"
               alt="landotravels Logo"
               width={300}
               height={150}

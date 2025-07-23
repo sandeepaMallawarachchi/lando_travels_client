@@ -21,7 +21,7 @@ const cardsData = [
             'Discover the spiritual and historical richness of Sri Lanka through its ancient cities and sacred landmarks.',
         fullText:
             'The Temple of the Sacred Tooth Relic in Kandy is a major Buddhist site, housing a revered relic of the Buddha. Anuradhapura, Sri Lanka’s first capital, is home to centuries-old stupas and sacred Bodhi trees. Polonnaruwa showcases the architectural brilliance of medieval Sri Lanka through temples, statues, and royal ruins. The Nallur Kandaswamy Kovil in Jaffna is a significant Hindu temple known for its colorful festivals and devotional heritage.',
-        gallery: ['/inbound.webp', '/anuradhapura.avif', '/polonnaruwa.webp', '/nallur.webp'],
+        gallery: ['/inbound.webp', '/anuradhapura.webp', '/polonnaruwa.webp', '/nallur.webp'],
     },
     {
         id: 3,
