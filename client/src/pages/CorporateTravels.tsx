@@ -24,7 +24,7 @@ const cardsData = [
         gallery: ['/visaProcessing.webp', '/visaProcessing2.webp', '/visaProcessing3.webp', '/visaProcessing4.webp'],
     },
     {
-        id: 4,
+        id: 3,
         imgSrc: '/travelInsurance.webp',
         title: 'Travel Insurance',
         description:
