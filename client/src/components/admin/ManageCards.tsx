@@ -152,7 +152,7 @@ const ManageCards: React.FC = () => {
                         <motion.div
                             key={card._id}
                             layout
-                            className="relative shadow-lg rounded-xl overflow-hidden group transition"
+                            className="relative shadow-lg rounded-xl overflow-hidden group transition md:max-w-[400px]"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             onClick={(e) => {
