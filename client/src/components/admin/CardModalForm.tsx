@@ -85,30 +85,33 @@ const CardModalForm: React.FC<CardFormProps> = ({
 
                 <form onSubmit={onSubmit} className="space-y-6">
                     {/* Image Preview with Edit Icon */}
-                    {card.src && (
-                        <div className="relative group w-full h-48 mb-4">
-                            <div className="flex justify-end">
-                                <div className="absolute bg-blue-500 text-white p-2 rounded-full shadow">
-                                    <Edit size={20} />
-                                </div>
-                            </div>
-                            <img
-                                src={card.src}
-                                alt="Preview"
-                                className="w-full h-full object-cover rounded-xl"
-                            />
+                    <div className="relative group w-full h-48 mb-4 border border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50">
+                        {card.src ? (
+                            <>
+                                <img
+                                    src={card.src}
+                                    alt="Preview"
+                                    className="w-full h-full object-cover rounded-xl"
+                                />
+                                <label
+                                    htmlFor="imageUpload"
+                                    className="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 flex items-center justify-center transition cursor-pointer"
+                                >
+                                    <div className="bg-white text-amber-400 p-2 rounded-full shadow hover:scale-110 transition">
+                                        <Edit />
+                                    </div>
+                                </label>
+                            </>
+                        ) : (
                             <label
                                 htmlFor="imageUpload"
-                                className="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 flex items-center justify-center transition cursor-pointer"
+                                className="w-full h-full flex flex-col items-center justify-center text-gray-400 cursor-pointer"
                             >
-                                <div className="bg-white text-blue-500 p-2 rounded-full shadow hover:scale-110 transition">
-                                    <Edit />
-                                </div>
+                                <Edit className="mb-2" />
+                                <span>Click to upload image</span>
                             </label>
-                        </div>
-                    )}
-
-                    {/* Hidden File Input (used for edit icon) */}
+                        )}
+                    </div>
                     <input
                         type="file"
                         accept="image/*"
@@ -157,16 +160,18 @@ const CardModalForm: React.FC<CardFormProps> = ({
                         >
                             {uploading ? "Saving..." : "Save"}
                         </button>
-                        <button aria-label="Button"
-                            type="button"
-                            onClick={handleToggleVisibility}
-                            className={`px-5 py-2 rounded transition cursor-pointer ${card.show
-                                ? "bg-red-100 text-red-600 hover:bg-red-200"
-                                : "bg-green-100 text-green-600 hover:bg-green-200"
-                                }`}
-                        >
-                            {card.show ? "Hide Card" : "Show Card"}
-                        </button>
+                        {card._id && (
+                            <button
+                                type="button"
+                                onClick={handleToggleVisibility}
+                                className={`px-5 py-2 rounded transition cursor-pointer ${card.show
+                                    ? "bg-red-100 text-red-600 hover:bg-red-200"
+                                    : "bg-green-100 text-green-600 hover:bg-green-200"
+                                    }`}
+                            >
+                                {card.show ? "Hide Card" : "Show Card"}
+                            </button>
+                        )}
                     </div>
                 </form>
             </motion.div>
