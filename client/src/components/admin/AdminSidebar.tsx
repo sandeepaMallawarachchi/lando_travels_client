@@ -27,7 +27,7 @@ const AdminSidebar: React.FC = () => {
         const fetchAdmin = async () => {
             try {
                 const res = await fetch(
-                    `https://lando-travels-api.vercel.app/admin/getAdmin/${adminID}`
+                    `https://lando-travels.vercel.app/admin/getAdmin/${adminID}`
                 );
                 const data = await res.json();
                 setAdminRole(data);
@@ -42,7 +42,7 @@ const AdminSidebar: React.FC = () => {
     const handleLogout = async () => {
         if (!window.confirm("Are you sure you want to logout?")) return;
         try {
-            await fetch("https://lando-travels-api.vercel.app/admin/logout", { method: "POST" });
+            await fetch("https://lando-travels.vercel.app/admin/logout", { method: "POST" });
             localStorage.removeItem("token");
             navigate("/");
         } catch (err) {

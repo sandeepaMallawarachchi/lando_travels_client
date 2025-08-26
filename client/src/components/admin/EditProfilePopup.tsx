@@ -29,7 +29,7 @@ const EditProfilePopup: React.FC<EditProfilePopupProps> = ({ isOpen, onClose, ad
 
     try {
       const response = await axios.put(
-        `https://lando-travels-api.vercel.app/admin/update/${adminDetails.adminID}`,
+        `https://lando-travels.vercel.app/admin/update/${adminDetails.adminID}`,
         { email, phone, address }
       );
 

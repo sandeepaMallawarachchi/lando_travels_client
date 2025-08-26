@@ -18,7 +18,7 @@ const Inbox: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("https://lando-travels-api.vercel.app/admin/contacts")
+      .get("https://lando-travels.vercel.app/admin/contacts")
       .then((res) => setEmails(res.data))
       .catch((err) => console.error("Error fetching emails:", err))
       .finally(() => setLoading(false));
@@ -26,7 +26,7 @@ const Inbox: React.FC = () => {
 
   const handleDelete = (id: string) => {
     axios
-      .delete(`https://lando-travels-api.vercel.app/admin/contacts/${id}`)
+      .delete(`https://lando-travels.vercel.app/admin/contacts/${id}`)
       .then((res) => {
         setEmails(emails.filter((email) => email._id !== id));
         setSelectedEmail(null);
@@ -40,7 +40,7 @@ const Inbox: React.FC = () => {
 
   const handleEmailClick = (email: Email) => {
     axios
-      .patch(`https://lando-travels-api.vercel.app/admin/contacts/${email._id}`, {
+      .patch(`https://lando-travels.vercel.app/admin/contacts/${email._id}`, {
         read: true,
       })
       .then(() => {

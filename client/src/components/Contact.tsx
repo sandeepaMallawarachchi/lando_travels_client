@@ -16,7 +16,7 @@ const Contact = () => {
 
         try {
             await axios.post(
-                `https://lando-travels-api.vercel.app/admin/contact`,
+                `https://lando-travels.vercel.app/admin/contact`,
                 {
                     email,
                     subject,

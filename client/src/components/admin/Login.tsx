@@ -23,7 +23,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://lando-travels-api.vercel.app/admin/login", {
+      const res = await axios.post("https://lando-travels.vercel.app/admin/login", {
         email,
         password,
       });

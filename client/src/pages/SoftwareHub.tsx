@@ -51,7 +51,7 @@ const SoftwareHub: React.FC = () => {
 
             try {
                 const response = await axios.get(
-                    `https://lando-travels-api.vercel.app/admin/getAdmin/${adminID}`
+                    `https://lando-travels.vercel.app/admin/getAdmin/${adminID}`
                 );
                 setAdmin(response.data);
             } catch (err) {

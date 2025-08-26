@@ -43,7 +43,7 @@ const CardModalForm: React.FC<CardFormProps> = ({
     const handleToggleVisibility = async () => {
         try {
             const updated = { ...card, show: !card.show };
-            const res = await fetch(`https://lando-travels-api.vercel.app/admin/cards/${card._id}`, {
+            const res = await fetch(`https://lando-travels.vercel.app/admin/cards/${card._id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updated),

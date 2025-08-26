@@ -24,7 +24,7 @@ const AllAdmins: React.FC = () => {
         const fetchAdmins = async () => {
             try {
                 const response = await axios.get(
-                    "https://lando-travels-api.vercel.app/admin/getAll"
+                    "https://lando-travels.vercel.app/admin/getAll"
                 );
                 setAdmins(response.data);
             } catch (err: any) {
@@ -41,7 +41,7 @@ const AllAdmins: React.FC = () => {
 
         try {
             await axios.delete(
-                `https://lando-travels-api.vercel.app/admin/delete/${adminID}`
+                `https://lando-travels.vercel.app/admin/delete/${adminID}`
             );
             setAdmins(admins.filter((admin) => admin.adminID !== adminID));
             toast.success("Admin deleted successfully.");
@@ -52,7 +52,7 @@ const AllAdmins: React.FC = () => {
 
     const handleRoleChange = async (adminID: string, newRole: string) => {
         try {
-            await axios.put(`https://lando-travels-api.vercel.app/admin/updateRole/${adminID}`, {
+            await axios.put(`https://lando-travels.vercel.app/admin/updateRole/${adminID}`, {
                 role: newRole,
             });
             setAdmins((prev) =>

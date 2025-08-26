@@ -47,7 +47,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('https://lando-travels-api.vercel.app/admin/passwordEmail', { email });
+      await axios.post('https://lando-travels.vercel.app/admin/passwordEmail', { email });
       setStep(2);
     } catch {
       toast.error('Failed to send code.');
@@ -66,7 +66,7 @@ const AdminPasswordReset: React.FC<AdminPasswordResetProps> = ({ isOpen, onClose
 
     setLoading(true);
     try {
-      await axios.post('https://lando-travels-api.vercel.app/admin/passwordReset', {
+      await axios.post('https://lando-travels.vercel.app/admin/passwordReset', {
         email,
         resetCode,
         newPassword: password

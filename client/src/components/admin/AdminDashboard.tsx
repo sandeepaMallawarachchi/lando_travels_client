@@ -40,7 +40,7 @@ const AdminDashboard: React.FC = () => {
       setLoading(true)
       try {
         const res = await axios.get(
-          `https://lando-travels-api.vercel.app/admin/getAdmin/${adminID}`
+          `https://lando-travels.vercel.app/admin/getAdmin/${adminID}`
         );
         setAdminDetails(res.data);
       } catch (err: any) {
@@ -54,7 +54,7 @@ const AdminDashboard: React.FC = () => {
     const fetchTotalUsers = async () => {
       setLoading(true)
       try {
-        const res = await axios.get("https://lando-travels-api.vercel.app/admin/getAll");
+        const res = await axios.get("https://lando-travels.vercel.app/admin/getAll");
         setTotalUsers(res.data.length);
       } catch (err: any) {
         console.error("Error fetching total users:", err.message);
@@ -67,7 +67,7 @@ const AdminDashboard: React.FC = () => {
     const fetchTotalPosts = async () => {
       setLoading(true)
       try {
-        const res = await axios.get("https://lando-travels-api.vercel.app/admin/getcards");
+        const res = await axios.get("https://lando-travels.vercel.app/admin/getcards");
         setTotalPosts(res.data.length);
       } catch (err: any) {
         console.error("Error fetching total posts:", err.message);
@@ -81,7 +81,7 @@ const AdminDashboard: React.FC = () => {
   useEffect(() => {
     const fetchOnlineUsers = async () => {
       try {
-        const res = await fetch("https://lando-travels-api.vercel.app/admin/online-users");
+        const res = await fetch("https://lando-travels.vercel.app/admin/online-users");
         const data = await res.json();
         setOnlineUsers(data.count);
 

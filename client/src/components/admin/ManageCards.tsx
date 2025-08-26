@@ -32,7 +32,7 @@ const ManageCards: React.FC = () => {
 
     useEffect(() => {
         axios
-            .get("https://lando-travels-api.vercel.app/admin/getcards")
+            .get("https://lando-travels.vercel.app/admin/getcards")
             .then((res) => {
                 setCards(res.data);
             })
@@ -61,7 +61,7 @@ const ManageCards: React.FC = () => {
         try {
             if (formData._id) {
                 const res = await axios.put(
-                    `https://lando-travels-api.vercel.app/admin/cards/${formData._id}`,
+                    `https://lando-travels.vercel.app/admin/cards/${formData._id}`,
                     formData
                 );
                 setCards((prev) =>
@@ -70,7 +70,7 @@ const ManageCards: React.FC = () => {
                 toast.success("Card updated!");
             } else {
                 const res = await axios.post(
-                    "https://lando-travels-api.vercel.app/admin/createCard",
+                    "https://lando-travels.vercel.app/admin/createCard",
                     formData
                 );
                 setCards((prev) => [...prev, res.data]);
@@ -88,7 +88,7 @@ const ManageCards: React.FC = () => {
         if (!window.confirm("Are you sure you want to delete this card?")) return;
 
         try {
-            await axios.delete(`https://lando-travels-api.vercel.app/admin/cards/${id}`);
+            await axios.delete(`https://lando-travels.vercel.app/admin/cards/${id}`);
             setCards((prev) => prev.filter((c) => c._id !== id));
             toast.success("Card deleted successfully!");
         } catch (err: any) {

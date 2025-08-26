@@ -101,7 +101,7 @@ const FlightRequestForm: React.FC = () => {
                 };
             });
 
-            await axios.post("https://lando-travels-api.vercel.app/flight/sendFlightRequest", {
+            await axios.post("https://lando-travels.vercel.app/flight/sendFlightRequest", {
                 ...form,
                 returnDate: form.return,
                 tripType,

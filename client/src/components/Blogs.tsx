@@ -19,7 +19,7 @@ const Blogs: React.FC = () => {
         const fetchCards = async () => {
             setLoading(true)
             try {
-                const response = await axios.get("https://lando-travels-api.vercel.app/admin/getcards");
+                const response = await axios.get("https://lando-travels.vercel.app/admin/getcards");
                 setBlogs(response.data);
             } catch (error) {
                 console.error("Error fetching cards:", error);

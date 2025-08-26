@@ -64,7 +64,7 @@ const AdminRegister: React.FC = () => {
         if (Object.values(errors).some((err) => err)) return;
 
         try {
-            const res = await axios.post('https://lando-travels-api.vercel.app/admin/register', {
+            const res = await axios.post('https://lando-travels.vercel.app/admin/register', {
                 firstname, lastname, email, password, confirmPassword, gender, role, address, phone,
             });
             if (res.status === 201) {

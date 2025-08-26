@@ -12,7 +12,7 @@ const Help: React.FC = () => {
         const fetchAdminDetails = async () => {
             try {
                 const res = await axios.get<AdminDetails>(
-                    `https://lando-travels-api.vercel.app/admin/getAdmin/${adminID}`
+                    `https://lando-travels.vercel.app/admin/getAdmin/${adminID}`
                 );
                 if (res.data?.email) {
                     setSenderEmail(res.data.email);
