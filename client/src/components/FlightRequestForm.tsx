@@ -11,6 +11,7 @@ type AirportOption = {
 };
 
 type TravellerKey = "adults" | "children" | "infants";
+type LuggageKey = "carryon" | "checked" | "extra";
 
 const FlightRequestForm: React.FC = () => {
     const [tripType, setTripType] = useState("Round Trip");
@@ -30,6 +31,14 @@ const FlightRequestForm: React.FC = () => {
         adults: 1,
         children: 0,
         infants: 0,
+        // Passport Details
+        passportNumber: "",
+        passportExpiry: "",
+        nationality: "",
+        // Luggage Selection
+        carryon: 1,
+        checked: 1,
+        extra: 0,
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [multiCityFlights, setMultiCityFlights] = useState([
@@ -107,6 +116,16 @@ const FlightRequestForm: React.FC = () => {
                 tripType,
                 logoBase64,
                 multiCityFlights,
+                passportDetails: {
+                    passportNumber: form.passportNumber,
+                    passportExpiry: form.passportExpiry,
+                    nationality: form.nationality,
+                },
+                luggageSelection: {
+                    carryon: form.carryon,
+                    checked: form.checked,
+                    extra: form.extra,
+                },
             });
 
             toast.success("Flight request submitted");
@@ -127,6 +146,12 @@ const FlightRequestForm: React.FC = () => {
                 adults: 1,
                 children: 0,
                 infants: 0,
+                passportNumber: "",
+                passportExpiry: "",
+                nationality: "",
+                carryon: 1,
+                checked: 1,
+                extra: 0,
             });
 
             setMultiCityFlights([{ origin: "", destination: "", depart: "" }]);
@@ -384,6 +409,7 @@ const FlightRequestForm: React.FC = () => {
                                     className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
                                 >
                                     <option>Economy</option>
+                                    <option>Premium Economy</option>
                                     <option>Business</option>
                                     <option>First Class</option>
                                 </select>
@@ -400,6 +426,165 @@ const FlightRequestForm: React.FC = () => {
                                 onChange={handleChange}
                                 className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
                             />
+                        </div>
+
+                        <hr className="border-t border-gray-200" />
+
+                        {/* Luggage Variety Selection */}
+                        <h2 className="text-xl font-semibold text-center text-gray-800">
+                            Luggage Selection
+                        </h2>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-3">Carry-On Bags</label>
+                                <div className="flex items-center justify-between bg-gray-50 p-4 rounded-md border border-gray-300">
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                carryon: Math.max(0, Number(prev.carryon) - 1),
+                                            }))
+                                        }
+                                        className="w-8 h-8 cursor-pointer rounded-full bg-blue-500 hover:bg-blue-600 text-white text-lg flex items-center justify-center"
+                                    >
+                                        −
+                                    </button>
+                                    <span className="text-xl font-semibold text-gray-800">{form.carryon}</span>
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                carryon: Math.min(2, Number(prev.carryon) + 1),
+                                            }))
+                                        }
+                                        className="w-8 h-8 cursor-pointer rounded-full bg-blue-500 hover:bg-blue-600 text-white text-lg flex items-center justify-center"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <p className="text-xs text-gray-500 mt-2">Max: 2 bags</p>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-3">Checked Baggage</label>
+                                <div className="flex items-center justify-between bg-gray-50 p-4 rounded-md border border-gray-300">
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                checked: Math.max(0, Number(prev.checked) - 1),
+                                            }))
+                                        }
+                                        className="w-8 h-8 cursor-pointer rounded-full bg-blue-500 hover:bg-blue-600 text-white text-lg flex items-center justify-center"
+                                    >
+                                        −
+                                    </button>
+                                    <span className="text-xl font-semibold text-gray-800">{form.checked}</span>
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                checked: Math.min(3, Number(prev.checked) + 1),
+                                            }))
+                                        }
+                                        className="w-8 h-8 cursor-pointer rounded-full bg-blue-500 hover:bg-blue-600 text-white text-lg flex items-center justify-center"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <p className="text-xs text-gray-500 mt-2">Max: 3 bags (23 kg each)</p>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-3">Extra Baggage</label>
+                                <div className="flex items-center justify-between bg-gray-50 p-4 rounded-md border border-gray-300">
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                extra: Math.max(0, Number(prev.extra) - 1),
+                                            }))
+                                        }
+                                        className="w-8 h-8 cursor-pointer rounded-full bg-blue-500 hover:bg-blue-600 text-white text-lg flex items-center justify-center"
+                                    >
+                                        −
+                                    </button>
+                                    <span className="text-xl font-semibold text-gray-800">{form.extra}</span>
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                extra: Math.min(2, Number(prev.extra) + 1),
+                                            }))
+                                        }
+                                        className="w-8 h-8 cursor-pointer rounded-full bg-blue-500 hover:bg-blue-600 text-white text-lg flex items-center justify-center"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <p className="text-xs text-gray-500 mt-2">Max: 2 bags @ $50 each</p>
+                            </div>
+                        </div>
+
+                        <hr className="border-t border-gray-200" />
+
+                        {/* Passport Details Section */}
+                        <h2 className="text-xl font-semibold text-center text-gray-800">
+                            Passport & Travel Documents
+                        </h2>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">
+                                    Passport Number
+                                </label>
+                                <input
+                                    required
+                                    name="passportNumber"
+                                    placeholder="e.g., A12345678"
+                                    value={form.passportNumber}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none uppercase"
+                                    maxLength={20}
+                                />
+                                <p className="text-xs text-gray-500 mt-1">As shown in passport</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">
+                                    Passport Expiry Date
+                                </label>
+                                <input
+                                    required
+                                    name="passportExpiry"
+                                    type="date"
+                                    value={form.passportExpiry}
+                                    min={new Date().toISOString().split("T")[0]}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
+                                />
+                                <p className="text-xs text-gray-500 mt-1">Must be valid for 6+ months</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">
+                                    Nationality
+                                </label>
+                                <input
+                                    required
+                                    name="nationality"
+                                    placeholder="e.g., Indian"
+                                    value={form.nationality}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
+                                />
+                                <p className="text-xs text-gray-500 mt-1">Your country of citizenship</p>
+                            </div>
                         </div>
 
                         <hr className="border-t border-gray-200" />
