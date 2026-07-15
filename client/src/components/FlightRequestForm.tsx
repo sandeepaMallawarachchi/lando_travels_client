@@ -91,8 +91,67 @@ const FlightRequestForm: React.FC = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    const validateForm = (): boolean => {
+        // Validate origin and destination
+        if (!form.origin || !form.destination) {
+            toast.error("Please select origin and destination airports");
+            return false;
+        }
+
+        // Validate departure date
+        if (!form.depart) {
+            toast.error("Please select a departure date");
+            return false;
+        }
+
+        // Validate return date for round trips
+        if (tripType === "Round Trip" && !form.return) {
+            toast.error("Please select a return date");
+            return false;
+        }
+
+        // Validate at least 1 adult is traveling
+        if (form.adults < 1) {
+            toast.error("At least 1 adult must be traveling");
+            return false;
+        }
+
+        // Validate passport expiry is in the future
+        if (!form.passportExpiry) {
+            toast.error("Please enter passport expiry date");
+            return false;
+        }
+
+        const expiryDate = new Date(form.passportExpiry);
+        const sixMonthsFromNow = new Date();
+        sixMonthsFromNow.setMonth(sixMonthsFromNow.getMonth() + 6);
+
+        if (expiryDate < sixMonthsFromNow) {
+            toast.error("Passport must be valid for at least 6 months");
+            return false;
+        }
+
+        // Validate passport number and nationality
+        if (!form.passportNumber.trim()) {
+            toast.error("Please enter your passport number");
+            return false;
+        }
+
+        if (!form.nationality.trim()) {
+            toast.error("Please enter your nationality");
+            return false;
+        }
+
+        return true;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
         setIsSubmitting(true);
 
         try {
@@ -128,7 +187,7 @@ const FlightRequestForm: React.FC = () => {
                 },
             });
 
-            toast.success("Flight request submitted");
+            toast.success("Flight request submitted successfully!");
 
             // Reset form
             setForm({
@@ -154,7 +213,17 @@ const FlightRequestForm: React.FC = () => {
                 extra: 0,
             });
 
-            setMultiCityFlights([{ origin: "", destination: "", depart: "" }]);
+            // Reset traveller dropdown
+            setShowTravellerDropdown(false);
+
+            // Reset multi-city flights to initial state
+            setMultiCityFlights([
+                { origin: "", destination: "", depart: "" },
+                { origin: "", destination: "", depart: "" },
+            ]);
+
+            // Reset trip type
+            setTripType("Round Trip");
         } catch (error) {
             console.error(error);
             toast.error("Failed to send request. Please try again.");
@@ -286,36 +355,41 @@ const FlightRequestForm: React.FC = () => {
                             {tripType !== "Multi City" && (
                                 <>
                                     <div className="flex flex-col relative">
-                                        <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
-                                            Origin
+                                        <label htmlFor="origin" className="text-sm font-medium text-gray-700 mb-1">
+                                            Origin <span className="text-red-500">*</span>
                                         </label>
                                         <AsyncSelect
+                                            inputId="origin"
                                             cacheOptions
                                             defaultOptions
                                             loadOptions={loadAirportOptions}
                                             onChange={(selected: AirportOption | null) =>
                                                 setForm({ ...form, origin: selected?.label || "" })
                                             }
+                                            isClearable
                                         />
                                     </div>
                                     <div className="flex flex-col relative">
-                                        <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
-                                            Destination
+                                        <label htmlFor="destination" className="text-sm font-medium text-gray-700 mb-1">
+                                            Destination <span className="text-red-500">*</span>
                                         </label>
                                         <AsyncSelect
+                                            inputId="destination"
                                             cacheOptions
                                             defaultOptions
                                             loadOptions={loadAirportOptions}
                                             onChange={(selected: AirportOption | null) =>
                                                 setForm({ ...form, destination: selected?.label || "" })
                                             }
+                                            isClearable
                                         />
                                     </div>
                                     <div className="flex flex-col relative">
-                                        <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                        <label htmlFor="depart" className="text-sm font-medium text-gray-700 mb-1">
                                             Departure Date
                                         </label>
                                         <input
+                                            id="depart"
                                             required
                                             name="depart"
                                             type="date"
@@ -328,10 +402,11 @@ const FlightRequestForm: React.FC = () => {
 
                                     {tripType === "Round Trip" && (
                                         <div className="flex flex-col relative">
-                                            <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                            <label htmlFor="return" className="text-sm font-medium text-gray-700 mb-1">
                                                 Return Date
                                             </label>
                                             <input
+                                                id="return"
                                                 required
                                                 name="return"
                                                 type="date"
@@ -371,7 +446,7 @@ const FlightRequestForm: React.FC = () => {
                                                             onClick={() =>
                                                                 setForm((prev) => ({
                                                                     ...prev,
-                                                                    [key]: Math.max(0, Number(prev[key]) - 1),
+                                                                    [key]: key === "adults" ? Math.max(1, Number(prev[key]) - 1) : Math.max(0, Number(prev[key]) - 1),
                                                                 }))
                                                             }
                                                             className="w-8 h-8 cursor-pointer rounded-full bg-gray-200 hover:bg-gray-300 text-lg"
@@ -399,10 +474,11 @@ const FlightRequestForm: React.FC = () => {
                                 </div>
                             </div>
                             <div className="flex flex-col relative">
-                                <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="travelClass" className="text-sm font-medium text-gray-700 mb-1">
                                     Travel Class
                                 </label>
                                 <select
+                                    id="travelClass"
                                     name="travelClass"
                                     value={form.travelClass}
                                     onChange={handleChange}
@@ -416,10 +492,11 @@ const FlightRequestForm: React.FC = () => {
                             </div>
                         </div>
                         <div className="flex flex-col relative">
-                            <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                            <label htmlFor="description" className="text-sm font-medium text-gray-700 mb-1">
                                 Additional Details
                             </label>
                             <textarea
+                                id="description"
                                 name="decription"
                                 placeholder="Layover, Direct flights, Baggage..."
                                 value={form.decription}
@@ -565,11 +642,15 @@ const FlightRequestForm: React.FC = () => {
                                     name="passportExpiry"
                                     type="date"
                                     value={form.passportExpiry}
-                                    min={new Date().toISOString().split("T")[0]}
+                                    min={(() => {
+                                        const sixMonthsFromNow = new Date();
+                                        sixMonthsFromNow.setMonth(sixMonthsFromNow.getMonth() + 6);
+                                        return sixMonthsFromNow.toISOString().split("T")[0];
+                                    })()}
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded-md text-gray-800 placeholder-gray-500 border border-gray-300 focus:outline-none"
                                 />
-                                <p className="text-xs text-gray-500 mt-1">Must be valid for 6+ months</p>
+                                <p className="text-xs text-gray-500 mt-1">Must be valid for at least 6 months from today</p>
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-sm font-medium text-gray-700 mb-1">
@@ -596,10 +677,11 @@ const FlightRequestForm: React.FC = () => {
                         <div className="flex flex-col gap-5">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="flex flex-col relative">
-                                    <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                    <label htmlFor="name" className="text-sm font-medium text-gray-700 mb-1">
                                         Full Name
                                     </label>
                                     <input
+                                        id="name"
                                         required
                                         name="name"
                                         placeholder="Example Name"
@@ -609,10 +691,11 @@ const FlightRequestForm: React.FC = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col relative">
-                                    <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                    <label htmlFor="email" className="text-sm font-medium text-gray-700 mb-1">
                                         Email Address
                                     </label>
                                     <input
+                                        id="email"
                                         required
                                         name="email"
                                         type="email"
@@ -623,10 +706,11 @@ const FlightRequestForm: React.FC = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col relative">
-                                    <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                    <label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-1">
                                         Phone  Number
                                     </label>
                                     <input
+                                        id="phone"
                                         required
                                         name="phone"
                                         placeholder="+94xxxxxxx"
@@ -636,10 +720,11 @@ const FlightRequestForm: React.FC = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col relative">
-                                    <label htmlFor="password" className="text-sm font-medium text-gray-700 mb-1">
+                                    <label htmlFor="address" className="text-sm font-medium text-gray-700 mb-1">
                                         Address
                                     </label>
                                     <input
+                                        id="address"
                                         required
                                         name="address"
                                         placeholder="No123 Colombo..."
