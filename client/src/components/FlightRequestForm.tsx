@@ -11,7 +11,6 @@ type AirportOption = {
 };
 
 type TravellerKey = "adults" | "children" | "infants";
-type LuggageKey = "carryon" | "checked" | "extra";
 
 const FlightRequestForm: React.FC = () => {
     const [tripType, setTripType] = useState("Round Trip");
