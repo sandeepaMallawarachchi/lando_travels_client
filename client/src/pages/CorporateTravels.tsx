@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -50,6 +51,12 @@ const CorporateTravels: React.FC = () => {
 
     return (
         <div className='justify-center items-center pb-20'>
+            <SEO
+  title="Corporate Travel Services | Lando Travels"
+  description="Lando Travels provides corporate travel services including air ticketing, visa processing, travel insurance, and expert travel consultation for business travelers."
+  canonical="https://www.landotravels.com/corporate"
+  image="/corporatecover.webp"
+/>
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img

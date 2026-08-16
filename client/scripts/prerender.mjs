@@ -26,14 +26,83 @@ const serverModule = await import(
 
 const { render } = serverModule;
 
+function extractSEO(html) {
+  const tags = [];
+
+  const patterns = [
+    /<title>[\s\S]*?<\/title>/gi,
+    /<meta\s+name="description"[^>]*>/gi,
+    /<link\s+rel="canonical"[^>]*>/gi,
+    /<meta\s+property="og:[^"]+"[^>]*>/gi,
+    /<meta\s+name="twitter:[^"]+"[^>]*>/gi,
+  ];
+
+  for (const pattern of patterns) {
+    const matches = html.match(pattern);
+
+    if (matches) {
+      tags.push(...matches);
+    }
+  }
+
+  return tags.join("\n");
+}
+
+function removeSEO(html) {
+  let result = html;
+
+  result = result.replace(
+    /<title>[\s\S]*?<\/title>/gi,
+    ""
+  );
+
+  result = result.replace(
+    /<meta\s+name="description"[^>]*>/gi,
+    ""
+  );
+
+  result = result.replace(
+    /<link\s+rel="canonical"[^>]*>/gi,
+    ""
+  );
+
+  result = result.replace(
+    /<meta\s+property="og:[^"]+"[^>]*>/gi,
+    ""
+  );
+
+  result = result.replace(
+    /<meta\s+name="twitter:[^"]+"[^>]*>/gi,
+    ""
+  );
+
+  return result;
+}
+
 for (const route of routes) {
   console.log(`Pre-rendering ${route}`);
 
   const appHtml = render(route);
 
-  const html = template.replace(
+  const seoTags = extractSEO(appHtml);
+  const cleanAppHtml = removeSEO(appHtml);
+
+  let html = template;
+
+  /*
+   * Put route-specific SEO metadata inside <head>.
+   */
+  html = html.replace(
+    "</head>",
+    `${seoTags}\n</head>`
+  );
+
+  /*
+   * Put only the actual React application inside #root.
+   */
+  html = html.replace(
     '<div id="root"></div>',
-    `<div id="root">${appHtml}</div>`
+    `<div id="root">${cleanAppHtml}</div>`
   );
 
   if (route === "/") {

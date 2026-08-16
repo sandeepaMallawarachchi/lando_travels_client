@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import React from 'react';
 import { motion } from 'framer-motion';
 import FlightRequestForm from '../components/FlightRequestForm';
@@ -6,6 +7,12 @@ const Support: React.FC = () => {
 
     return (
         <div className='justify-center items-center'>
+            <SEO
+  title="Travel Support | Lando Travels"
+  description="Get travel assistance and support from Lando Travels for bookings, travel arrangements, visa processing, and other travel services."
+  canonical="https://www.landotravels.com/support"
+  image="/logo-white.webp"
+/>
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img

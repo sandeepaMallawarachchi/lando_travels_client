@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
@@ -50,6 +51,13 @@ const ContactUs: React.FC = () => {
 
     return (
         <div className='justify-center items-center pb-20'>
+
+            <SEO
+  title="Contact Lando Travels | Sri Lanka Travel Experts"
+  description="Contact Lando Travels for Sri Lanka tours, outbound travel packages, corporate travel services, flight bookings, visa assistance, and travel advice."
+  canonical="https://www.landotravels.com/contact"
+  image="/logo-white.webp"
+/>
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img

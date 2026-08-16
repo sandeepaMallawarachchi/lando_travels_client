@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -50,6 +51,12 @@ const OutboundTours: React.FC = () => {
 
     return (
         <div className='justify-center items-center pb-20'>
+            <SEO
+  title="Outbound Travel Packages | Lando Travels"
+description="Discover international travel packages from Sri Lanka with Lando Travels. Get expert assistance with flights, travel arrangements, and overseas holidays."
+  canonical="https://www.landotravels.com/outbound"
+  image="/outboundcover.webp"
+/>
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img

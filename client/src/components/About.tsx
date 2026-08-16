@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import { ArcImage } from './ArcImage'
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -20,6 +21,12 @@ const About = () => {
 
     return (
         <div id='about' className="sm:h-[70vh] h-[50vh] overflow-hidden mb-10 sm:mb-0">
+            <SEO
+  title="About Lando Travels | Sri Lanka Travel Agency"
+  description="Learn about Lando Travels, a Sri Lankan travel agency providing inbound tours, outbound travel, corporate travel, ticketing, visa processing, and travel support."
+  canonical="https://www.landotravels.com/about"
+  image="/logo-white.webp"
+/>
             <section className="relative min-h-screen bg-white text-black flex flex-col items-center justify-start pt-24 md:pt-36 lg:pt-48 overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center sm:mt-[500px] mt-10">
                     <div className="sm:w-[1080px] sm:h-[1080px] w-[700px] h-[700px] aspect-square relative">

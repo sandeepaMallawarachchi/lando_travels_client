@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -49,7 +50,15 @@ const InboundTours: React.FC = () => {
     const [selectedCard, setSelectedCard] = useState<any | null>(null);
 
     return (
+        
         <div className='justify-center items-center pb-20'>
+
+            <SEO
+  title="Sri Lanka Inbound Tours | Lando Travels"
+  description="Explore Sri Lanka with Lando Travels. Discover cultural landmarks, ancient heritage, wildlife, beaches, and unforgettable inbound tour experiences."
+  canonical="https://www.landotravels.com/inbound"
+  image="/inboundcover2.webp"
+/>
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
