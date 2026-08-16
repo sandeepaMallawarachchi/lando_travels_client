@@ -51,15 +51,36 @@ const slides = [
 ];
 
 const imageFade = {
-    center: { opacity: 1, y: 0, scale: 1 },
-    enter: { opacity: 0, y: 30, scale: 1.05 },
-    exit: { opacity: 0, y: -30, scale: 0.95 },
+    center: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+    },
+    enter: {
+        opacity: 0,
+        y: 30,
+        scale: 1.05,
+    },
+    exit: {
+        opacity: 0,
+        y: -30,
+        scale: 0.95,
+    },
 };
 
 const textSlide = {
-    enter: { opacity: 0, y: -50 },
-    center: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 50 },
+    enter: {
+        opacity: 0,
+        y: -50,
+    },
+    center: {
+        opacity: 1,
+        y: 0,
+    },
+    exit: {
+        opacity: 0,
+        y: 50,
+    },
 };
 
 const Hero: React.FC = () => {
@@ -70,14 +91,15 @@ const Hero: React.FC = () => {
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % slides.length);
         }, 10000);
+
         return () => clearInterval(interval);
     }, []);
 
     const handleSelect = (i: number) => {
-        if (i !== index) setIndex(i);
+        if (i !== index) {
+            setIndex(i);
+        }
     };
-
-    // const APIKEY = 'AIzaSyCI9ArvdMHEaNk7mvBbX7ueWqUyIIfNJJE'
 
     return (
         <section className="relative h-[60vh] md:h-screen w-full overflow-hidden bg-blue-200">
@@ -86,13 +108,18 @@ const Hero: React.FC = () => {
                     key={currentSlide.image}
                     src={currentSlide.image}
                     alt={currentSlide.title}
-                    loading="lazy"
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
                     className="absolute w-full h-full object-cover"
                     variants={imageFade}
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 1, ease: "easeInOut" }}
+                    transition={{
+                        duration: 1,
+                        ease: "easeInOut",
+                    }}
                 />
             </AnimatePresence>
 
@@ -101,12 +128,18 @@ const Hero: React.FC = () => {
 
             {/* Dot Controls */}
             <div className="absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-20">
-                {slides.map((_, i) => (
-                    <button aria-label="Button"
+                {slides.map((slide, i) => (
+                    <button
+                        type="button"
+                        aria-label={`Show slide ${i + 1}: ${slide.title}`}
+                        aria-current={i === index ? "true" : undefined}
                         key={i}
                         onClick={() => handleSelect(i)}
-                        className={`w-1 h-5 rounded-full transition-all duration-300 cursor-pointer ${i === index ? "bg-white" : "bg-gray-400 hover:bg-white/70"
-                            }`}
+                        className={`w-1 h-5 rounded-full transition-all duration-300 cursor-pointer ${
+                            i === index
+                                ? "bg-white"
+                                : "bg-gray-400 hover:bg-white/70"
+                        }`}
                     />
                 ))}
             </div>
@@ -121,19 +154,33 @@ const Hero: React.FC = () => {
                         initial="enter"
                         animate="center"
                         exit="exit"
-                        transition={{ duration: 0.6 }}
+                        transition={{
+                            duration: 0.6,
+                        }}
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold mb-4">{currentSlide.title}</h1>
-                        <p className="text-lg md:text-xl">{currentSlide.subtitle}</p>
+                        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                            {currentSlide.title}
+                        </h1>
+
+                        <p className="text-lg md:text-xl">
+                            {currentSlide.subtitle}
+                        </p>
                     </motion.div>
                 </AnimatePresence>
             </div>
 
+            {/* Scroll Down Button */}
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-                <button aria-label="Button"
+                <button
+                    type="button"
+                    aria-label="Scroll to latest news"
                     onClick={() => {
-                        const blogsSection = document.getElementById("blogs");
-                        blogsSection?.scrollIntoView({ behavior: "smooth" });
+                        const blogsSection =
+                            document.getElementById("blogs");
+
+                        blogsSection?.scrollIntoView({
+                            behavior: "smooth",
+                        });
                     }}
                     className="cursor-pointer animate-bounce text-white hover:opacity-80"
                 >

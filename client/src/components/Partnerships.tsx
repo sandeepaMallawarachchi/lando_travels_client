@@ -19,7 +19,7 @@ const airlines = [
   { name: "Partner 14", image: "/partners/logo17.webp" },
   { name: "Partner 17", image: "/partners/logo20.webp" },
   { name: "Partner 18", image: "/partners/logo21.webp" },
-  { name: "Partner 19", image: "/partners/logo22.webp" }
+  { name: "Partner 19", image: "/partners/logo22.webp" },
 ];
 
 const Partnerships: React.FC = () => {
@@ -31,7 +31,8 @@ const Partnerships: React.FC = () => {
     if (!el) return;
 
     const scroll = async () => {
-      const fullWidth = el.scrollWidth / 2; // because logos are duplicated
+      const fullWidth = el.scrollWidth / 2;
+
       await controls.start({
         x: -fullWidth,
         transition: {
@@ -39,7 +40,9 @@ const Partnerships: React.FC = () => {
           ease: "linear",
         },
       });
+
       controls.set({ x: 0 });
+
       scroll();
     };
 
@@ -54,6 +57,7 @@ const Partnerships: React.FC = () => {
 
       <div className="relative w-full overflow-hidden">
         <div className="absolute left-0 top-0 h-full w-24 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+
         <div className="absolute right-0 top-0 h-full w-24 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
 
         <motion.div
@@ -63,11 +67,12 @@ const Partnerships: React.FC = () => {
         >
           {[...airlines, ...airlines].map((airline, index) => (
             <img
-              key={index}
+              key={`${airline.image}-${index}`}
               src={airline.image}
               alt={airline.name}
-              className="h-16 sm:h-20 md:h-24 lg:h-28 object-contain opacity-90 hover:opacity-100 transition"
               loading="lazy"
+              decoding="async"
+              className="h-16 sm:h-20 md:h-24 lg:h-28 object-contain opacity-90 hover:opacity-100 transition"
             />
           ))}
         </motion.div>

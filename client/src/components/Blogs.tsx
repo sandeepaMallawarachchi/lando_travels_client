@@ -191,6 +191,7 @@ const Blogs: React.FC = () => {
                                         src={card.src}
                                         alt={card.title}
                                         loading="lazy"
+                                        decoding="async"
                                         className="w-full h-48 object-cover"
                                     />
 
@@ -273,6 +274,7 @@ const Blogs: React.FC = () => {
                             <img
                                 src={selectedCard.src}
                                 alt={selectedCard.title}
+                                decoding="async"
                                 className="w-full h-64 object-cover rounded-md mb-4"
                             />
 

@@ -1,10 +1,10 @@
+import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import Blogs from "../components/Blogs";
 import About from "../components/About";
 import OurServices from "../components/OurServices";
 import Subscribe from "../components/Subscribe";
 import Partnerships from "../components/Partnerships";
-import SEO from "../components/SEO";
 
 const Home = () => {
   return (
@@ -16,14 +16,12 @@ const Home = () => {
         image="/logo-white.webp"
       />
 
-      <div>
-        <Hero />
-        <Blogs />
-        <About />
-        <OurServices />
-        <Subscribe />
-        <Partnerships />
-      </div>
+      <Hero />
+      <Blogs />
+      <About />
+      <OurServices />
+      <Subscribe />
+      <Partnerships />
     </>
   );
 };

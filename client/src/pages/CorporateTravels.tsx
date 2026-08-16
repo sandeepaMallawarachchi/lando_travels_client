@@ -1,71 +1,105 @@
 import SEO from "../components/SEO";
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
-const cardsData = [
+interface CorporateCard {
+    id: number;
+    imgSrc: string;
+    title: string;
+    description: string;
+    fullText: string;
+    gallery: string[];
+}
+
+const cardsData: CorporateCard[] = [
     {
         id: 1,
-        imgSrc: '/airTicketing.webp',
-        title: 'Air Ticketing',
+        imgSrc: "/airTicketing.webp",
+        title: "Air Ticketing",
         description:
-            'Book flights worldwide with ease. Our IATA-certified team secures the best corporate fares and ensures a smooth travel process.',
+            "Book flights worldwide with ease. Our IATA-certified team secures the best corporate fares and ensures a smooth travel process.",
         fullText:
-            'As an IATA-accredited travel agency, Lando Travels offers seamless ticketing and reservations with all major airlines, both online and offline. We provide competitive fares and ensure that your corporate travel is hassle-free, efficient, and cost-effective.',
-        gallery: ['/airTicketing.webp', '/airTicketing2.webp', '/airTicketing3.webp', '/airTicketing4.webp'],
+            "As an IATA-accredited travel agency, Lando Travels offers seamless ticketing and reservations with all major airlines, both online and offline. We provide competitive fares and ensure that your corporate travel is hassle-free, efficient, and cost-effective.",
+        gallery: [
+            "/airTicketing.webp",
+            "/airTicketing2.webp",
+            "/airTicketing3.webp",
+            "/airTicketing4.webp",
+        ],
     },
     {
         id: 2,
-        imgSrc: '/visaProcessing.webp',
-        title: 'Visa Processing',
+        imgSrc: "/visaProcessing.webp",
+        title: "Visa Processing",
         description:
-            'We simplify visa processing for any destination—fast, reliable, and stress-free support from our expert team.',
+            "We simplify visa processing for any destination—fast, reliable, and stress-free support from our expert team.",
         fullText:
-            'Navigating visa requirements can be challenging, but Lando Travels simplifies the process for you. Our expert team handles visa applications for all countries, ensuring that your documents are processed quickly and efficiently, allowing you to focus on your business.',
-        gallery: ['/visaProcessing.webp', '/visaProcessing2.webp', '/visaProcessing3.webp', '/visaProcessing4.webp'],
+            "Navigating visa requirements can be challenging, but Lando Travels simplifies the process for you. Our expert team handles visa applications for all countries, ensuring that your documents are processed quickly and efficiently, allowing you to focus on your business.",
+        gallery: [
+            "/visaProcessing.webp",
+            "/visaProcessing2.webp",
+            "/visaProcessing3.webp",
+            "/visaProcessing4.webp",
+        ],
     },
     {
         id: 3,
-        imgSrc: '/travelInsurance.webp',
-        title: 'Travel Insurance',
+        imgSrc: "/travelInsurance.webp",
+        title: "Travel Insurance",
         description:
-            'Ensure peace of mind with tailored travel insurance plans that safeguard your business trips from start to finish.',
+            "Ensure peace of mind with tailored travel insurance plans that safeguard your business trips from start to finish.",
         fullText:
-            'Protect your corporate travelers with comprehensive travel insurance. We offer tailored insurance packages that cover all aspects of your journey, giving you peace of mind as you travel the world for business.',
-        gallery: ['/travelInsurance.webp', '/travelInsurance2.webp', '/travelInsurance3.webp', '/travelInsurance4.webp'],
+            "Protect your corporate travelers with comprehensive travel insurance. We offer tailored insurance packages that cover all aspects of your journey, giving you peace of mind as you travel the world for business.",
+        gallery: [
+            "/travelInsurance.webp",
+            "/travelInsurance2.webp",
+            "/travelInsurance3.webp",
+            "/travelInsurance4.webp",
+        ],
     },
     {
         id: 4,
-        imgSrc: '/travelConsultation.webp',
-        title: 'Travel Consultation',
+        imgSrc: "/travelConsultation.webp",
+        title: "Travel Consultation",
         description:
-            'Get expert travel advice for smooth business trips. From simple bookings to complex itineraries, we’re here to help — at no extra cost.',
+            "Get expert travel advice for smooth business trips. From simple bookings to complex itineraries, we’re here to help — at no extra cost.",
         fullText:
-            'Planning your business trips with us is easy. We offer free travel consultations to help you plan and execute your corporate travel with minimal hassle. Whether it is a simple ticket booking or a complex itinerary, we are here to assist.',
-        gallery: ['/travelConsultation.webp', '/travelConsultation2.webp', '/travelConsultation3.webp', '/travelConsultation4.webp'],
-    }
+            "Planning your business trips with us is easy. We offer free travel consultations to help you plan and execute your corporate travel with minimal hassle. Whether it is a simple ticket booking or a complex itinerary, we are here to assist.",
+        gallery: [
+            "/travelConsultation.webp",
+            "/travelConsultation2.webp",
+            "/travelConsultation3.webp",
+            "/travelConsultation4.webp",
+        ],
+    },
 ];
 
 const CorporateTravels: React.FC = () => {
-    const [selectedCard, setSelectedCard] = useState<any | null>(null);
+    const [selectedCard, setSelectedCard] =
+        useState<CorporateCard | null>(null);
 
     return (
-        <div className='justify-center items-center pb-20'>
+        <div className="justify-center items-center pb-20">
             <SEO
-  title="Corporate Travel Services | Lando Travels"
-  description="Lando Travels provides corporate travel services including air ticketing, visa processing, travel insurance, and expert travel consultation for business travelers."
-  canonical="https://www.landotravels.com/corporate"
-  image="/corporatecover.webp"
-/>
+                title="Corporate Travel Services | Lando Travels"
+                description="Lando Travels provides corporate travel services including air ticketing, visa processing, travel insurance, and expert travel consultation for business travelers."
+                canonical="https://www.landotravels.com/corporate"
+                image="/corporatecover.webp"
+            />
+
             {/* Cover Section */}
             <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
                 <img
                     src="/corporatecover.webp"
                     alt="Corporate Travel Services"
-                    loading="lazy"
+                    fetchPriority="high"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover z-0"
                 />
+
                 <div className="absolute inset-0 bg-black/40 z-0" />
+
                 <motion.div
                     className="relative z-10 flex flex-col items-center text-center md:text-left md:items-end md:flex-row justify-between max-w-7xl mx-auto px-6 md:px-12 h-full pb-28"
                     initial={{ opacity: 0, y: 30 }}
@@ -75,8 +109,11 @@ const CorporateTravels: React.FC = () => {
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-0 mt-64 md:mt-0">
                         Corporate Travel Services
                     </h1>
+
                     <p className="text-white text-md md:text-lg max-w-xl text-center md:text-left">
-                        Your one-stop partner for visa processing, flight bookings, insurance, and expert consultation—delivering efficiency, compliance, and peace of mind.
+                        Your one-stop partner for visa processing, flight
+                        bookings, insurance, and expert consultation—delivering
+                        efficiency, compliance, and peace of mind.
                     </p>
                 </motion.div>
             </section>
@@ -86,8 +123,12 @@ const CorporateTravels: React.FC = () => {
                 <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
                     Streamline Business Travel with Lando
                 </h2>
+
                 <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-                    From visa processing and air ticketing to travel insurance and expert consulting — our Corporate Travel Services are designed to make every business journey smooth, secure, and stress-free.
+                    From visa processing and air ticketing to travel insurance
+                    and expert consulting — our Corporate Travel Services are
+                    designed to make every business journey smooth, secure, and
+                    stress-free.
                 </p>
 
                 <motion.div
@@ -100,19 +141,24 @@ const CorporateTravels: React.FC = () => {
                         <div
                             key={card.id}
                             className="relative rounded-3xl overflow-hidden shadow-lg group cursor-pointer"
-                            onClick={() => {
-                                setSelectedCard(card);
-                            }}
+                            onClick={() => setSelectedCard(card)}
                         >
                             <img
                                 src={card.imgSrc}
                                 alt={card.title}
                                 loading="lazy"
+                                decoding="async"
                                 className="w-full h-96 object-cover transform group-hover:scale-105 transition duration-500"
                             />
+
                             <div className="absolute bottom-0 bg-white p-4 backdrop-blur-sm w-full">
-                                <p className="text-gray-700 text-sm mb-2">{card.description}</p>
-                                <h3 className="text-lg font-bold text-gray-900">{card.title}</h3>
+                                <p className="text-gray-700 text-sm mb-2">
+                                    {card.description}
+                                </p>
+
+                                <h3 className="text-lg font-bold text-gray-900">
+                                    {card.title}
+                                </h3>
                             </div>
                         </div>
                     ))}
@@ -138,24 +184,37 @@ const CorporateTravels: React.FC = () => {
                             transition={{ duration: 0.3 }}
                         >
                             <div className="flex justify-center">
-                                {selectedCard.gallery.map((img: string, i: number) => (
-                                    <div key={i} className="sm:min-w-[230px] w-1/4 h-96 relative">
-                                        <img
-                                            src={img}
-                                            alt={`thumb-${i}`}
-                                            loading="lazy"
-                                            className="w-full h-full object-cover clip-diagonal hover:scale-105 transition duration-500"
-                                        />
-                                    </div>
-                                ))}
+                                {selectedCard.gallery.map(
+                                    (img: string, i: number) => (
+                                        <div
+                                            key={i}
+                                            className="sm:min-w-[230px] w-1/4 h-96 relative"
+                                        >
+                                            <img
+                                                src={img}
+                                                alt={`${selectedCard.title} gallery image ${i + 1}`}
+                                                loading="lazy"
+                                                decoding="async"
+                                                className="w-full h-full object-cover clip-diagonal hover:scale-105 transition duration-500"
+                                            />
+                                        </div>
+                                    )
+                                )}
                             </div>
+
                             <div className="p-6">
                                 <h2 className="text-2xl font-bold text-gray-800 mb-3">
                                     {selectedCard.title}
                                 </h2>
-                                <p className="text-gray-600">{selectedCard.fullText}</p>
+
+                                <p className="text-gray-600">
+                                    {selectedCard.fullText}
+                                </p>
                             </div>
-                            <button aria-label="Button"
+
+                            <button
+                                type="button"
+                                aria-label="Close service details"
                                 onClick={() => setSelectedCard(null)}
                                 className="absolute cursor-pointer top-3 right-4 text-3xl text-gray-500 hover:text-black"
                             >
@@ -165,6 +224,7 @@ const CorporateTravels: React.FC = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
             {/* Call to Action */}
             <motion.div
                 className="flex justify-center"
@@ -179,7 +239,6 @@ const CorporateTravels: React.FC = () => {
                     Talk to Our Travel Experts
                 </Link>
             </motion.div>
-
         </div>
     );
 };
