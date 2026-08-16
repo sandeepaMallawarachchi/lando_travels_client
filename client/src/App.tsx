@@ -2,18 +2,23 @@ import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import type { ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
+
 import Header from "./components/Header";
-import Home from "./pages/Home";
-import CustomCursor from "./components/CustomCursor";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
+import ScrollToTop from "./components/ScrollToTop";
+import ScrollButton from "./components/ScrollButton";
+import TawkToWidget from "./components/TawkToWidget";
+
+import Home from "./pages/Home";
 import InboundTours from "./pages/InboundTours";
+import OutboundTours from "./pages/OutboundTours";
 import CorporateTravels from "./pages/CorporateTravels";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
-import OutboundTours from "./pages/OutboundTours";
-import ScrollToTop from "./components/ScrollToTop";
-import ScrollButton from "./components/ScrollButton";
+import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
+
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminHeader from "./components/admin/AdminHeader";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
@@ -25,9 +30,8 @@ import ManageCards from "./components/admin/ManageCards";
 import Documentation from "./components/admin/Documentation";
 import Help from "./components/admin/Help";
 import SoftwareHub from "./pages/SoftwareHub";
+
 import { Analytics } from "@vercel/analytics/react";
-import TawkToWidget from "./components/TawkToWidget";
-import Support from "./pages/Support";
 
 type LayoutProps = {
   children: ReactNode;
@@ -48,15 +52,21 @@ function Layout({ children }: LayoutProps) {
       {isAdminRoute ? (
         <>
           <AdminHeader />
+
           <div className="flex h-screen overflow-hidden">
             <AdminSidebar />
-            <div className="flex-grow mt-24 overflow-y-auto">{children}</div>
+
+            <div className="flex-grow mt-24 overflow-y-auto">
+              {children}
+            </div>
           </div>
         </>
       ) : (
         <>
           <Header />
+
           <div>{children}</div>
+
           <Footer />
         </>
       )}
@@ -69,21 +79,48 @@ function App() {
     <>
       <Layout>
         <Toaster position="top-center" />
+
         <ScrollToTop />
         <ScrollButton />
         <CustomCursor />
         <TawkToWidget />
+
         <main className="flex-grow mx-auto">
           <Routes>
+            {/* Public routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/inbound" element={<InboundTours />} />
-            <Route path="/outbound" element={<OutboundTours />} />
-            <Route path="/corporate" element={<CorporateTravels />} />
-            <Route path="/contact" element={<ContactUs />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/support" element={<Support />} />
 
-            {/* admin routes */}
+            <Route
+              path="/inbound"
+              element={<InboundTours />}
+            />
+
+            <Route
+              path="/outbound"
+              element={<OutboundTours />}
+            />
+
+            <Route
+              path="/corporate"
+              element={<CorporateTravels />}
+            />
+
+            <Route
+              path="/contact"
+              element={<ContactUs />}
+            />
+
+            <Route
+              path="/about"
+              element={<AboutUs />}
+            />
+
+            <Route
+              path="/support"
+              element={<Support />}
+            />
+
+            {/* Admin routes */}
             <Route
               path="/admin/softwarehub"
               element={
@@ -92,6 +129,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/admindashboard"
               element={
@@ -100,6 +138,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/inbox"
               element={
@@ -108,6 +147,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/adminregister"
               element={
@@ -116,6 +156,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/allUsers"
               element={
@@ -124,6 +165,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/adminCards"
               element={
@@ -132,6 +174,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/documentation"
               element={
@@ -140,6 +183,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route
               path="/admin/helps"
               element={
@@ -149,11 +193,14 @@ function App() {
               }
             />
 
-            {/* not NotFound */}
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
           </Routes>
         </main>
       </Layout>
+
       <Analytics />
     </>
   );
